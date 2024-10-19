@@ -2,5 +2,20 @@ server:
   port: 5678
 
 spring:
+  datasource:
+    url: ${DB.URL}
+    driver-class-name:
+    username: ${DB.USERNAME}
+    password: ${DB.PASSWORD}
+
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+
   application:
     name: DonGiveUpBE
