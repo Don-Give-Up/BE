@@ -1,0 +1,26 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main  # 변경을 감지할 브랜치
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 사용하고자 하는 OS
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'  # 사용하고자 하는 Java 버전
+
+      - name: Build with Gradle
+        run: ./gradlew build  # Gradle 빌드 명령어
+
+      - name: Run tests
+        run: ./gradlew test  # 테스트 실행 명령어
