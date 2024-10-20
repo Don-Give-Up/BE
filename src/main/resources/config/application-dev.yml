@@ -3,10 +3,10 @@ server:
 
 spring:
   datasource:
-    url: ${DB.URL}
+    url: ${DB_URL}
     driver-class-name:
-    username: ${DB.USERNAME}
-    password: ${DB.PASSWORD}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
   jpa:
     show-sql: true
