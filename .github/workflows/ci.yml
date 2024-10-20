@@ -42,5 +42,5 @@ jobs:
         if: ${{ always() }}  # 항상 실행되도록 설정 (빌드 성공 여부 관계없이)
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{
-            "content": "CI Workflow Alarm: \nThere is a change in the backend server! \branch: '${{ github.ref }}' \nstatus: '${{ job.status }}'"
+            "content": "CI Workflow Alarm: \nThere is a change in the backend server! \branch: '${{ github.ref }}' \nstatus: '${{ job.status }}'\n---\n"
           }' ${{ secrets.DISCORD_WEBHOOK_URL }}
