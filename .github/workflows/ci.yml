@@ -42,5 +42,5 @@ jobs:
         if: ${{ always() }}  # 항상 실행되도록 설정 (빌드 성공 여부 관계없이)
         run: |
           curl -X POST -H "Content-type: application/json" --data '{
-            "content": "CI Workflow 알림: \n\n**빌드가 완료되었습니다!**\n**브랜치:** '${{ github.ref }}'\n**상태:** '${{ job.status }}'\n\n---"
+            "content": "CI Workflow 알림: \n**BE 팀의 BE 프로젝트가 변경되었습니다**\n**브랜치:** '${{ github.ref }}'\n**상태:** '${{ job.status }}'\n---"
           }' ${{ secrets.DISCORD_WEBHOOK_URL }}
