@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # 업데이트된 버전
 
       - name: Cache Gradle packages
-        uses: actions/cache@v2
+        uses: actions/cache@v3  # 업데이트된 버전
         with:
           path: ~/.gradle/caches  # 캐시할 경로
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}  # 캐시 키
@@ -23,14 +23,14 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Set up JDK
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3  # 업데이트된 버전
         with:
           java-version: '17'  # 사용하고자 하는 Java 버전
           distribution: 'temurin'
 
       - name: Build with Gradle
         env:
-          DB_URL: ${{ secrets.DB_URL }}  # GitHub Secrets 에서 DB_URL 가져오기
+          DB_URL: ${{ secrets.DB_URL }}  # GitHub Secrets에서 DB_URL 가져오기
           DB_USERNAME: ${{ secrets.DB_USERNAME }}  # 사용자 이름
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}  # 비밀번호
         run: ./gradlew build
@@ -41,6 +41,6 @@ jobs:
       - name: Send Discord Notification
         if: ${{ always() }}  # 항상 실행되도록 설정 (빌드 성공 여부 관계없이)
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{
-            "content": "CI Workflow 알림: \n빌드가 완료되었습니다! \n브랜치: '${{ github.ref }}' \n상태: '${{ job.status }}'"
+          curl -X POST -H "Content-type: application/json" --data '{
+            "content": "CI Workflow 알림: \n\n**빌드가 완료되었습니다!**\n**브랜치:** '${{ github.ref }}'\n**상태:** '${{ job.status }}'\n\n---"
           }' ${{ secrets.DISCORD_WEBHOOK_URL }}
