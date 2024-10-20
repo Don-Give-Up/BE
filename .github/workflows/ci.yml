@@ -22,7 +22,7 @@ jobs:
 
       - name: Build with Gradle
         env:
-          DB_URL: ${{ secrets.DB_URL }}  # GitHub Secrets에서 DB_URL 가져오기
+          DB_URL: ${{ secrets.DB_URL }}  # GitHub Secrets 에서 DB_URL 가져오기
           DB_USERNAME: ${{ secrets.DB_USERNAME }}  # 사용자 이름
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}  # 비밀번호
         run: ./gradlew build
