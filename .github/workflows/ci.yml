@@ -44,3 +44,15 @@ jobs:
           curl -X POST -H "Content-type: application/json" --data '{
             "content": "CI Workflow 알림: \n**백엔드 서버에 변경 사항이 있습니다!**\n**브랜치:** '${{ github.ref }}'\n**상태:** '${{ job.status }}'\n---"
           }' ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+      - name: Add SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Run script on Windows
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USERNAME }}@${{ secrets.REMOTE_SERVER }} -p ${{ secrets.REMOTE_SERVER_PORT }} ${{ secrets.REMOTE_SERVER_PATH }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
