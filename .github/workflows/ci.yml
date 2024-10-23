@@ -3,7 +3,7 @@ name: CI Workflow
 on:
   push:
     branches:
-      - main    # 변경을 감지할 브랜치
+      - main     # 변경을 감지할 브랜치
       - dev
 
 jobs:
