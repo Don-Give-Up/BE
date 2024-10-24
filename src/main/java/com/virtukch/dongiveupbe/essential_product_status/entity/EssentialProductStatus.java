@@ -5,9 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class EssentialProductStatus {
 
     @Id
@@ -21,4 +23,11 @@ public class EssentialProductStatus {
     private Long essentialProductStatusPrice;
 
     private Long essentialProductAmount;
+
+    public EssentialProductStatus(Long essentialProductId, Long roundId, Long essentialProductStatusPrice, Long essentialProductAmount) {
+        this.essentialProductId = essentialProductId;
+        this.roundId = roundId;
+        this.essentialProductStatusPrice = essentialProductStatusPrice;
+        this.essentialProductAmount = essentialProductAmount;
+    }
 }
