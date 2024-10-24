@@ -26,14 +26,14 @@ public class MemberController {
 
     // 생성
     @PostMapping
-    public ResponseEntity<Member> save(@RequestBody MemberRegisterRequestDto memberRegisterRequestDto) {
+    public ResponseEntity<MemberResponseDto> save(@RequestBody MemberRegisterRequestDto memberRegisterRequestDto) {
         return memberService.save(memberRegisterRequestDto);
     }
 
     // 아이디 통한 조회
-    @GetMapping("{memberId}")
-    public ResponseEntity<MemberResponseDto> findById(@PathVariable Long memberId) {
-        return memberService.findById(memberId);
+    @GetMapping("{memberEmail}")
+    public ResponseEntity<MemberResponseDto> findById(@PathVariable String memberEmail) {
+        return memberService.findById(memberEmail);
     }
 
     // 이메일로 조회 (Unique 한 것을 증명해야 할 듯)
