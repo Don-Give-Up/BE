@@ -16,7 +16,7 @@ public class TaxStatus {
 
     private Long taxId;
 
-    private Long taxRate;
+    private Long roundId;
 
-    private Long round;
+    private Double taxRate;
 }

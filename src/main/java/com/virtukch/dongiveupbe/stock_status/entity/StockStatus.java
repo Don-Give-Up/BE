@@ -16,9 +16,9 @@ public class StockStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stockStatusId;
 
+    private Long roundId;
+
     private Long stockId;
 
     private Long stockStatusCurrentPrice;
-
-    private Long round;
 }

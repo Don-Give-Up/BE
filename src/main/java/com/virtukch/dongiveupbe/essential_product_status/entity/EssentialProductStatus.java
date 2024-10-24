@@ -16,9 +16,9 @@ public class EssentialProductStatus {
 
     private Long essentialProductId;
 
+    private Long roundId;
+
     private Long essentialProductStatusPrice;
 
     private Long essentialProductAmount;
-
-    private Long round;
 }

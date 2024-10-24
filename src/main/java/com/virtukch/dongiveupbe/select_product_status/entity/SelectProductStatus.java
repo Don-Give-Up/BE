@@ -11,15 +11,16 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class SelectProductStatus {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long selectProductStatusId;
+
+    private Long roundId;
 
     private Long selectProductId;
 
     private Long selectProductAmount;
 
     private Long selectProductPrice;
-
-    private Long round;
 }
