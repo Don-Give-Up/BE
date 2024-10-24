@@ -5,8 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor
 @Getter
 public class EssentialProduct {
 
@@ -19,4 +21,10 @@ public class EssentialProduct {
     private Long essentialProductHp;
 
     private String essentialProductDescription;
+
+    public EssentialProduct(String essentialProductName, Long essentialProductHp, String essentialProductDescription) {
+        this.essentialProductName = essentialProductName;
+        this.essentialProductHp = essentialProductHp;
+        this.essentialProductDescription = essentialProductDescription;
+    }
 }

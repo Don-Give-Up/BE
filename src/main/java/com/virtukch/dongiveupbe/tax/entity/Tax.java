@@ -17,4 +17,8 @@ public class Tax {
     private Long taxId;
 
     private String taxName;
+
+    public Tax(String taxName) {
+        this.taxName = taxName;
+    }
 }

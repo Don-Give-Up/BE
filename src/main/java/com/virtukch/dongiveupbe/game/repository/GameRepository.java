@@ -1,4 +1,7 @@
 package com.virtukch.dongiveupbe.game.repository;
 
-public interface GameRepository {
+import com.virtukch.dongiveupbe.game.entity.Game;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GameRepository extends JpaRepository<Game, Long> {
 }
