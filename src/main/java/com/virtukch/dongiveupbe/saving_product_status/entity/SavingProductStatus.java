@@ -18,7 +18,8 @@ public class SavingProductStatus {
 
     private Long savingProductId;
 
+    private Long roundId;
+
     private Double savingProductStatusRate;
 
-    private Long round;
 }
