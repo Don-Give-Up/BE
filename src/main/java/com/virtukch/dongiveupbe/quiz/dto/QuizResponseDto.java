@@ -3,15 +3,17 @@ package com.virtukch.dongiveupbe.quiz.dto;
 import com.virtukch.dongiveupbe.quiz.entity.IsAcceptedByTeacher;
 import com.virtukch.dongiveupbe.quiz.entity.MultipleChoiceQuizAnswer;
 import com.virtukch.dongiveupbe.quiz.entity.OXQuizAnswer;
+import com.virtukch.dongiveupbe.quiz.entity.Quiz;
 import com.virtukch.dongiveupbe.quiz.entity.QuizType;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
+@Builder
 public class QuizResponseDto {
+
+    private Long quizId;
 
     private Long memberId;
 
@@ -35,22 +37,20 @@ public class QuizResponseDto {
 
     private Long quizLevel;
 
-    @Builder
-    public QuizResponseDto(Long memberId, Long unitId, String quizTitle, QuizType quizType,
-        OXQuizAnswer oxQuizAnswer, MultipleChoiceQuizAnswer multipleChoiceQuizAnswer,
-        String subjectiveQuizAnswer, IsAcceptedByTeacher isAcceptedByTeacher,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt, Long quizLevel) {
-        this.memberId = memberId;
-        this.unitId = unitId;
-        this.quizTitle = quizTitle;
-        this.quizType = quizType;
-        this.oxQuizAnswer = oxQuizAnswer;
-        this.multipleChoiceQuizAnswer = multipleChoiceQuizAnswer;
-        this.subjectiveQuizAnswer = subjectiveQuizAnswer;
-        this.isAcceptedByTeacher = isAcceptedByTeacher;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.quizLevel = quizLevel;
+    public static QuizResponseDto fromEntity(Quiz quiz) {
+        return QuizResponseDto.builder()
+            .quizId(quiz.getQuizId())
+            .memberId(quiz.getMemberId())
+            .unitId(quiz.getUnitId())
+            .quizTitle(quiz.getQuizTitle())
+            .quizType(quiz.getQuizType())
+            .oxQuizAnswer(quiz.getOxQuizAnswer())
+            .multipleChoiceQuizAnswer(quiz.getMultipleChoiceQuizAnswer())
+            .subjectiveQuizAnswer(quiz.getSubjectiveQuizAnswer())
+            .isAcceptedByTeacher(quiz.getIsAcceptedByTeacher())
+            .createdAt(quiz.getCreatedAt())
+            .updatedAt(quiz.getUpdatedAt())
+            .quizLevel(quiz.getQuizLevel())
+            .build();
     }
 }
