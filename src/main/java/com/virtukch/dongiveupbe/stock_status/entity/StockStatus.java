@@ -21,4 +21,10 @@ public class StockStatus {
     private Long stockId;
 
     private Long stockStatusCurrentPrice;
+
+    public StockStatus(Long roundId, Long stockId, Long stockStatusCurrentPrice) {
+        this.roundId = roundId;
+        this.stockId = stockId;
+        this.stockStatusCurrentPrice = stockStatusCurrentPrice;
+    }
 }
