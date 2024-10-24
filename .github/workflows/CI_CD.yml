@@ -1,4 +1,4 @@
-name: CI Workflow
+name: CI/CD Workflow
 
 on:
   push:
@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # 업데이트된 버전
+        uses: actions/checkout@v3
 
       - name: Cache Gradle packages
-        uses: actions/cache@v3  # 업데이트된 버전
+        uses: actions/cache@v3
         with:
           path: ~/.gradle/caches  # 캐시할 경로
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}  # 캐시 키
