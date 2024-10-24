@@ -15,7 +15,7 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long gameId;
 
-    private Long memberNo;
+    private Long memberId;
 
     private String gameName;
 
