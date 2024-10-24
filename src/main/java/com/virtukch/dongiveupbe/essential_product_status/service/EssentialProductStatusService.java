@@ -18,6 +18,12 @@ public class EssentialProductStatusService {
     }
 
     @Transactional(readOnly = true)
+    public EssentialProductStatus findById(Long essentialProductStatusId) {
+        return essentialProductStatusRepository.findById(essentialProductStatusId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 EssentialProductStatus ID입니다: " + essentialProductStatusId));
+    }
+
+    @Transactional(readOnly = true)
     public List<EssentialProductStatusResponseDto> getProductStatusByRound(Long roundId) {
         return essentialProductStatusRepository.findByRoundId(roundId).stream()
                 .map(EssentialProductStatusResponseDto::fromEntity)
