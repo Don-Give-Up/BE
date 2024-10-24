@@ -21,12 +21,13 @@ public class QuizSolveRecord {
 
     private Long quizId;
 
+    private Long roundId;
+
     private Timestamp createdAt;
 
     private Correct correct;
 
     private Integer attemptCount;
 
-    private Long round;
 
 }
