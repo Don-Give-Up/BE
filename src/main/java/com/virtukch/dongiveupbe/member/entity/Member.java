@@ -1,14 +1,11 @@
 package com.virtukch.dongiveupbe.member.entity;
 
-import com.virtukch.dongiveupbe.member.dto.MemberRegisterRequestDto;
-import com.virtukch.dongiveupbe.member.dto.MemberResponseDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDate;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

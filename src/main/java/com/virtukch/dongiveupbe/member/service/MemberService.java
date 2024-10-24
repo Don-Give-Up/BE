@@ -5,9 +5,9 @@ import com.virtukch.dongiveupbe.member.dto.MemberResponseDto;
 import com.virtukch.dongiveupbe.member.entity.Member;
 import com.virtukch.dongiveupbe.member.exception.MemberNotFoundException;
 import com.virtukch.dongiveupbe.member.repository.MemberRepository;
+import com.virtukch.dongiveupbe.member.utils.PasswordUtils;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -15,17 +15,19 @@ import org.springframework.stereotype.Service;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final PasswordUtils passwordUtils;
 
     @Autowired
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository, PasswordUtils passwordUtils) {
         this.memberRepository = memberRepository;
+        this.passwordUtils = passwordUtils;
     }
 
     public ResponseEntity<MemberResponseDto> save(
         MemberRegisterRequestDto memberRegisterRequestDto) {
         Member member = Member.builder()
             .memberEmail(memberRegisterRequestDto.getMemberEmail())
-            .memberPassword(memberRegisterRequestDto.getMemberPassword())
+            .memberPassword(passwordUtils.hashPassword(memberRegisterRequestDto.getMemberPassword()))
             .memberName(memberRegisterRequestDto.getMemberName())
             .memberSchool(memberRegisterRequestDto.getMemberSchool())
             .memberBirthday(memberRegisterRequestDto.getMemberDateTime())
