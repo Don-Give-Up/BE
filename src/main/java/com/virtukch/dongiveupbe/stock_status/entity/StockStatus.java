@@ -11,19 +11,14 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class StockStatus {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long stock_status_id;
+    private Long stockStatusId;
 
-    private Long round_id;
+    private Long stockId;
 
-    private Long stock_id;
+    private Long stockStatusCurrentPrice;
 
-    private Long stock_status_current_price;
-
-    public StockStatus(Long round_id, Long stock_id, Long stock_status_current_price) {
-        this.round_id = round_id;
-        this.stock_id = stock_id;
-        this.stock_status_current_price = stock_status_current_price;
-    }
+    private Long round;
 }

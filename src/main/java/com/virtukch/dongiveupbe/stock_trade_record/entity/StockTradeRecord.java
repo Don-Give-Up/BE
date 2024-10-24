@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class StockTradeRecord {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stockTradeRecordId;

@@ -8,13 +8,10 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class Stock {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long stock_id;
+    private Long stockId;
 
-    private String stock_name;
-
-    public Stock(String stock_name) {
-        this.stock_name = stock_name;
-    }
+    private String stockName;
 }
