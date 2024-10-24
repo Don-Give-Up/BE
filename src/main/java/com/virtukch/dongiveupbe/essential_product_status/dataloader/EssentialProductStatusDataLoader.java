@@ -35,12 +35,13 @@ public class EssentialProductStatusDataLoader implements CommandLineRunner {
 
         // 각 라운드마다 데이터를 삽입
         for (int i = 0; i < prices.length; i++) {
-            EssentialProductStatus status = new EssentialProductStatus(
-                    essentialProductId,
-                    roundId,
-                    prices[i], // Long 타입의 가격 데이터
-                    amounts[i]
-            );
+            EssentialProductStatus status = EssentialProductStatus.builder()
+                    .essentialProductId(essentialProductId)
+                    .roundId(roundId)
+                    .essentialProductStatusPrice(prices[i])
+                    .essentialProductAmount(amounts[i])
+                    .build();
+
             essentialProductStatusRepository.save(status);
             roundId++;
         }
