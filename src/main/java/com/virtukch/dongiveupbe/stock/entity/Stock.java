@@ -14,4 +14,8 @@ public class Stock {
     private Long stockId;
 
     private String stockName;
+
+    public Stock(String stockName) {
+        this.stockName = stockName;
+    }
 }
