@@ -1,0 +1,5 @@
+### Unit List Get
+GET localhost:5678/api/v1/units
+
+### FIND ALL QUIZ
+GET localhost:5678/api/v1/quizs

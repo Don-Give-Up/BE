@@ -2,7 +2,6 @@ package com.virtukch.dongiveupbe.member.controller;
 
 import com.virtukch.dongiveupbe.member.dto.MemberRegisterRequestDto;
 import com.virtukch.dongiveupbe.member.dto.MemberResponseDto;
-import com.virtukch.dongiveupbe.member.entity.Member;
 import com.virtukch.dongiveupbe.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/members")
+@RequestMapping("/api/v1/members")
 public class MemberController {
 
     private final MemberService memberService;

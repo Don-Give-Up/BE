@@ -12,7 +12,7 @@ public class GameMember {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long gameMemberId;
 
-    private Long memberNo;
+    private Long memberId;
 
     private String gameId;
 }

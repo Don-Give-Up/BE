@@ -6,7 +6,6 @@ import com.virtukch.dongiveupbe.member.entity.Member;
 import com.virtukch.dongiveupbe.member.exception.MemberNotFoundException;
 import com.virtukch.dongiveupbe.member.repository.MemberRepository;
 import com.virtukch.dongiveupbe.member.utils.PasswordUtils;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -55,22 +54,22 @@ public class MemberService {
     }
 
     public ResponseEntity<MemberResponseDto> findById(String memberEmail) {
-        Optional<Member> member = memberRepository.findByMemberEmail(memberEmail);
+        Member member = memberRepository.findByMemberEmail(memberEmail).orElse(null);
 
-        if (member.isEmpty()) { // value 가 null 이라면
-            throw new MemberNotFoundException(memberEmail);
+        if (member == null) { // value 가 null 이라면
+            throw new MemberNotFoundException(memberEmail + " not found");
         }
 
         MemberResponseDto memberResponseDto = MemberResponseDto.builder()
-            .memberEmail(member.get().getMemberEmail())
-            .memberPassword(member.get().getMemberPassword())
-            .memberName(member.get().getMemberName())
-            .memberSchool(member.get().getMemberSchool())
-            .memberDateTime(member.get().getMemberBirthday())
-            .memberNickname(member.get().getMemberNickname())
-            .memberRole(member.get().getMemberRole())
-            .memberGrade(member.get().getMemberGrade())
-            .memberClass(member.get().getMemberClass())
+            .memberEmail(member.getMemberEmail())
+            .memberPassword(member.getMemberPassword())
+            .memberName(member.getMemberName())
+            .memberSchool(member.getMemberSchool())
+            .memberDateTime(member.getMemberBirthday())
+            .memberNickname(member.getMemberNickname())
+            .memberRole(member.getMemberRole())
+            .memberGrade(member.getMemberGrade())
+            .memberClass(member.getMemberClass())
             .build();
 
         return ResponseEntity.ok(memberResponseDto);
