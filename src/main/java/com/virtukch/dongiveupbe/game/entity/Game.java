@@ -15,9 +15,16 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long gameId;
 
+    // 선생님 회원 번호
     private Long memberNo;
 
     private String gameName;
 
     private String gamePassword;
+
+    public Game(Long memberNo, String gameName, String gamePassword) {
+        this.memberNo = memberNo;
+        this.gameName = gameName;
+        this.gamePassword = gamePassword;
+    }
 }
