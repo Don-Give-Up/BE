@@ -50,10 +50,4 @@ public class EssentialProductPurchaseRecordService {
                 .toList();
     }
 
-    @Transactional(readOnly = true)
-    public List<EssentialProductPurchaseRecordResponseDto> getPurchaseRecordsByStatusAndMember(Long essentialProductStatusId, Long gameMemberId) {
-        return essentialProductPurchaseRecordRepository.findByEssentialProductStatusIdAndGameMemberId(essentialProductStatusId, gameMemberId).stream()
-                .map(EssentialProductPurchaseRecordResponseDto::fromEntity)
-                .toList();
-    }
 }

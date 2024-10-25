@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/purchase-records")
+@RequestMapping("/api/v1/essential-product-purchase-records")
 public class EssentialProductPurchaseRecordController {
 
     private final EssentialProductPurchaseRecordService purchaseRecordService;
@@ -19,18 +19,9 @@ public class EssentialProductPurchaseRecordController {
     }
 
     // 특정 회원의 구매 내역 조회
-    @GetMapping("/member/{gameMemberId}")
+    @GetMapping("/game-member/{gameMemberId}")
     public ResponseEntity<List<EssentialProductPurchaseRecordResponseDto>> getPurchaseRecordsByMember(@PathVariable Long gameMemberId) {
         List<EssentialProductPurchaseRecordResponseDto> records = purchaseRecordService.getPurchaseRecordsByMember(gameMemberId);
-        return ResponseEntity.ok(records);
-    }
-
-    // 특정 상품 상태와 회원의 구매 내역 조회
-    @GetMapping("/status/{essentialProductStatusId}/member/{gameMemberId}")
-    public ResponseEntity<List<EssentialProductPurchaseRecordResponseDto>> getPurchaseRecordsByStatusAndMember(
-            @PathVariable Long essentialProductStatusId,
-            @PathVariable Long gameMemberId) {
-        List<EssentialProductPurchaseRecordResponseDto> records = purchaseRecordService.getPurchaseRecordsByStatusAndMember(essentialProductStatusId, gameMemberId);
         return ResponseEntity.ok(records);
     }
 
