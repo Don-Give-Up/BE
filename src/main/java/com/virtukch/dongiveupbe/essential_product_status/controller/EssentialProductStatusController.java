@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/essential-product-status")
+@RequestMapping("/api/v1/essential-product-status")
 public class EssentialProductStatusController {
 
     private final EssentialProductStatusService productStatusService;

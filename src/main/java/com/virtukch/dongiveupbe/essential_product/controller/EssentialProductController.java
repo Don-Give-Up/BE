@@ -10,7 +10,7 @@ import com.virtukch.dongiveupbe.essential_product.dto.EssentialProductRegisterRe
 
 
 @RestController
-@RequestMapping("/api/essential-products")
+@RequestMapping("/api/v1/essential-products")
 public class EssentialProductController {
 
     private final EssentialProductService essentialProductService;
