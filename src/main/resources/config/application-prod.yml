@@ -1,6 +1,6 @@
 # prod (Production)
-# 실제 운영 환경을 위한 프로파일.
-# 보안, 성능 최적화, 데이터베이스 연결 등의 설정을 포함함.
+# 실제 운영 환경을 위한 프로파일. (A profile for the actual production environment.)
+# 보안, 성능 최적화, 데이터베이스 연결 등의 설정을 포함함. (Includes settings for security, performance optimization, and database connections.)
 
 server:
   port: 5678

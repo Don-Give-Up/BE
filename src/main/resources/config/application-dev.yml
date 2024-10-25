@@ -1,6 +1,6 @@
 # dev (Development)
-# 개발 위한 환경. 데이터베이스는 외부의 값을 사용 중에 있음.
-# 실행 시에 데이터베이스가 다시 생기지는 않도록 하는 것이 기본 설정
+# A profile for the development environment. The database is using external.
+# The default setting is to prevent the database from being recreated during execution.
 
 server:
   port: 5678
