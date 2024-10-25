@@ -34,16 +34,4 @@ public class MemberController {
     public ResponseEntity<MemberResponseDto> findById(@PathVariable String memberEmail) {
         return memberService.findById(memberEmail);
     }
-
-    // 이름으로 조회 (List<>)
-
-    // 학교 이름으로 조회 (List<>)
-
-    // 학년으로 조회 (List<>)
-
-    // 학년, 반 통한 조회 (List<>)
-
-    // 이름으로 조회 (List<>)
-
-    // 학교 및 이름으로 조회 (List<>)
 }
