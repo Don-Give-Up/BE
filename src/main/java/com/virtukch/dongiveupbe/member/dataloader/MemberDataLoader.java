@@ -7,6 +7,7 @@ import com.virtukch.dongiveupbe.member.utils.PasswordUtils;
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,7 +22,13 @@ public class MemberDataLoader implements CommandLineRunner {
         this.passwordUtils = passwordUtils;
     }
 
+    // local (ddl-auto: none, DataLoader 작동 X)
+    // localCreate (ddl-auto: create, DataLoader 작동 O)
+    // dev (ddl-auto: none, DataLoader 작동 X)
+    // devCreate (ddl-auto: create, DataLoader 작동 O)
+    // prod (ddl-auto: create, DataLoader 작동 O)
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         Member member1 = Member.builder()
             .memberEmail("kch4731@naver.com")

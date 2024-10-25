@@ -4,6 +4,7 @@ import com.virtukch.dongiveupbe.unit.entity.Unit;
 import com.virtukch.dongiveupbe.unit.repository.UnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,7 +17,13 @@ public class UnitDataLoader implements CommandLineRunner {
         this.unitRepository = unitRepository;
     }
 
+    // local (ddl-auto: none, DataLoader 작동 X)
+    // localCreate (ddl-auto: create, DataLoader 작동 O)
+    // dev (ddl-auto: none, DataLoader 작동 X)
+    // devCreate (ddl-auto: create, DataLoader 작동 O)
+    // prod (ddl-auto: create, DataLoader 작동 O)
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         Unit unit1 = Unit.builder()
             .unitName("단원명 1")

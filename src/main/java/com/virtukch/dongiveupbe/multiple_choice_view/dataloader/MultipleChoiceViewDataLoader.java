@@ -4,6 +4,7 @@ import com.virtukch.dongiveupbe.multiple_choice_view.entity.MultipleChoiceView;
 import com.virtukch.dongiveupbe.multiple_choice_view.repository.MultipleChoiceViewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,7 +18,13 @@ public class MultipleChoiceViewDataLoader implements CommandLineRunner {
         this.multipleChoiceViewRepository = multipleChoiceViewRepository;
     }
 
+    // local (ddl-auto: none, DataLoader 작동 X)
+    // localCreate (ddl-auto: create, DataLoader 작동 O)
+    // dev (ddl-auto: none, DataLoader 작동 X)
+    // devCreate (ddl-auto: create, DataLoader 작동 O)
+    // prod (ddl-auto: create, DataLoader 작동 O)
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         MultipleChoiceView multipleChoiceView1 = MultipleChoiceView.builder()
             .quizId(3L)
