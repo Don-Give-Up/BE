@@ -21,21 +21,14 @@ public class UnitService {
 
     public List<UnitResponseDto> findAll() {
         return unitRepository.findAll().stream()
-            .map(unit -> UnitResponseDto.builder()
-                .unitName(unit.getUnitName())
-                .build()).toList();
+            .map(UnitResponseDto::fromEntity).toList();
     }
 
     public UnitResponseDto save(UnitRegisterRequestDto unitRegisterRequestDto) {
-        Unit unit = Unit.builder()
-            .unitName(unitRegisterRequestDto.getUnitName())
-            .build();
+        Unit unit = unitRepository.save(
+            UnitRegisterRequestDto.toEntity(unitRegisterRequestDto));
 
-        Unit savedUnit = unitRepository.save(unit);
-
-        return UnitResponseDto.builder()
-            .unitName(savedUnit.getUnitName())
-            .build();
+        return UnitResponseDto.fromEntity(unit);
     }
 
     public UnitResponseDto findByUnitName(String unitName) {
@@ -45,8 +38,6 @@ public class UnitService {
             throw new UnitNotFoundException(unitName + " not found");
         }
 
-        return UnitResponseDto.builder()
-            .unitName(unit.getUnitName())
-            .build();
+        return UnitResponseDto.fromEntity(unit);
     }
 }
