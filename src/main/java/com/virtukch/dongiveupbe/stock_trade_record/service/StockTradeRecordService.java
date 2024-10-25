@@ -27,7 +27,7 @@ public class StockTradeRecordService {
     }
 
     @Transactional
-    public void tradeStock(StockTradeRecordRegisterRequestDto requestDto) {
+    public StockTradeRecordResponseDto  tradeStock(StockTradeRecordRegisterRequestDto requestDto) {
         StockStatus stockStatus = stockStatusService.findById(requestDto.getStockStatusId());
 
         GameMember gameMember = gameMemberService.findById(requestDto.getGameMemberId());
@@ -38,7 +38,8 @@ public class StockTradeRecordService {
                 .stockTradeRecordAmount(requestDto.getStockTradeRecordAmount())
                 .tradeType(requestDto.getTradeType())
                 .build();
-        stockTradeRecordRepository.save(record);
+        StockTradeRecord savedRecord = stockTradeRecordRepository.save(record);
+        return StockTradeRecordResponseDto.fromDto(savedRecord);
     }
 
     @Transactional(readOnly = true)
