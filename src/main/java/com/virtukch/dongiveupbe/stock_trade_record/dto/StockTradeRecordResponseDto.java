@@ -2,6 +2,7 @@ package com.virtukch.dongiveupbe.stock_trade_record.dto;
 
 import com.virtukch.dongiveupbe.stock_trade_record.entity.BuyOrSell;
 import com.virtukch.dongiveupbe.stock_trade_record.entity.StockTradeRecord;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,10 +10,15 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class StockTradeRecordResponseDto {
+    @Schema(description = "주식 거래 기록 ID")
     private Long stockTradeRecordId;
+    @Schema(description = "주식 상태 ID")
     private Long stockStatusId;
+    @Schema(description = "게임 멤버 ID")
     private Long gameMemberId;
+    @Schema(description = "주식 거래 수량")
     private Long stockTradeRecordAmount;
+    @Schema(description = "거래 유형 (BUY or SELL)")
     private BuyOrSell tradeType;
 
     @Builder
