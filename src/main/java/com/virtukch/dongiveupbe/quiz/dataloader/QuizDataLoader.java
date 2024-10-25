@@ -21,6 +21,11 @@ public class QuizDataLoader implements CommandLineRunner {
         this.quizRepository = quizRepository;
     }
 
+    // local (ddl-auto: none, DataLoader 작동 X)
+    // localCreate (ddl-auto: create, DataLoader 작동 O)
+    // dev (ddl-auto: none, DataLoader 작동 X)
+    // devCreate (ddl-auto: create, DataLoader 작동 O)
+    // prod (ddl-auto: create, DataLoader 작동 O)
     @Override
     public void run(String... args) throws Exception {
         Quiz quiz1 = Quiz.builder()
