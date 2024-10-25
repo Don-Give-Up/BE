@@ -1,19 +1,19 @@
-#name: CI Workflow
-#
-#on:
-#  push:
-#    branches:
-#      - main   # 변경을 감지할 브랜치
-#      - dev
-#
-#jobs:
-#  build:
-#    runs-on: ubuntu-latest  # 사용하고자 하는 OS
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v3
-#
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main   # 변경을 감지할 브랜치
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 사용하고자 하는 OS
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
 #      - name: Cache Gradle packages
 #        uses: actions/cache@v3
 #        with:
