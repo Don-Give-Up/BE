@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.stock.dataloader;
 import com.virtukch.dongiveupbe.stock.entity.Stock;
 import com.virtukch.dongiveupbe.stock.repository.StockRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +14,7 @@ public class StockDataLoader implements CommandLineRunner {
         this.stockRepository = stockRepository;
     }
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         Stock samsungStock = new Stock("삼성전자");
 

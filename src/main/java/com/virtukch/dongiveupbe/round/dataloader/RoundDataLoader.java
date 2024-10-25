@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.round.dataloader;
 import com.virtukch.dongiveupbe.round.entity.Round;
 import com.virtukch.dongiveupbe.round.repository.RoundRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +16,7 @@ public class RoundDataLoader implements CommandLineRunner {
     }
 
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         // 주어진 급여 및 이자율 데이터
         Long[] salaries = {

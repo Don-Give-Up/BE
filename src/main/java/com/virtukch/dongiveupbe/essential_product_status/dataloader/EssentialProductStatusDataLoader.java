@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.essential_product_status.dataloader;
 import com.virtukch.dongiveupbe.essential_product_status.entity.EssentialProductStatus;
 import com.virtukch.dongiveupbe.essential_product_status.repository.EssentialProductStatusRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +16,7 @@ public class EssentialProductStatusDataLoader implements CommandLineRunner {
     }
 
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         // 실제 빵 가격 데이터
         Long[] prices = {

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -22,5 +23,14 @@ public class StockTradeRecord {
 
     private Long stockTradeRecordAmount;
 
-    private BuyOrSell stockTradeRecordIsBuyOrSell;
+    private BuyOrSell tradeType;
+
+    @Builder
+
+    public StockTradeRecord(Long stockStatusId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType) {
+        this.stockStatusId = stockStatusId;
+        this.gameMemberId = gameMemberId;
+        this.stockTradeRecordAmount = stockTradeRecordAmount;
+        this.tradeType = tradeType;
+    }
 }

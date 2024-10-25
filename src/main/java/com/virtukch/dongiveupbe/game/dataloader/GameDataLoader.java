@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.game.dataloader;
 import com.virtukch.dongiveupbe.game.entity.Game;
 import com.virtukch.dongiveupbe.game.repository.GameRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +16,7 @@ public class GameDataLoader implements CommandLineRunner {
     }
 
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
 
         Game game1 = new Game(1L, "경제 모험", "eco123");

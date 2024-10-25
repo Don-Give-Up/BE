@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.tax_status.dataloader;
 import com.virtukch.dongiveupbe.tax_status.entity.TaxStatus;
 import com.virtukch.dongiveupbe.tax_status.repository.TaxStatusRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +16,7 @@ public class TaxStatusDataLoader implements CommandLineRunner {
     }
 
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         // 주어진 글로벌 소득세율 데이터
         Double[] taxRates = {
