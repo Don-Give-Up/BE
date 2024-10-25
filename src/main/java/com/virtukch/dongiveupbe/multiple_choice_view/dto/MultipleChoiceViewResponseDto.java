@@ -8,12 +8,15 @@ import lombok.Getter;
 @Getter
 public class MultipleChoiceViewResponseDto {
 
+    private Long quizId;
+
     private Integer viewIndex;
 
     private String viewContent;
 
     public static MultipleChoiceViewResponseDto fromEntity(MultipleChoiceView multipleChoiceView) {
         return MultipleChoiceViewResponseDto.builder()
+            .quizId(multipleChoiceView.getQuizId())
             .viewIndex(multipleChoiceView.getViewIndex())
             .viewContent(multipleChoiceView.getViewContent())
             .build();

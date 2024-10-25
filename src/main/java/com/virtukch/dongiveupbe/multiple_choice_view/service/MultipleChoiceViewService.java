@@ -3,7 +3,6 @@ package com.virtukch.dongiveupbe.multiple_choice_view.service;
 import com.virtukch.dongiveupbe.multiple_choice_view.dto.MultipleChoiceViewResponseDto;
 import com.virtukch.dongiveupbe.multiple_choice_view.entity.MultipleChoiceView;
 import com.virtukch.dongiveupbe.multiple_choice_view.repository.MultipleChoiceViewRepository;
-import com.virtukch.dongiveupbe.quiz.repository.QuizRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
