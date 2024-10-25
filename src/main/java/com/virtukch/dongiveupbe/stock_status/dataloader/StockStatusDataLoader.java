@@ -4,6 +4,7 @@ import com.opencsv.CSVReader;
 import com.virtukch.dongiveupbe.stock_status.entity.StockStatus;
 import com.virtukch.dongiveupbe.stock_status.repository.StockStatusRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
@@ -18,6 +19,7 @@ public class StockStatusDataLoader implements CommandLineRunner {
     }
 
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         String filePath = "src/main/resources/csv/filtered_samsung_data.csv";
         try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
