@@ -1,6 +1,6 @@
-# 실제 개발 환경을 위해 설정한 값들
-# 데이터베이스는 외부의 값을 사용 중에 있음.
-# 실행 시에 데이터베이스가 다시 생기지는 않도록 하는 것이 기본 설정
+# prod (Production)
+# 실제 운영 환경을 위한 프로파일.
+# 보안, 성능 최적화, 데이터베이스 연결 등의 설정을 포함함.
 
 server:
   port: 5678
@@ -16,7 +16,7 @@ spring:
     show-sql: true
     database: mysql
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
