@@ -1,6 +1,7 @@
 package com.virtukch.dongiveupbe.stock.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ public class Stock {
 
     private String stockName;
 
+    @Builder
     public Stock(String stockName) {
         this.stockName = stockName;
     }
