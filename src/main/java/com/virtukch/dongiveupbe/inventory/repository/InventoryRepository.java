@@ -1,4 +1,7 @@
 package com.virtukch.dongiveupbe.inventory.repository;
 
-public interface InventoryRepository {
+import com.virtukch.dongiveupbe.inventory.entity.Inventory;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 }
