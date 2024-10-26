@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/quiz-solve-record")
+@RequestMapping("api/v1/quiz-solve-records")
 public class QuizSolveRecordController {
 
     private final QuizSolveRecordService quizSolveRecordService;
