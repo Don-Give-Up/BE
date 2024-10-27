@@ -8,6 +8,7 @@ import com.virtukch.dongiveupbe.game.repository.GameRepository;
 import com.virtukch.dongiveupbe.member.dto.MemberResponseDto;
 import com.virtukch.dongiveupbe.member.entity.Member;
 import com.virtukch.dongiveupbe.member.service.MemberService;
+import com.virtukch.dongiveupbe.round.service.RoundService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,10 +18,12 @@ import java.util.List;
 public class GameService {
     private final GameRepository gameRepository;
     private final MemberService memberService;
+    private final RoundService roundService;
 
-    public GameService(GameRepository gameRepository, MemberService memberService) {
+    public GameService(GameRepository gameRepository, MemberService memberService, RoundService roundService) {
         this.gameRepository = gameRepository;
         this.memberService = memberService;
+        this.roundService = roundService;
     }
 
     @Transactional
@@ -34,6 +37,8 @@ public class GameService {
                 .build();
 
         Game savedGame = gameRepository.save(game);
+        // 게임이 생성 되면 라운드 생성
+        roundService.createRoundsForGame(savedGame.getGameId());
         return GameResponseDto.fromEntity(savedGame);
     }
 
