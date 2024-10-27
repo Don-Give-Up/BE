@@ -2,11 +2,14 @@ package com.virtukch.dongiveupbe.tax.dataloader;
 
 import com.virtukch.dongiveupbe.tax.entity.Tax;
 import com.virtukch.dongiveupbe.tax.repository.TaxRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
+@Profile({"localCreate", "devCreate", "prod"})
 public class TaxDataLoader implements CommandLineRunner {
 
     private final TaxRepository taxRepository;
@@ -16,11 +19,9 @@ public class TaxDataLoader implements CommandLineRunner {
     }
 
     @Override
-    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         Tax globalIncomeTax = new Tax("종합소득세");
         taxRepository.save(globalIncomeTax);
-
-        System.out.println("종합소득세 데이터가 삽입되었습니다.");
+        log.info("종합소득세 데이터가 삽입되었습니다.");
     }
 }

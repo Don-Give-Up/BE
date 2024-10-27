@@ -24,33 +24,10 @@ public class MemberService {
 
     public ResponseEntity<MemberResponseDto> save(
         MemberRegisterRequestDto memberRegisterRequestDto) {
-        Member member = Member.builder()
-            .memberEmail(memberRegisterRequestDto.getMemberEmail())
-            .memberPassword(passwordUtils.hashPassword(memberRegisterRequestDto.getMemberPassword()))
-            .memberName(memberRegisterRequestDto.getMemberName())
-            .memberSchool(memberRegisterRequestDto.getMemberSchool())
-            .memberBirthday(memberRegisterRequestDto.getMemberDateTime())
-            .memberNickname(memberRegisterRequestDto.getMemberNickname())
-            .memberRole(memberRegisterRequestDto.getMemberRole())
-            .memberGrade(memberRegisterRequestDto.getMemberGrade())
-            .memberClass(memberRegisterRequestDto.getMemberClass())
-            .build();
+        Member savedMember = memberRepository.save(
+            MemberRegisterRequestDto.toEntity(memberRegisterRequestDto));
 
-        Member savedMember = memberRepository.save(member);
-
-        MemberResponseDto memberResponseDto = MemberResponseDto.builder()
-            .memberEmail(savedMember.getMemberEmail())
-            .memberPassword(savedMember.getMemberPassword())
-            .memberName(savedMember.getMemberName())
-            .memberSchool(savedMember.getMemberSchool())
-            .memberDateTime(savedMember.getMemberBirthday())
-            .memberNickname(savedMember.getMemberNickname())
-            .memberRole(savedMember.getMemberRole())
-            .memberGrade(savedMember.getMemberGrade())
-            .memberClass(savedMember.getMemberClass())
-            .build();
-
-        return ResponseEntity.ok(memberResponseDto);
+        return ResponseEntity.ok(MemberResponseDto.fromEntity(savedMember));
     }
 
     public ResponseEntity<MemberResponseDto> findById(String memberEmail) {
@@ -60,18 +37,6 @@ public class MemberService {
             throw new MemberNotFoundException(memberEmail + " not found");
         }
 
-        MemberResponseDto memberResponseDto = MemberResponseDto.builder()
-            .memberEmail(member.getMemberEmail())
-            .memberPassword(member.getMemberPassword())
-            .memberName(member.getMemberName())
-            .memberSchool(member.getMemberSchool())
-            .memberDateTime(member.getMemberBirthday())
-            .memberNickname(member.getMemberNickname())
-            .memberRole(member.getMemberRole())
-            .memberGrade(member.getMemberGrade())
-            .memberClass(member.getMemberClass())
-            .build();
-
-        return ResponseEntity.ok(memberResponseDto);
+        return ResponseEntity.ok(MemberResponseDto.fromEntity(member));
     }
 }
