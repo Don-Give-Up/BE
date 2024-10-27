@@ -12,7 +12,7 @@ public class GameMemberResponseDto {
 
     private Long memberId;
 
-    private String gameId;
+    private Long gameId;
 
     public static GameMemberResponseDto fromEntity(GameMember gameMember) {
         return GameMemberResponseDto.builder()

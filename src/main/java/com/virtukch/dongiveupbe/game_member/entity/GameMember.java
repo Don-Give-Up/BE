@@ -1,12 +1,16 @@
 package com.virtukch.dongiveupbe.game_member.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class GameMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,5 +18,5 @@ public class GameMember {
 
     private Long memberId;
 
-    private String gameId;
+    private Long gameId;
 }
