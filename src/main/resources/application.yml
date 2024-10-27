@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: devCreate
     # local (ddl-auto: none, DataLoader X, LocalDB)
     # localCreate (ddl-auto: create, DataLoader O, LocalDB)
     # dev (ddl-auto: none, DataLoader X, ExternalDB)
