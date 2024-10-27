@@ -33,7 +33,10 @@ jobs:
           EXTERNAL_DB_URL: ${{ secrets.EXTERNAL_DB_URL }}  # Get DB_URL from GitHub Secrets
           EXTERNAL_DB_USERNAME: ${{ secrets.EXTERNAL_DB_USERNAME }}  # Username
           EXTERNAL_DB_PASSWORD: ${{ secrets.EXTERNAL_DB_PASSWORD }}  # Password
-          # Note: The variable names on the left must match those in application.properties or application.yml. Otherwise, it will cause a compile error (contextLoads() FAILED)
+          # Note: The variable names on the left must match those in application.
+          # properties or application.yml.
+          # Otherwise, it will cause a compile error (contextLoads() FAILED)
+          # If you push devCreate or dev Profile, you should write like "EXTERNAL_DB_URL"
         run: ./gradlew build
 
       - name: Run tests
