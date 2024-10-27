@@ -1,21 +1,46 @@
 package com.virtukch.dongiveupbe.game_member.service;
 
+import com.virtukch.dongiveupbe.game_member.dto.GameMemberRegisterRequestDto;
+import com.virtukch.dongiveupbe.game_member.dto.GameMemberResponseDto;
 import com.virtukch.dongiveupbe.game_member.entity.GameMember;
 import com.virtukch.dongiveupbe.game_member.repository.GameMemberRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class GameMemberService {
+
     private final GameMemberRepository gameMemberRepository;
 
+    @Autowired
     public GameMemberService(GameMemberRepository gameMemberRepository) {
         this.gameMemberRepository = gameMemberRepository;
     }
 
-    @Transactional(readOnly = true)
-    public GameMember findById(Long gameMemberId) {
-        return gameMemberRepository.findById(gameMemberId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 GameMember ID입니다: " + gameMemberId));
+    // 1. 게임에 입장하면 게임 멤버 아이디 주기
+    public GameMemberResponseDto save(GameMemberRegisterRequestDto gameMemberRegisterRequestDto) {
+        GameMember gameMember = GameMemberRegisterRequestDto.toEntity(gameMemberRegisterRequestDto);
+        gameMember = gameMemberRepository.save(gameMember);
+        return GameMemberResponseDto.fromEntity(gameMember);
+    }
+
+    // 2. 게임 멤버 아이디로 회원 아이디 조회
+    public GameMemberResponseDto findById(Long gameMemberId) {
+        Optional<GameMember> gameMember = gameMemberRepository.findById(gameMemberId);
+        return gameMember.map(GameMemberResponseDto::fromEntity).orElse(null);
+    }
+
+    // 3. 회원 아이티로 게임 멤버 아이디 리스트 조회
+    public List<GameMemberResponseDto> findByMemberId(Long memberId) {
+        List<GameMember> gameMemberList = gameMemberRepository.findByMemberId(memberId);
+        return gameMemberList.stream().map(GameMemberResponseDto::fromEntity).toList();
+    }
+
+    // 4. 게임 아이디로 게임 내에 있는 게임 멤버 리스트 조회
+    public List<GameMemberResponseDto> findByGameId(Long gameId) {
+        List<GameMember> gameMemberList = gameMemberRepository.findByGameId(gameId);
+        return gameMemberList.stream().map(GameMemberResponseDto::fromEntity).toList();
     }
 }

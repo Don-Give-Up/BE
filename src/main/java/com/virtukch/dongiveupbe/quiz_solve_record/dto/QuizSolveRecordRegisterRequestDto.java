@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QuizSolveRecordRegisterRequestDto {
 
+    private Long quizSolveRecordId;
+
     private Long gameMemberId;
 
     private Long quizId;
@@ -29,6 +31,7 @@ public class QuizSolveRecordRegisterRequestDto {
     public QuizSolveRecord toEntity(
         QuizSolveRecordRegisterRequestDto quizSolveRecordRegisterRequestDto) {
         return QuizSolveRecord.builder()
+            .quizSolveRecordId(quizSolveRecordRegisterRequestDto.getQuizSolveRecordId())
             .gameMemberId(quizSolveRecordRegisterRequestDto.getGameMemberId())
             .quizId(quizSolveRecordRegisterRequestDto.getQuizId())
             .roundId(quizSolveRecordRegisterRequestDto.getRoundId())

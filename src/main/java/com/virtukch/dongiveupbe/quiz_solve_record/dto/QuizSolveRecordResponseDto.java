@@ -1,6 +1,5 @@
 package com.virtukch.dongiveupbe.quiz_solve_record.dto;
 
-import com.virtukch.dongiveupbe.quiz.entity.Quiz;
 import com.virtukch.dongiveupbe.quiz_solve_record.entity.Correct;
 import com.virtukch.dongiveupbe.quiz_solve_record.entity.QuizSolveRecord;
 import java.sql.Timestamp;
@@ -14,6 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuizSolveRecordResponseDto {
+
+    private Long quizSolveRecordId;
 
     private Long gameMemberId;
 
@@ -29,6 +30,7 @@ public class QuizSolveRecordResponseDto {
 
     public static QuizSolveRecordResponseDto fromEntity(QuizSolveRecord quizSolveRecord) {
         return QuizSolveRecordResponseDto.builder()
+            .quizSolveRecordId(quizSolveRecord.getQuizSolveRecordId())
             .gameMemberId(quizSolveRecord.getGameMemberId())
             .quizId(quizSolveRecord.getQuizId())
             .roundId(quizSolveRecord.getRoundId())
