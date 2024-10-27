@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile({"localCreate", "devCreate", "prod"})
 public class MemberDataLoader implements CommandLineRunner {
 
     private final MemberRepository memberRepository;
@@ -28,7 +29,6 @@ public class MemberDataLoader implements CommandLineRunner {
     // devCreate (ddl-auto: create, DataLoader 작동 O)
     // prod (ddl-auto: create, DataLoader 작동 O)
     @Override
-    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         Member member1 = Member.builder()
             .memberEmail("kch4731@naver.com")

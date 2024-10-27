@@ -3,13 +3,16 @@ package com.virtukch.dongiveupbe.stock_status.dataloader;
 import com.opencsv.CSVReader;
 import com.virtukch.dongiveupbe.stock_status.entity.StockStatus;
 import com.virtukch.dongiveupbe.stock_status.repository.StockStatusRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
 
+@Slf4j
 @Component
+@Profile({"localCreate", "devCreate", "prod"})
 public class StockStatusDataLoader implements CommandLineRunner {
 
     private final StockStatusRepository stockStatusRepository;
@@ -19,7 +22,6 @@ public class StockStatusDataLoader implements CommandLineRunner {
     }
 
     @Override
-    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         String filePath = "src/main/resources/csv/filtered_samsung_data.csv";
         try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
@@ -39,7 +41,6 @@ public class StockStatusDataLoader implements CommandLineRunner {
                 count++;
             }
         }
-
-        System.out.println("StockStatus 데이터가 라운드별로 저장되었습니다.");
+        log.info("StockStatus 데이터가 라운드별로 저장되었습니다.");
     }
 }

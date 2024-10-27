@@ -29,23 +29,9 @@ public class MemberController {
         return memberService.save(memberRegisterRequestDto);
     }
 
-    // 아이디 통한 조회
+    // 이메일 통한 조회
     @GetMapping("{memberEmail}")
     public ResponseEntity<MemberResponseDto> findById(@PathVariable String memberEmail) {
         return memberService.findById(memberEmail);
     }
-
-    // 이메일로 조회 (Unique 한 것을 증명해야 할 듯)
-
-    // 이름으로 조회 (List<>)
-
-    // 학교 이름으로 조회 (List<>)
-
-    // 학년으로 조회 (List<>)
-
-    // 학년, 반 통한 조회 (List<>)
-
-    // 이름으로 조회 (List<>)
-
-    // 학교 및 이름으로 조회 (List<>)
 }

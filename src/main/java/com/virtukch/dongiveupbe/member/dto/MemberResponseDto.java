@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.member.dto;
 
+import com.virtukch.dongiveupbe.member.entity.Member;
 import com.virtukch.dongiveupbe.member.entity.MemberRole;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ public class MemberResponseDto {
 
     private String memberSchool;
 
-    private LocalDate memberDateTime;
+    private LocalDate memberBirthday;
 
     private String memberNickname;
 
@@ -31,5 +32,17 @@ public class MemberResponseDto {
 
     private Integer memberClass;
 
-
+    public static MemberResponseDto fromEntity(Member member) {
+        return MemberResponseDto.builder()
+            .memberEmail(member.getMemberEmail())
+            .memberPassword(member.getMemberPassword())
+            .memberName(member.getMemberName())
+            .memberSchool(member.getMemberSchool())
+            .memberBirthday(member.getMemberBirthday())
+            .memberNickname(member.getMemberNickname())
+            .memberRole(member.getMemberRole())
+            .memberGrade(member.getMemberGrade())
+            .memberClass(member.getMemberClass())
+            .build();
+    }
 }

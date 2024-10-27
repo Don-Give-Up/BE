@@ -2,11 +2,14 @@ package com.virtukch.dongiveupbe.game.dataloader;
 
 import com.virtukch.dongiveupbe.game.entity.Game;
 import com.virtukch.dongiveupbe.game.repository.GameRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
+@Profile({"localCreate", "devCreate", "prod"})
 public class GameDataLoader implements CommandLineRunner {
 
     private final GameRepository gameRepository;
@@ -16,9 +19,7 @@ public class GameDataLoader implements CommandLineRunner {
     }
 
     @Override
-    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
-
         Game game1 = new Game(1L, "경제 모험", "eco123");
         Game game2 = new Game(2L, "투자의 달인", "invest456");
         Game game3 = new Game(3L, "부자 되기 챌린지", "rich789");
@@ -31,6 +32,6 @@ public class GameDataLoader implements CommandLineRunner {
         gameRepository.save(game4);
         gameRepository.save(game5);
 
-        System.out.println("Game 경제 관련 스텁 데이터가 삽입되었습니다.");
+        log.info("Game 경제 관련 스텁 데이터가 삽입되었습니다.");
     }
 }
