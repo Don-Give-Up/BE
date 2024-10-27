@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/members")
-@Tag(name = "Member API", description = "회원가입 / 로그인 등을 위한 멤버 관리용 API")
+@Tag(name = "회원 API", description = "회원가입 / 로그인 등을 위한 멤버 관리용 API")
 public class MemberController {
 
     private final MemberService memberService;
