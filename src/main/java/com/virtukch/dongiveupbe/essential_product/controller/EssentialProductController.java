@@ -17,7 +17,7 @@ import com.virtukch.dongiveupbe.essential_product.dto.EssentialProductRegisterRe
 
 @RestController
 @RequestMapping("/api/v1/essential-products")
-@Tag(name = "Essential Product API", description = "필수 상품 정보 관리를 위한 API")
+@Tag(name = "필수 상품 API", description = "필수 상품 정보 관리를 위한 API")
 public class EssentialProductController {
 
     private final EssentialProductService essentialProductService;

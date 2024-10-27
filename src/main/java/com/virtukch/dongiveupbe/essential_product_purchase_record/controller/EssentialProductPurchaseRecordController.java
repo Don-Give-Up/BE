@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/essential-product-purchase-records")
-@Tag(name = "Essential Product Purchase Record API", description = "필수 상품 구매 내역 관리를 위한 API")
+@Tag(name = "필수 상품 구매 내역 API", description = "필수 상품 구매 내역 관리를 위한 API")
 public class EssentialProductPurchaseRecordController {
 
     private final EssentialProductPurchaseRecordService purchaseRecordService;

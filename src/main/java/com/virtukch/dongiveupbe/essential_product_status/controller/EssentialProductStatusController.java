@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/essential-product-status")
-@Tag(name = "Essential Product Status API", description = "필수 상품 상태 관리를 위한 API")
+@Tag(name = "필수 상품 상태 API", description = "필수 상품 상태 관리를 위한 API")
 public class EssentialProductStatusController {
 
     private final EssentialProductStatusService productStatusService;

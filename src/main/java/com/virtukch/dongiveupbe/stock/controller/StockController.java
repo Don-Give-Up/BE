@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/stocks")
-@Tag(name = "Stock API", description = "주식 정보 조회를 위한 API")
+@Tag(name = "주식 API", description = "주식 정보 조회를 위한 API")
 public class StockController {
     private final StockService stockService;
 
