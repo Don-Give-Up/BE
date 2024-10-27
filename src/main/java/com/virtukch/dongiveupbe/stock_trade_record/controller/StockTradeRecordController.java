@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/stock-trade-records")
-@Tag(name = "Stock Trade Records API", description = "주식 거래 내역 관리 API")
+@Tag(name = "주식 거래 내역 API", description = "주식 거래 내역 관리 API")
 public class StockTradeRecordController {
     private final StockTradeRecordService stockTradeRecordService;
 
