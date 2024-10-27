@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MemberResponseDto {
 
+    private Long memberId;
+
     private String memberEmail;
 
     private String memberPassword;
@@ -34,6 +36,7 @@ public class MemberResponseDto {
 
     public static MemberResponseDto fromEntity(Member member) {
         return MemberResponseDto.builder()
+            .memberId(member.getMemberId())
             .memberEmail(member.getMemberEmail())
             .memberPassword(member.getMemberPassword())
             .memberName(member.getMemberName())
