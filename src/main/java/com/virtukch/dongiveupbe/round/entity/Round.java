@@ -20,10 +20,13 @@ public class Round {
 
     private Long roundSalary;
 
+    private Integer roundSequence;
+
     @Builder
-    public Round(Long gameId, Double roundInterestRate, Long roundSalary) {
+    public Round(Long gameId, Double roundInterestRate, Long roundSalary, Integer roundSequence) {
         this.gameId = gameId;
         this.roundInterestRate = roundInterestRate;
         this.roundSalary = roundSalary;
+        this.roundSequence = roundSequence;
     }
 }

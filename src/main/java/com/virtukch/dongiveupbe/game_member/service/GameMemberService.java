@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.game_member.service;
 
+import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
 import com.virtukch.dongiveupbe.game_member.dto.GameMemberRequestDto;
 import com.virtukch.dongiveupbe.game_member.dto.GameMemberResponseDto;
 import com.virtukch.dongiveupbe.game_member.entity.GameMember;

@@ -28,15 +28,18 @@ public class QuizSolveRecordResponseDto {
 
     private Integer attemptCount;
 
+    private Integer quizCorrectMoney;
+
     public static QuizSolveRecordResponseDto fromEntity(QuizSolveRecord quizSolveRecord) {
         return QuizSolveRecordResponseDto.builder()
-            .quizSolveRecordId(quizSolveRecord.getQuizSolveRecordId())
-            .gameMemberId(quizSolveRecord.getGameMemberId())
-            .quizId(quizSolveRecord.getQuizId())
-            .roundId(quizSolveRecord.getRoundId())
-            .createdAt(quizSolveRecord.getCreatedAt())
-            .correct(quizSolveRecord.getCorrect())
-            .attemptCount(quizSolveRecord.getAttemptCount())
-            .build();
+                .quizSolveRecordId(quizSolveRecord.getQuizSolveRecordId())
+                .gameMemberId(quizSolveRecord.getGameMemberId())
+                .quizId(quizSolveRecord.getQuizId())
+                .roundId(quizSolveRecord.getRoundId())
+                .createdAt(quizSolveRecord.getCreatedAt())
+                .correct(quizSolveRecord.getCorrect())
+                .attemptCount(quizSolveRecord.getAttemptCount())
+                .quizCorrectMoney(quizSolveRecord.getQuizCorrectMoney())
+                .build();
     }
 }
