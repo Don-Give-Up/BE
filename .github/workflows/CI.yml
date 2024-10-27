@@ -28,6 +28,12 @@ jobs:
           java-version: '17'  # 사용하고자 하는 Java 버전
           distribution: 'temurin'
 
+      - name: Check environment variables
+        run: |
+          echo "DB URL: $EXTERNAL_DB_URL"
+          echo "DB Username: $EXTERNAL_DB_USERNAME"
+
+
       - name: Build with Gradle
         env:
           DB_URL: ${{ secrets.EXTERNAL_DB_URL }}  # GitHub Secrets 에서 DB_URL 가져오기
