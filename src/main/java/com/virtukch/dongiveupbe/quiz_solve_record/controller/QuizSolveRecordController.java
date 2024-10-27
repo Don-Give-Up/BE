@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.quiz_solve_record.controller;
 
-import com.virtukch.dongiveupbe.quiz_solve_record.dto.QuizSolveRecordRegisterRequestDto;
+import com.virtukch.dongiveupbe.quiz_solve_record.dto.QuizSolveRecordRequestDto;
 import com.virtukch.dongiveupbe.quiz_solve_record.dto.QuizSolveRecordResponseDto;
 import com.virtukch.dongiveupbe.quiz_solve_record.service.QuizSolveRecordService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,8 +42,8 @@ public class QuizSolveRecordController {
             content = @Content)
     })
     public ResponseEntity<QuizSolveRecordResponseDto> save(
-        @RequestBody QuizSolveRecordRegisterRequestDto quizSolveRecordRegisterRequestDto) {
-        return quizSolveRecordService.save(quizSolveRecordRegisterRequestDto);
+        @RequestBody QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
+        return quizSolveRecordService.save(quizSolveRecordRequestDto);
     }
 
     // 퀴즈 전체 기록 조회

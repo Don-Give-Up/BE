@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.stock_trade_record.controller;
 
-import com.virtukch.dongiveupbe.stock_trade_record.dto.StockTradeRecordRegisterRequestDto;
+import com.virtukch.dongiveupbe.stock_trade_record.dto.StockTradeRecordRequestDto;
 import com.virtukch.dongiveupbe.stock_trade_record.dto.StockTradeRecordResponseDto;
 import com.virtukch.dongiveupbe.stock_trade_record.service.StockTradeRecordService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -53,9 +53,9 @@ public class StockTradeRecordController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "주식 거래 내역 생성 성공",
                     content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = StockTradeRecordRegisterRequestDto.class)))
+                            schema = @Schema(implementation = StockTradeRecordRequestDto.class)))
     })
-    public ResponseEntity<StockTradeRecordResponseDto> createTradeRecord(@RequestBody StockTradeRecordRegisterRequestDto requestDto) {
+    public ResponseEntity<StockTradeRecordResponseDto> createTradeRecord(@RequestBody StockTradeRecordRequestDto requestDto) {
         StockTradeRecordResponseDto responseDto = stockTradeRecordService.tradeStock(requestDto);
         return ResponseEntity.ok(responseDto);
     }

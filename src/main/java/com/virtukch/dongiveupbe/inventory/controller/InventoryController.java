@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.inventory.controller;
 
-import com.virtukch.dongiveupbe.inventory.dto.InventoryRegisterRequestDto;
+import com.virtukch.dongiveupbe.inventory.dto.InventoryRequestDto;
 import com.virtukch.dongiveupbe.inventory.dto.InventoryResponseDto;
 import com.virtukch.dongiveupbe.inventory.service.InventoryService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ public class InventoryController {
     private final InventoryService inventoryService;
 
     @PostMapping
-    public ResponseEntity<InventoryResponseDto> saveInventory(@RequestBody InventoryRegisterRequestDto requestDto) {
+    public ResponseEntity<InventoryResponseDto> saveInventory(@RequestBody InventoryRequestDto requestDto) {
         InventoryResponseDto responseDto = inventoryService.saveInventory(requestDto);
         return ResponseEntity.ok(responseDto);
     }

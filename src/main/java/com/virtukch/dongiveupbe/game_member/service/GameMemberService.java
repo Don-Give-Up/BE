@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.game_member.service;
 
-import com.virtukch.dongiveupbe.game_member.dto.GameMemberRegisterRequestDto;
+import com.virtukch.dongiveupbe.game_member.dto.GameMemberRequestDto;
 import com.virtukch.dongiveupbe.game_member.dto.GameMemberResponseDto;
 import com.virtukch.dongiveupbe.game_member.entity.GameMember;
 import com.virtukch.dongiveupbe.game_member.repository.GameMemberRepository;
@@ -20,8 +20,8 @@ public class GameMemberService {
     }
 
     // 1. 게임에 입장하면 게임 멤버 아이디 주기
-    public GameMemberResponseDto save(GameMemberRegisterRequestDto gameMemberRegisterRequestDto) {
-        GameMember gameMember = GameMemberRegisterRequestDto.toEntity(gameMemberRegisterRequestDto);
+    public GameMemberResponseDto save(GameMemberRequestDto gameMemberRequestDto) {
+        GameMember gameMember = GameMemberRequestDto.toEntity(gameMemberRequestDto);
         gameMember = gameMemberRepository.save(gameMember);
         return GameMemberResponseDto.fromEntity(gameMember);
     }

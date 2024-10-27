@@ -11,7 +11,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class QuizRegisterRequestDto {
+public class QuizRequestDto {
 
     private Long memberId;
 
@@ -35,19 +35,19 @@ public class QuizRegisterRequestDto {
 
     private Long quizLevel;
 
-    public static Quiz toEntity(QuizRegisterRequestDto quizRegisterRequestDto) {
+    public static Quiz toEntity(QuizRequestDto quizRequestDto) {
         return Quiz.builder()
-            .memberId(quizRegisterRequestDto.getMemberId())
-            .unitId(quizRegisterRequestDto.getUnitId())
-            .quizTitle(quizRegisterRequestDto.getQuizTitle())
-            .quizType(quizRegisterRequestDto.getQuizType())
-            .oxQuizAnswer(quizRegisterRequestDto.getOxQuizAnswer())
-            .multipleChoiceQuizAnswer(quizRegisterRequestDto.getMultipleChoiceQuizAnswer())
-            .subjectiveQuizAnswer(quizRegisterRequestDto.getSubjectiveQuizAnswer())
-            .isAcceptedByTeacher(quizRegisterRequestDto.getIsAcceptedByTeacher())
-            .createdAt(quizRegisterRequestDto.getCreatedAt())
-            .updatedAt(quizRegisterRequestDto.getUpdatedAt())
-            .quizLevel(quizRegisterRequestDto.getQuizLevel())
+            .memberId(quizRequestDto.getMemberId())
+            .unitId(quizRequestDto.getUnitId())
+            .quizTitle(quizRequestDto.getQuizTitle())
+            .quizType(quizRequestDto.getQuizType())
+            .oxQuizAnswer(quizRequestDto.getOxQuizAnswer())
+            .multipleChoiceQuizAnswer(quizRequestDto.getMultipleChoiceQuizAnswer())
+            .subjectiveQuizAnswer(quizRequestDto.getSubjectiveQuizAnswer())
+            .isAcceptedByTeacher(quizRequestDto.getIsAcceptedByTeacher())
+            .createdAt(quizRequestDto.getCreatedAt())
+            .updatedAt(quizRequestDto.getUpdatedAt())
+            .quizLevel(quizRequestDto.getQuizLevel())
             .build();
     }
 }

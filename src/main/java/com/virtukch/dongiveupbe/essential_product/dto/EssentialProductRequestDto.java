@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class EssentialProductRegisterRequestDto {
+public class EssentialProductRequestDto {
     private String essentialProductName;
     private Long essentialProductHp;
     private String essentialProductDescription;

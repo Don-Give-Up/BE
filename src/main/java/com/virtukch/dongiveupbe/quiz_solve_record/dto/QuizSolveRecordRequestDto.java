@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuizSolveRecordRegisterRequestDto {
+public class QuizSolveRecordRequestDto {
 
     private Long quizSolveRecordId;
 
@@ -29,15 +29,15 @@ public class QuizSolveRecordRegisterRequestDto {
     private Integer attemptCount;
 
     public QuizSolveRecord toEntity(
-        QuizSolveRecordRegisterRequestDto quizSolveRecordRegisterRequestDto) {
+        QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
         return QuizSolveRecord.builder()
-            .quizSolveRecordId(quizSolveRecordRegisterRequestDto.getQuizSolveRecordId())
-            .gameMemberId(quizSolveRecordRegisterRequestDto.getGameMemberId())
-            .quizId(quizSolveRecordRegisterRequestDto.getQuizId())
-            .roundId(quizSolveRecordRegisterRequestDto.getRoundId())
-            .createdAt(quizSolveRecordRegisterRequestDto.getCreatedAt())
-            .correct(quizSolveRecordRegisterRequestDto.getCorrect())
-            .attemptCount(quizSolveRecordRegisterRequestDto.getAttemptCount())
+            .quizSolveRecordId(quizSolveRecordRequestDto.getQuizSolveRecordId())
+            .gameMemberId(quizSolveRecordRequestDto.getGameMemberId())
+            .quizId(quizSolveRecordRequestDto.getQuizId())
+            .roundId(quizSolveRecordRequestDto.getRoundId())
+            .createdAt(quizSolveRecordRequestDto.getCreatedAt())
+            .correct(quizSolveRecordRequestDto.getCorrect())
+            .attemptCount(quizSolveRecordRequestDto.getAttemptCount())
             .build();
     }
 }

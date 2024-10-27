@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.essential_product_status.controller;
 
-import com.virtukch.dongiveupbe.essential_product_status.dto.EssentialProductStatusRegisterRequestDto;
+import com.virtukch.dongiveupbe.essential_product_status.dto.EssentialProductStatusRequestDto;
 import com.virtukch.dongiveupbe.essential_product_status.dto.EssentialProductStatusResponseDto;
 import com.virtukch.dongiveupbe.essential_product_status.service.EssentialProductStatusService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -47,7 +47,7 @@ public class EssentialProductStatusController {
                             schema = @Schema(implementation = EssentialProductStatusResponseDto.class)))
     })
     public ResponseEntity<EssentialProductStatusResponseDto> createProductStatus(
-            @RequestBody EssentialProductStatusRegisterRequestDto requestDto) {
+            @RequestBody EssentialProductStatusRequestDto requestDto) {
         EssentialProductStatusResponseDto createdProductStatus = productStatusService.save(requestDto);
         return ResponseEntity.ok(createdProductStatus);
     }

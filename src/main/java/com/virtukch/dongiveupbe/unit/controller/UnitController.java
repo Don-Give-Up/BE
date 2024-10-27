@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.unit.controller;
 
-import com.virtukch.dongiveupbe.unit.dto.UnitRegisterRequestDto;
+import com.virtukch.dongiveupbe.unit.dto.UnitRequestDto;
 import com.virtukch.dongiveupbe.unit.dto.UnitResponseDto;
 import com.virtukch.dongiveupbe.unit.service.UnitService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -55,8 +55,8 @@ public class UnitController {
             content = @Content)
     })
     public ResponseEntity<UnitResponseDto> save(
-        @RequestBody UnitRegisterRequestDto unitRegisterRequestDto) {
-        UnitResponseDto savedUnit = unitService.save(unitRegisterRequestDto);
+        @RequestBody UnitRequestDto unitRequestDto) {
+        UnitResponseDto savedUnit = unitService.save(unitRequestDto);
         return ResponseEntity.status(201).body(savedUnit);
     }
 

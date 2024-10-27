@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class EssentialProductStatusRegisterRequestDto {
+public class EssentialProductStatusRequestDto {
     private Long essentialProductId;
     private Long roundId;
     private Long essentialProductStatusPrice;
     private Long essentialProductAmount;
 
     @Builder
-    public EssentialProductStatusRegisterRequestDto(Long essentialProductId, Long roundId, Long essentialProductStatusPrice, Long essentialProductAmount) {
+    public EssentialProductStatusRequestDto(Long essentialProductId, Long roundId, Long essentialProductStatusPrice, Long essentialProductAmount) {
         this.essentialProductId = essentialProductId;
         this.roundId = roundId;
         this.essentialProductStatusPrice = essentialProductStatusPrice;

@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.unit.service;
 
-import com.virtukch.dongiveupbe.unit.dto.UnitRegisterRequestDto;
+import com.virtukch.dongiveupbe.unit.dto.UnitRequestDto;
 import com.virtukch.dongiveupbe.unit.dto.UnitResponseDto;
 import com.virtukch.dongiveupbe.unit.entity.Unit;
 import com.virtukch.dongiveupbe.unit.exception.UnitNotFoundException;
@@ -24,9 +24,9 @@ public class UnitService {
             .map(UnitResponseDto::fromEntity).toList();
     }
 
-    public UnitResponseDto save(UnitRegisterRequestDto unitRegisterRequestDto) {
+    public UnitResponseDto save(UnitRequestDto unitRequestDto) {
         Unit unit = unitRepository.save(
-            UnitRegisterRequestDto.toEntity(unitRegisterRequestDto));
+            UnitRequestDto.toEntity(unitRequestDto));
 
         return UnitResponseDto.fromEntity(unit);
     }

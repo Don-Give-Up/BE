@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.member.service;
 
-import com.virtukch.dongiveupbe.member.dto.MemberRegisterRequestDto;
+import com.virtukch.dongiveupbe.member.dto.MemberRequestDto;
 import com.virtukch.dongiveupbe.member.dto.MemberResponseDto;
 import com.virtukch.dongiveupbe.member.entity.Member;
 import com.virtukch.dongiveupbe.member.exception.MemberNotFoundException;
@@ -23,9 +23,9 @@ public class MemberService {
     }
 
     public ResponseEntity<MemberResponseDto> save(
-        MemberRegisterRequestDto memberRegisterRequestDto) {
+        MemberRequestDto memberRequestDto) {
         Member savedMember = memberRepository.save(
-            MemberRegisterRequestDto.toEntity(memberRegisterRequestDto));
+            MemberRequestDto.toEntity(memberRequestDto));
 
         return ResponseEntity.ok(MemberResponseDto.fromEntity(savedMember));
     }

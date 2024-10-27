@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.essential_product_purchase_record.service;
 
-import com.virtukch.dongiveupbe.essential_product_purchase_record.dto.EssentialProductPurchaseRecordRegisterRequestDto;
+import com.virtukch.dongiveupbe.essential_product_purchase_record.dto.EssentialProductPurchaseRecordRequestDto;
 import com.virtukch.dongiveupbe.essential_product_purchase_record.dto.EssentialProductPurchaseRecordResponseDto;
 import com.virtukch.dongiveupbe.essential_product_purchase_record.entity.EssentialProductPurchaseRecord;
 import com.virtukch.dongiveupbe.essential_product_purchase_record.repository.EssentialProductPurchaseRecordRepository;
@@ -25,7 +25,7 @@ public class EssentialProductPurchaseRecordService {
     }
 
     @Transactional
-    public void recordPurchase(EssentialProductPurchaseRecordRegisterRequestDto requestDto) {
+    public void recordPurchase(EssentialProductPurchaseRecordRequestDto requestDto) {
         // GameMember ID 유효성 체크
         GameMemberResponseDto gameMemberResponseDto = gameMemberService.findById(requestDto.getGameMemberId());
 

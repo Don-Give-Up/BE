@@ -4,7 +4,7 @@ import com.virtukch.dongiveupbe.game_member.dto.GameMemberResponseDto;
 import com.virtukch.dongiveupbe.game_member.service.GameMemberService;
 import com.virtukch.dongiveupbe.stock_status.entity.StockStatus;
 import com.virtukch.dongiveupbe.stock_status.service.StockStatusService;
-import com.virtukch.dongiveupbe.stock_trade_record.dto.StockTradeRecordRegisterRequestDto;
+import com.virtukch.dongiveupbe.stock_trade_record.dto.StockTradeRecordRequestDto;
 import com.virtukch.dongiveupbe.stock_trade_record.dto.StockTradeRecordResponseDto;
 import com.virtukch.dongiveupbe.stock_trade_record.entity.StockTradeRecord;
 import com.virtukch.dongiveupbe.stock_trade_record.repository.StockTradeRecordRepository;
@@ -26,7 +26,7 @@ public class StockTradeRecordService {
     }
 
     @Transactional
-    public StockTradeRecordResponseDto  tradeStock(StockTradeRecordRegisterRequestDto requestDto) {
+    public StockTradeRecordResponseDto  tradeStock(StockTradeRecordRequestDto requestDto) {
         StockStatus stockStatus = stockStatusService.findById(requestDto.getStockStatusId());
 
         GameMemberResponseDto gameMemberResponseDto = gameMemberService.findById(requestDto.getGameMemberId());
