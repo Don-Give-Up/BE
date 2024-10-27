@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.inventory.controller;
 
-import com.virtukch.dongiveupbe.inventory.dto.InventoryRegisterRequestDto;
+import com.virtukch.dongiveupbe.inventory.dto.InventoryRequestDto;
 import com.virtukch.dongiveupbe.inventory.dto.InventoryResponseDto;
 import com.virtukch.dongiveupbe.inventory.service.InventoryService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,7 +28,7 @@ public class InventoryController {
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = InventoryResponseDto.class)))
     })
-    public ResponseEntity<InventoryResponseDto> saveInventory(@RequestBody InventoryRegisterRequestDto requestDto) {
+    public ResponseEntity<InventoryResponseDto> saveInventory(@RequestBody InventoryRequestDto requestDto) {
         InventoryResponseDto responseDto = inventoryService.saveInventory(requestDto);
         return ResponseEntity.ok(responseDto);
     }
