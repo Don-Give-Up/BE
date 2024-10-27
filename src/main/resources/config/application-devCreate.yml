@@ -7,10 +7,10 @@ server:
 
 spring:
   datasource:
-#    url: ${EXTERNAL_DB_URL}
-#    driver-class-name:
-#    username: ${EXTERNAL_DB_USERNAME}
-#    password: ${EXTERNAL_DB_PASSWORD}
+    url: ${EXTERNAL_DB_URL}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${EXTERNAL_DB_USERNAME}
+    password: ${EXTERNAL_DB_PASSWORD}
 
   jpa:
     show-sql: true
