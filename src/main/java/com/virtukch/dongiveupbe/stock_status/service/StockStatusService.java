@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.stock_status.service;
 
+import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
 import com.virtukch.dongiveupbe.stock_status.entity.StockStatus;
 import com.virtukch.dongiveupbe.stock_status.repository.StockStatusRepository;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,6 @@ public class StockStatusService {
     @Transactional(readOnly = true)
     public StockStatus findById(Long stockStatusId) {
         return stockStatusRepository.findById(stockStatusId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 ID의 StockStatus를 찾을 수 없습니다 "+ stockStatusId));
+                .orElseThrow(() -> new EntityNotFoundException("해당 ID의 StockStatus를 찾을 수 없습니다 "+ stockStatusId));
     }
 }

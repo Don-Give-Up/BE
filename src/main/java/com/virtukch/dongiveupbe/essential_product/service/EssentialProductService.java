@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.essential_product.service;
 import com.virtukch.dongiveupbe.essential_product.dto.EssentialProductRegisterRequestDto;
 import com.virtukch.dongiveupbe.essential_product.dto.EssentialProductResponseDto;
 import com.virtukch.dongiveupbe.essential_product.entity.EssentialProduct;
+import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
 import com.virtukch.dongiveupbe.essential_product.repository.EssentialProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -33,14 +34,14 @@ public class EssentialProductService {
     // id 값으로 조회
     public EssentialProductResponseDto getProductById(long id) {
         EssentialProduct product = essentialProductRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("상품이 없습니다. " + id));
+                .orElseThrow(() -> new EntityNotFoundException("상품이 없습니다. ID: " + id));
         return EssentialProductResponseDto.fromEntity(product);
     }
 
     // 수정
     public EssentialProductResponseDto updateProduct(Long id, EssentialProductRegisterRequestDto requestDto) {
         EssentialProduct product = essentialProductRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다." + id));
+                .orElseThrow(() -> new EntityNotFoundException("상품을 찾을 수 없습니다. ID: " + id));
         EssentialProduct updatedProduct = EssentialProduct.builder()
                 .essentialProductId(product.getEssentialProductId())
                 .essentialProductName(requestDto.getEssentialProductName())

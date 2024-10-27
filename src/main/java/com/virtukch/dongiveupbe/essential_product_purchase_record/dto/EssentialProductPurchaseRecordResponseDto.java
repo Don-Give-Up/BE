@@ -1,6 +1,7 @@
 package com.virtukch.dongiveupbe.essential_product_purchase_record.dto;
 
 import com.virtukch.dongiveupbe.essential_product_purchase_record.entity.EssentialProductPurchaseRecord;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EssentialProductPurchaseRecordResponseDto {
 
+    @Schema(description = "필수 상품 구매 ID")
     private Long essentialProductPurchaseRecordId;
+    @Schema(description = "필수 상품 상태 ID")
     private Long essentialProductStatusId;
+    @Schema(description = "게임 멤버 ID")
     private Long gameMemberId;
+    @Schema(description = "필수 상품 구매 갯수")
     private Long essentialProductPurchaseAmount;
 
     @Builder
