@@ -18,10 +18,10 @@ public class QuizService {
         this.quizRepository = quizRepository;
     }
 
-    public ResponseEntity<List<QuizResponseDto>> findAll() {
-        return ResponseEntity.ok(quizRepository.findAll().stream()
+    public List<QuizResponseDto> findAll() {
+        return quizRepository.findAll().stream()
             .map(QuizResponseDto::fromEntity)
-            .toList());
+            .toList();
     }
 
     public ResponseEntity<QuizResponseDto> findById(Long quizId) {

@@ -23,7 +23,7 @@ public class QuizController {
 
     @GetMapping
     public ResponseEntity<List<QuizResponseDto>> findAll() {
-        return quizService.findAll();
+        return ResponseEntity.ok(quizService.findAll());
     }
 
     @GetMapping("{quizId}")

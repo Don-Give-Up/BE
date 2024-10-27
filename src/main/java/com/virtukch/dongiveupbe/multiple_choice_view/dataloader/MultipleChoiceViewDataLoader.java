@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile({"localCreate", "devCreate", "prod"})
 public class MultipleChoiceViewDataLoader implements CommandLineRunner {
 
     private final MultipleChoiceViewRepository multipleChoiceViewRepository;
@@ -25,6 +24,7 @@ public class MultipleChoiceViewDataLoader implements CommandLineRunner {
     // devCreate (ddl-auto: create, DataLoader 작동 O)
     // prod (ddl-auto: create, DataLoader 작동 O)
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         MultipleChoiceView multipleChoiceView1 = MultipleChoiceView.builder()
             .quizId(3L)

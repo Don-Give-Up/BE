@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile({"localCreate", "devCreate", "prod"})
 public class QuizDataLoader implements CommandLineRunner {
 
     private final QuizRepository quizRepository;
@@ -29,6 +28,7 @@ public class QuizDataLoader implements CommandLineRunner {
     // devCreate (ddl-auto: create, DataLoader 작동 O)
     // prod (ddl-auto: create, DataLoader 작동 O)
     @Override
+    @Profile({"localCreate", "devCreate", "prod"})
     public void run(String... args) throws Exception {
         Quiz quiz1 = Quiz.builder()
             .memberId(3L)
