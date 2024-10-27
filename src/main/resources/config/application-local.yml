@@ -8,7 +8,7 @@ server:
 spring:
   datasource:
     url: ${LOCALHOST_DB_URL}
-    driver-class-name:
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${LOCALHOST_DB_USERNAME}
     password: ${LOCALHOST_DB_PASSWORD}
 
