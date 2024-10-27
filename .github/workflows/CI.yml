@@ -34,8 +34,8 @@ jobs:
           DB_USERNAME: ${{ secrets.EXTERNAL_DB_USERNAME }}  # 사용자 이름
           DB_PASSWORD: ${{ secrets.EXTERNAL_DB_PASSWORD }}  # 비밀번호
         run: |
-          echo "DB URL: ${DB_URL}"
-          echo "DB Username: ${DB_USERNAME}"
+          echo "DB URL: ${EXTERNAL_DB_URL}"
+          echo "DB Username: ${EXTERNAL_DB_USERNAME}"
           ./gradlew build  # Gradle 빌드 실행
 
       - name: Run tests
