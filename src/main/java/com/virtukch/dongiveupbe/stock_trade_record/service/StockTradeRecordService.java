@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.stock_trade_record.service;
 
-import com.virtukch.dongiveupbe.game_member.entity.GameMember;
+import com.virtukch.dongiveupbe.game_member.dto.GameMemberResponseDto;
 import com.virtukch.dongiveupbe.game_member.service.GameMemberService;
 import com.virtukch.dongiveupbe.stock_status.entity.StockStatus;
 import com.virtukch.dongiveupbe.stock_status.service.StockStatusService;
@@ -8,10 +8,9 @@ import com.virtukch.dongiveupbe.stock_trade_record.dto.StockTradeRecordRegisterR
 import com.virtukch.dongiveupbe.stock_trade_record.dto.StockTradeRecordResponseDto;
 import com.virtukch.dongiveupbe.stock_trade_record.entity.StockTradeRecord;
 import com.virtukch.dongiveupbe.stock_trade_record.repository.StockTradeRecordRepository;
+import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class StockTradeRecordService {
@@ -30,15 +29,15 @@ public class StockTradeRecordService {
     public StockTradeRecordResponseDto  tradeStock(StockTradeRecordRegisterRequestDto requestDto) {
         StockStatus stockStatus = stockStatusService.findById(requestDto.getStockStatusId());
 
-        GameMember gameMember = gameMemberService.findById(requestDto.getGameMemberId());
+        GameMemberResponseDto gameMemberResponseDto = gameMemberService.findById(requestDto.getGameMemberId());
 
-        StockTradeRecord record = StockTradeRecord.builder()
+        StockTradeRecord stockTradeRecord = StockTradeRecord.builder()
                 .stockStatusId(stockStatus.getStockStatusId())
-                .gameMemberId(gameMember.getGameMemberId())
+                .gameMemberId(gameMemberResponseDto.getGameMemberId())
                 .stockTradeRecordAmount(requestDto.getStockTradeRecordAmount())
                 .tradeType(requestDto.getTradeType())
                 .build();
-        StockTradeRecord savedRecord = stockTradeRecordRepository.save(record);
+        StockTradeRecord savedRecord = stockTradeRecordRepository.save(stockTradeRecord);
         return StockTradeRecordResponseDto.fromDto(savedRecord);
     }
 
