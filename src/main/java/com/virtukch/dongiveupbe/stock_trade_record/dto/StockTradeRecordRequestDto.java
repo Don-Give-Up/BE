@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class StockTradeRecordRegisterRequestDto {
+public class StockTradeRecordRequestDto {
 
     private Long stockStatusId;
     private Long gameMemberId;
@@ -15,7 +15,7 @@ public class StockTradeRecordRegisterRequestDto {
     private BuyOrSell tradeType;
 
     @Builder
-    public StockTradeRecordRegisterRequestDto(Long stockStatusId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType) {
+    public StockTradeRecordRequestDto(Long stockStatusId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType) {
         this.stockStatusId = stockStatusId;
         this.gameMemberId = gameMemberId;
         this.stockTradeRecordAmount = stockTradeRecordAmount;

@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.essential_product.service;
 
-import com.virtukch.dongiveupbe.essential_product.dto.EssentialProductRegisterRequestDto;
+import com.virtukch.dongiveupbe.essential_product.dto.EssentialProductRequestDto;
 import com.virtukch.dongiveupbe.essential_product.dto.EssentialProductResponseDto;
 import com.virtukch.dongiveupbe.essential_product.entity.EssentialProduct;
 import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
@@ -18,7 +18,7 @@ public class EssentialProductService {
     }
 
     // 저장
-    public EssentialProductResponseDto save(EssentialProductRegisterRequestDto requestDto) {
+    public EssentialProductResponseDto save(EssentialProductRequestDto requestDto) {
         EssentialProduct product = requestDto.toEntity();
         EssentialProduct saved = essentialProductRepository.save(product);
         return EssentialProductResponseDto.fromEntity(saved);
@@ -39,7 +39,7 @@ public class EssentialProductService {
     }
 
     // 수정
-    public EssentialProductResponseDto updateProduct(Long id, EssentialProductRegisterRequestDto requestDto) {
+    public EssentialProductResponseDto updateProduct(Long id, EssentialProductRequestDto requestDto) {
         EssentialProduct product = essentialProductRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("상품을 찾을 수 없습니다. ID: " + id));
         EssentialProduct updatedProduct = EssentialProduct.builder()

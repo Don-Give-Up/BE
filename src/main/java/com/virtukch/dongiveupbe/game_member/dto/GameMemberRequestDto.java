@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GameMemberRegisterRequestDto {
+public class GameMemberRequestDto {
 
     private Long memberId;
 
     private Long gameId;
 
-    public static GameMember toEntity(GameMemberRegisterRequestDto gameMemberRegisterRequestDto) {
+    public static GameMember toEntity(GameMemberRequestDto gameMemberRequestDto) {
         return GameMember.builder()
-            .memberId(gameMemberRegisterRequestDto.getMemberId())
-            .gameId(gameMemberRegisterRequestDto.getGameId())
+            .memberId(gameMemberRequestDto.getMemberId())
+            .gameId(gameMemberRequestDto.getGameId())
             .build();
     }
 }

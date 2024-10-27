@@ -1,7 +1,7 @@
 package com.virtukch.dongiveupbe.essential_product_status.service;
 
 import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
-import com.virtukch.dongiveupbe.essential_product_status.dto.EssentialProductStatusRegisterRequestDto;
+import com.virtukch.dongiveupbe.essential_product_status.dto.EssentialProductStatusRequestDto;
 import com.virtukch.dongiveupbe.essential_product_status.dto.EssentialProductStatusResponseDto;
 import com.virtukch.dongiveupbe.essential_product_status.entity.EssentialProductStatus;
 import com.virtukch.dongiveupbe.essential_product_status.repository.EssentialProductStatusRepository;
@@ -32,7 +32,7 @@ public class EssentialProductStatusService {
     }
 
     @Transactional
-    public EssentialProductStatusResponseDto save(EssentialProductStatusRegisterRequestDto requestDto) {
+    public EssentialProductStatusResponseDto save(EssentialProductStatusRequestDto requestDto) {
         EssentialProductStatus productStatus = requestDto.toEntity();
         EssentialProductStatus saved = essentialProductStatusRepository.save(productStatus);
         return EssentialProductStatusResponseDto.fromEntity(saved);

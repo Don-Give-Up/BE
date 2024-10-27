@@ -1,7 +1,7 @@
 package com.virtukch.dongiveupbe.inventory.service;
 
 import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
-import com.virtukch.dongiveupbe.inventory.dto.InventoryRegisterRequestDto;
+import com.virtukch.dongiveupbe.inventory.dto.InventoryRequestDto;
 import com.virtukch.dongiveupbe.inventory.dto.InventoryResponseDto;
 import com.virtukch.dongiveupbe.inventory.entity.Inventory;
 import com.virtukch.dongiveupbe.inventory.repository.InventoryRepository;
@@ -18,7 +18,7 @@ public class InventoryService {
     }
 
     @Transactional
-    public InventoryResponseDto saveInventory(InventoryRegisterRequestDto requestDto) {
+    public InventoryResponseDto saveInventory(InventoryRequestDto requestDto) {
         Inventory inventory = inventoryRepository.save(requestDto.toEntity());
         return InventoryResponseDto.fromEntity(inventory);
     }

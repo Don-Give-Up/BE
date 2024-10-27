@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import com.virtukch.dongiveupbe.essential_product.dto.EssentialProductRegisterRequestDto;
+import com.virtukch.dongiveupbe.essential_product.dto.EssentialProductRequestDto;
 
 
 @RestController
@@ -61,7 +61,7 @@ public class EssentialProductController {
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = EssentialProductResponseDto.class)))
     })
-    public ResponseEntity<EssentialProductResponseDto> createProduct(@RequestBody EssentialProductRegisterRequestDto requestDto) {
+    public ResponseEntity<EssentialProductResponseDto> createProduct(@RequestBody EssentialProductRequestDto requestDto) {
         EssentialProductResponseDto createdProduct = essentialProductService.save(requestDto);
         return ResponseEntity.ok(createdProduct);
     }
@@ -75,7 +75,7 @@ public class EssentialProductController {
                             schema = @Schema(implementation = EssentialProductResponseDto.class))),
             @ApiResponse(responseCode = "404", description = "상품을 찾을 수 없음")
     })
-    public ResponseEntity<EssentialProductResponseDto> updateProduct(@PathVariable Long id, @RequestBody EssentialProductRegisterRequestDto requestDto) {
+    public ResponseEntity<EssentialProductResponseDto> updateProduct(@PathVariable Long id, @RequestBody EssentialProductRequestDto requestDto) {
         EssentialProductResponseDto updatedProduct = essentialProductService.updateProduct(id, requestDto);
         return ResponseEntity.ok(updatedProduct);
     }

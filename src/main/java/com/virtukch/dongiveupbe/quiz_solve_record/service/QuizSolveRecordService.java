@@ -1,7 +1,6 @@
 package com.virtukch.dongiveupbe.quiz_solve_record.service;
 
-import com.virtukch.dongiveupbe.quiz.dto.QuizResponseDto;
-import com.virtukch.dongiveupbe.quiz_solve_record.dto.QuizSolveRecordRegisterRequestDto;
+import com.virtukch.dongiveupbe.quiz_solve_record.dto.QuizSolveRecordRequestDto;
 import com.virtukch.dongiveupbe.quiz_solve_record.dto.QuizSolveRecordResponseDto;
 import com.virtukch.dongiveupbe.quiz_solve_record.entity.QuizSolveRecord;
 import com.virtukch.dongiveupbe.quiz_solve_record.repository.QuizSolveRecordRepository;
@@ -21,9 +20,9 @@ public class QuizSolveRecordService {
     }
 
     public ResponseEntity<QuizSolveRecordResponseDto> save(
-        QuizSolveRecordRegisterRequestDto quizSolveRecordRegisterRequestDto) {
-        QuizSolveRecord quizSolveRecord = quizSolveRecordRegisterRequestDto.toEntity(
-            quizSolveRecordRegisterRequestDto);
+        QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
+        QuizSolveRecord quizSolveRecord = quizSolveRecordRequestDto.toEntity(
+            quizSolveRecordRequestDto);
         QuizSolveRecord saveddQuizSolveRecord = quizSolveRecordRepository.save(quizSolveRecord);
         return ResponseEntity.ok(QuizSolveRecordResponseDto.fromEntity(saveddQuizSolveRecord));
     }

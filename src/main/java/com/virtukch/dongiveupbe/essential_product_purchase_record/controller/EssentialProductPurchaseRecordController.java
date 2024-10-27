@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.essential_product_purchase_record.controller;
 
-import com.virtukch.dongiveupbe.essential_product_purchase_record.dto.EssentialProductPurchaseRecordRegisterRequestDto;
+import com.virtukch.dongiveupbe.essential_product_purchase_record.dto.EssentialProductPurchaseRecordRequestDto;
 import com.virtukch.dongiveupbe.essential_product_purchase_record.dto.EssentialProductPurchaseRecordResponseDto;
 import com.virtukch.dongiveupbe.essential_product_purchase_record.service.EssentialProductPurchaseRecordService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -44,7 +44,7 @@ public class EssentialProductPurchaseRecordController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "구매 기록 추가 성공")
     })
-    public ResponseEntity<Void> recordPurchase(@RequestBody EssentialProductPurchaseRecordRegisterRequestDto requestDto) {
+    public ResponseEntity<Void> recordPurchase(@RequestBody EssentialProductPurchaseRecordRequestDto requestDto) {
         purchaseRecordService.recordPurchase(requestDto);
         return ResponseEntity.ok().build();
     }

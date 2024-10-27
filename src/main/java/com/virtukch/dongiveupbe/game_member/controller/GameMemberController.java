@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.game_member.controller;
 
-import com.virtukch.dongiveupbe.game_member.dto.GameMemberRegisterRequestDto;
+import com.virtukch.dongiveupbe.game_member.dto.GameMemberRequestDto;
 import com.virtukch.dongiveupbe.game_member.dto.GameMemberResponseDto;
 import com.virtukch.dongiveupbe.game_member.service.GameMemberService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,8 +42,8 @@ public class GameMemberController {
             content = @Content)
     })
     public ResponseEntity<GameMemberResponseDto> save(
-        @RequestBody GameMemberRegisterRequestDto gameMemberRegisterRequestDto) {
-        return ResponseEntity.ok(gameMemberService.save(gameMemberRegisterRequestDto));
+        @RequestBody GameMemberRequestDto gameMemberRequestDto) {
+        return ResponseEntity.ok(gameMemberService.save(gameMemberRequestDto));
     }
 
     // 2. 게임 멤버 아이디로 회원 아이디 조회

@@ -1,6 +1,6 @@
 package com.virtukch.dongiveupbe.member.controller;
 
-import com.virtukch.dongiveupbe.member.dto.MemberRegisterRequestDto;
+import com.virtukch.dongiveupbe.member.dto.MemberRequestDto;
 import com.virtukch.dongiveupbe.member.dto.MemberResponseDto;
 import com.virtukch.dongiveupbe.member.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -43,8 +43,8 @@ public class MemberController {
             content = @Content)
     })
     public ResponseEntity<MemberResponseDto> save(
-        @RequestBody MemberRegisterRequestDto memberRegisterRequestDto) {
-        return memberService.save(memberRegisterRequestDto);
+        @RequestBody MemberRequestDto memberRequestDto) {
+        return memberService.save(memberRequestDto);
     }
 
     // 이메일을 통한 회원 조회

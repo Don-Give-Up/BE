@@ -6,13 +6,13 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class UnitRegisterRequestDto {
+public class UnitRequestDto {
 
     String unitName;
 
-    public static Unit toEntity(UnitRegisterRequestDto unitRegisterRequestDto) {
+    public static Unit toEntity(UnitRequestDto unitRequestDto) {
         return Unit.builder()
-            .unitName(unitRegisterRequestDto.getUnitName())
+            .unitName(unitRequestDto.getUnitName())
             .build();
     }
 }

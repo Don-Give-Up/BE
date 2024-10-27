@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class InventoryRegisterRequestDto {
+public class InventoryRequestDto {
     private Long gameMemberId;
     private Long essentialProductId;
     private Long savingProductId;
@@ -16,7 +16,7 @@ public class InventoryRegisterRequestDto {
     private Integer inventoryAmount;
 
     @Builder
-    public InventoryRegisterRequestDto(Long gameMemberId, Long essentialProductId, Long savingProductId, Long selectProductId, Long stockId, Integer inventoryAmount) {
+    public InventoryRequestDto(Long gameMemberId, Long essentialProductId, Long savingProductId, Long selectProductId, Long stockId, Integer inventoryAmount) {
         this.gameMemberId = gameMemberId;
         this.essentialProductId = essentialProductId;
         this.savingProductId = savingProductId;
