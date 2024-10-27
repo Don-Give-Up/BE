@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.round.service;
 
+import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
 import com.virtukch.dongiveupbe.round.entity.Round;
 import com.virtukch.dongiveupbe.round.repository.RoundRepository;
 import org.springframework.stereotype.Service;
@@ -38,4 +39,9 @@ public class RoundService {
             roundRepository.save(round);
         }
     }
+    public Round findRoundById(Long roundId) {
+        return roundRepository.findById(roundId)
+                .orElseThrow(() -> new EntityNotFoundException("해당 라운드를 찾을 수 없습니다. 라운드 ID: " + roundId));
+    }
+
 }
