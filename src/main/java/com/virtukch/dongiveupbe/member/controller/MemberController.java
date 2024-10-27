@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,9 +33,15 @@ public class MemberController {
     // 회원 생성 (회원가입)
     @PostMapping
     @Operation(summary = "회원 생성 (회원가입)")
-    @ApiResponse(responseCode = "200", description = "회원 가입 성공",
-        content = @Content(mediaType = "application/json",
-            schema = @Schema(implementation = MemberResponseDto.class)))
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "회원 가입 성공",
+            content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = MemberResponseDto.class))),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청",
+            content = @Content),
+        @ApiResponse(responseCode = "409", description = "이메일 중복",
+            content = @Content)
+    })
     public ResponseEntity<MemberResponseDto> save(
         @RequestBody MemberRegisterRequestDto memberRegisterRequestDto) {
         return memberService.save(memberRegisterRequestDto);
@@ -43,9 +50,13 @@ public class MemberController {
     // 이메일을 통한 회원 조회
     @GetMapping("{memberEmail}")
     @Operation(summary = "특정 이메일을 가진 회원 조회")
-    @ApiResponse(responseCode = "200", description = "회원 조회 성공",
-        content = @Content(mediaType = "application/json",
-            schema = @Schema(implementation = MemberResponseDto.class)))
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "회원 조회 성공",
+            content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = MemberResponseDto.class))),
+        @ApiResponse(responseCode = "404", description = "회원 없음",
+            content = @Content)
+    })
     public ResponseEntity<MemberResponseDto> findById(@PathVariable String memberEmail) {
         return memberService.findById(memberEmail);
     }
