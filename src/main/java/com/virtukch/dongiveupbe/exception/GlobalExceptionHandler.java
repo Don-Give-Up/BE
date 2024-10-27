@@ -1,6 +1,7 @@
 package com.virtukch.dongiveupbe.exception;
 
 import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
+import com.virtukch.dongiveupbe.member.exception.MemberEmailAlreadyExistException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,5 +14,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleEntityNotFoundException(EntityNotFoundException e) {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(MemberEmailAlreadyExistException.class)
+    public ResponseEntity<ErrorResponse> handleMemberEmailAlreadyExistException(MemberEmailAlreadyExistException e) {
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.CONFLICT.value(), e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
 }
