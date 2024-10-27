@@ -19,25 +19,21 @@ public class UnitService {
         this.unitRepository = unitRepository;
     }
 
+    // 1. 단원 전체 조회
     public List<UnitResponseDto> findAll() {
-        return unitRepository.findAll().stream()
-            .map(UnitResponseDto::fromEntity).toList();
+        return unitRepository.findAll().stream().map(UnitResponseDto::fromEntity).toList();
     }
 
+    // 2. 단원 추가
     public UnitResponseDto save(UnitRequestDto unitRequestDto) {
-        Unit unit = unitRepository.save(
-            UnitRequestDto.toEntity(unitRequestDto));
-
+        Unit unit = unitRepository.save(UnitRequestDto.toEntity(unitRequestDto));
         return UnitResponseDto.fromEntity(unit);
     }
 
+    // 3. 단원 이름으로 단원 코드 찾기
     public UnitResponseDto findByUnitName(String unitName) {
-        Unit unit = unitRepository.findByUnitName(unitName).orElse(null);
-
-        if (unit == null) {
-            throw new UnitNotFoundException(unitName + " not found");
-        }
-
+        Unit unit = unitRepository.findByUnitName(unitName)
+            .orElseThrow(() -> new UnitNotFoundException(unitName + " not found"));
         return UnitResponseDto.fromEntity(unit);
     }
 }

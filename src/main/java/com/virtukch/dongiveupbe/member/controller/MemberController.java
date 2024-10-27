@@ -1,13 +1,10 @@
 package com.virtukch.dongiveupbe.member.controller;
 
+import com.virtukch.dongiveupbe.member.dto.MemberLoginRequestDto;
 import com.virtukch.dongiveupbe.member.dto.MemberRequestDto;
 import com.virtukch.dongiveupbe.member.dto.MemberResponseDto;
 import com.virtukch.dongiveupbe.member.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,34 +27,32 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    // 회원 생성 (회원가입)
-    @PostMapping
-    @Operation(summary = "회원 생성 (회원가입)")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "회원 가입 성공",
-            content = @Content(mediaType = "application/json",
-                schema = @Schema(implementation = MemberResponseDto.class))),
-        @ApiResponse(responseCode = "400", description = "잘못된 요청",
-            content = @Content),
-        @ApiResponse(responseCode = "409", description = "이메일 중복",
-            content = @Content)
-    })
+    // 1. 회원 생성 (회원가입)
+    @PostMapping("/register")
+    @Operation(summary = "회원 가입", description = "새로운 회원을 등록합니다.")
     public ResponseEntity<MemberResponseDto> save(
         @RequestBody MemberRequestDto memberRequestDto) {
-        return memberService.save(memberRequestDto);
+        return ResponseEntity.ok(memberService.save(memberRequestDto));
     }
 
-    // 이메일을 통한 회원 조회
-    @GetMapping("{memberEmail}")
-    @Operation(summary = "특정 이메일을 가진 회원 조회")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "회원 조회 성공",
-            content = @Content(mediaType = "application/json",
-                schema = @Schema(implementation = MemberResponseDto.class))),
-        @ApiResponse(responseCode = "404", description = "회원 없음",
-            content = @Content)
-    })
-    public ResponseEntity<MemberResponseDto> findById(@PathVariable String memberEmail) {
-        return memberService.findById(memberEmail);
+    // 2. 회원 로그인
+    @PostMapping("/login")
+    @Operation(summary = "회원 로그인", description = "회원으로 로그인합니다.")
+    public ResponseEntity<MemberResponseDto> login(@RequestBody MemberLoginRequestDto memberLoginRequestDto) {
+        return ResponseEntity.ok(memberService.login(memberLoginRequestDto));
+    }
+
+    // 3. 회원 아이디로 회원 찾기
+    @GetMapping("{memberId}")
+    @Operation(summary = "회원 아이디로 회원 찾기", description = "회원 아이디를 통해 회원 정보를 조회합니다.")
+    public ResponseEntity<MemberResponseDto> findById(@PathVariable Long memberId) {
+        return ResponseEntity.ok(memberService.findById(memberId));
+    }
+
+    // 4. 회원 이메일로 회원 찾기
+    @GetMapping("email/{memberEmail}")
+    @Operation(summary = "회원 이메일로 회원 찾기", description = "회원 이메일을 통해 회원 정보를 조회합니다.")
+    public ResponseEntity<MemberResponseDto> findByEmail(@PathVariable String memberEmail) {
+        return ResponseEntity.ok(memberService.findByMemberEmail(memberEmail));
     }
 }
