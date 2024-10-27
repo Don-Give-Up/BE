@@ -33,4 +33,6 @@ public class QuizSolveRecord {
     private Correct correct;
 
     private Integer attemptCount;
+
+    private Integer quizCorrectMoney;
 }

@@ -31,34 +31,6 @@ public class QuizSolveRecordController {
         this.quizSolveRecordService = quizSolveRecordService;
     }
 
-    // 퀴즈 푸는 기록 생성
-    @PostMapping
-    @Operation(summary = "퀴즈 풀이 기록 생성")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "퀴즈 풀이 기록 생성 성공",
-            content = @Content(mediaType = "application/json",
-                schema = @Schema(implementation = QuizSolveRecordResponseDto.class))),
-        @ApiResponse(responseCode = "400", description = "잘못된 요청 (예: 요청 데이터 형식 오류)",
-            content = @Content)
-    })
-    public ResponseEntity<QuizSolveRecordResponseDto> save(
-        @RequestBody QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
-        return quizSolveRecordService.save(quizSolveRecordRequestDto);
-    }
-
-    // 퀴즈 전체 기록 조회
-    @GetMapping
-    @Operation(summary = "퀴즈 풀이 기록 전체 조회")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "퀴즈 풀이 기록 조회 성공",
-            content = @Content(mediaType = "application/json",
-                schema = @Schema(implementation = QuizSolveRecordResponseDto.class))),
-        @ApiResponse(responseCode = "404", description = "기록이 존재하지 않음",
-            content = @Content)
-    })
-    public ResponseEntity<List<QuizSolveRecordResponseDto>> findAll() {
-        return quizSolveRecordService.findAll();
-    }
 
     // 특정 학생의 아이디를 통한 기록 조회
     @GetMapping("{gameMemberId}")
@@ -75,4 +47,39 @@ public class QuizSolveRecordController {
     public ResponseEntity<List<QuizSolveRecordResponseDto>> findByGameMemberId(@PathVariable Long gameMemberId) {
         return quizSolveRecordService.findByGameMemberId(gameMemberId);
     }
+
+    // 퀴즈 풀이 기록 생성 및 저장
+    @PostMapping
+    @Operation(summary = "퀴즈 풀이 기록 생성")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "퀴즈 풀이 기록 생성 성공",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = QuizSolveRecordResponseDto.class))),
+            @ApiResponse(responseCode = "400", description = "잘못된 요청 (예: 요청 데이터 형식 오류)",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "게임 멤버를 찾을 수 없음",
+                    content = @Content),
+            @ApiResponse(responseCode = "500", description = "서버 오류",
+                    content = @Content)
+    })
+    public ResponseEntity<QuizSolveRecordResponseDto> saveQuizSolveRecord(
+            @RequestBody QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
+        QuizSolveRecordResponseDto responseDto = quizSolveRecordService.saveQuizSolveRecord(quizSolveRecordRequestDto);
+        return ResponseEntity.status(201).body(responseDto);
+    }
+
+    // 퀴즈 전체 기록 조회
+    @GetMapping
+    @Operation(summary = "퀴즈 풀이 기록 전체 조회")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "퀴즈 풀이 기록 조회 성공",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = QuizSolveRecordResponseDto.class))),
+            @ApiResponse(responseCode = "404", description = "기록이 존재하지 않음",
+                    content = @Content)
+    })
+    public ResponseEntity<List<QuizSolveRecordResponseDto>> findAllQuizSolveRecords() {
+        return quizSolveRecordService.findAll();
+    }
+
 }
