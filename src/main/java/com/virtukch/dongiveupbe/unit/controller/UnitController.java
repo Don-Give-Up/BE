@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,28 +33,44 @@ public class UnitController {
 
     @GetMapping
     @Operation(summary = "현재 존재하는 단원 전체 조회")
-    @ApiResponse(responseCode = "200", description = "단원 전체 조회 성공",
-        content = @Content(mediaType = "application/json",
-            schema = @Schema(implementation = UnitResponseDto.class)))
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "단원 전체 조회 성공",
+            content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = UnitResponseDto.class))),
+        @ApiResponse(responseCode = "404", description = "단원 없음",
+            content = @Content)
+    })
     public ResponseEntity<List<UnitResponseDto>> findAll() {
-        return ResponseEntity.ok(unitService.findAll());
+        List<UnitResponseDto> units = unitService.findAll();
+        return ResponseEntity.ok(units);
     }
 
     @PostMapping
     @Operation(summary = "단원 추가")
-    @ApiResponse(responseCode = "200", description = "단원 추가 성공",
-        content = @Content(mediaType = "application/json",
-            schema = @Schema(implementation = UnitResponseDto.class)))
-    public ResponseEntity<UnitResponseDto> save(@RequestBody UnitRegisterRequestDto unitRegisterRequestDto) {
-        return ResponseEntity.ok(unitService.save(unitRegisterRequestDto));
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "단원 추가 성공",
+            content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = UnitResponseDto.class))),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청",
+            content = @Content)
+    })
+    public ResponseEntity<UnitResponseDto> save(
+        @RequestBody UnitRegisterRequestDto unitRegisterRequestDto) {
+        UnitResponseDto savedUnit = unitService.save(unitRegisterRequestDto);
+        return ResponseEntity.status(201).body(savedUnit);
     }
 
     @GetMapping("{unitName}")
     @Operation(summary = "단원 이름으로 단원 ID & 단원 이름 찾기")
-    @ApiResponse(responseCode = "200", description = "단원 단일 조회 성공",
-        content = @Content(mediaType = "application/json",
-            schema = @Schema(implementation = UnitResponseDto.class)))
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "단원 단일 조회 성공",
+            content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = UnitResponseDto.class))),
+        @ApiResponse(responseCode = "404", description = "단원이 존재하지 않음",
+            content = @Content)
+    })
     public ResponseEntity<UnitResponseDto> findByUnitName(@PathVariable String unitName) {
-        return ResponseEntity.ok(unitService.findByUnitName(unitName));
+        UnitResponseDto unit = unitService.findByUnitName(unitName);
+        return ResponseEntity.ok(unit);
     }
 }
