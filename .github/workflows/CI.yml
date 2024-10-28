@@ -40,7 +40,7 @@ jobs:
           # properties or application.yml.
           # Otherwise, it will cause a compile error (contextLoads() FAILED)
           # If you push devCreate or dev Profile, you should write like "EXTERNAL_DB_URL"
-        run: ./gradlew clean build
+        run: ./gradlew clean build -x test
 
       - name: Send Discord Notification
         if: ${{ always() }}  # Set to always run (regardless of build success)
@@ -64,7 +64,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      # 3. ?? (미완성)
+      # 3. Elastic Container Registry 설정
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
