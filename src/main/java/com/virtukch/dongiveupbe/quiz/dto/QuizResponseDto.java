@@ -33,6 +33,7 @@ public class QuizResponseDto {
     @JsonProperty(value = "desc")
     private String quizDescription;
 
+    @JsonProperty(value = "level")
     private String quizLevel;
 
     public static QuizResponseDto fromEntity(Quiz quiz) {
