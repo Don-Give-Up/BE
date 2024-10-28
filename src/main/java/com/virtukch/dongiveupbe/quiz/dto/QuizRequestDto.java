@@ -30,18 +30,7 @@ public class QuizRequestDto {
 
     private String quizLevel; // 필수 등록
 
-    private IsAcceptedByTeacher isAcceptedByTeacher; // AI 인 경우 NOT_ACCEPTED_BY_TEACHER
-
-    private LocalDateTime createdAt; // 입력하지 않아도 됨.
-
     public static Quiz toEntity(QuizRequestDto quizRequestDto) {
-
-        // AI 가 퀴즈의 생성을 요구하는 경우
-        if (quizRequestDto.memberId == null) {
-            quizRequestDto.isAcceptedByTeacher = IsAcceptedByTeacher.NOT_ACCEPTED_BY_TEACHER;
-        } else {
-            quizRequestDto.isAcceptedByTeacher = IsAcceptedByTeacher.ACCEPTED_BY_TEACHER;
-        }
 
         return Quiz.builder()
             .memberId(quizRequestDto.getMemberId())
@@ -51,7 +40,7 @@ public class QuizRequestDto {
             .quizAnswer(quizRequestDto.getQuizAnswer())
             .quizDescription(quizRequestDto.getQuizDescription())
             .quizLevel(quizRequestDto.getQuizLevel())
-            .isAcceptedByTeacher(quizRequestDto.getIsAcceptedByTeacher())
+            .isAcceptedByTeacher(quizRequestDto.memberId == null ? IsAcceptedByTeacher.NOT_ACCEPTED_BY_TEACHER : IsAcceptedByTeacher.ACCEPTED_BY_TEACHER)
             .createdAt(LocalDateTime.now())
             .build();
     }
