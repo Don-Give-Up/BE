@@ -2,6 +2,7 @@ package com.virtukch.dongiveupbe.quiz.controller;
 
 import com.virtukch.dongiveupbe.quiz.dto.QuizResponseDto;
 import com.virtukch.dongiveupbe.quiz.service.QuizService;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Hidden
 @RestController
 @RequestMapping("api/v1/quizs")
 @Tag(name = "퀴즈 API", description = "퀴즈를 조회하고 관리하기 위한 API")

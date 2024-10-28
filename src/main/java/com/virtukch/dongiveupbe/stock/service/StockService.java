@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.stock.service;
 import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
 import com.virtukch.dongiveupbe.stock.entity.Stock;
 import com.virtukch.dongiveupbe.stock.repository.StockRepository;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,4 +21,7 @@ public class StockService {
         return stock.orElseThrow(() -> new EntityNotFoundException("주식을 찾을 수 없어요. ID: " + id));
     }
 
+    public List<Stock> findAll() {
+        return stockRepository.findAll();
+    }
 }

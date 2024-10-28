@@ -2,6 +2,7 @@ package com.virtukch.dongiveupbe.saving_product.controller;
 
 import com.virtukch.dongiveupbe.saving_product.entity.SavingProduct;
 import com.virtukch.dongiveupbe.saving_product.service.SavingProductService;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Hidden
 @RestController
 @RequestMapping("api/v1/saving-product")
 @Tag(name = "저축 상품 API", description = "이름이 다르거나 정책이 다른 저축 상품을 추가하거나, 저축 상품을 조회할 때 사용할 수 있는 API")
