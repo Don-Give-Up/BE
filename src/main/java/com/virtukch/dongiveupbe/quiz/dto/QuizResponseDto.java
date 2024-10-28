@@ -24,7 +24,7 @@ public class QuizResponseDto {
             .category(quiz.getCategory())
             .type(quiz.getType())
             .answer(quiz.getAnswer())
-            .desc(quiz.getDesc())
+            .desc(quiz.getDescription())
             .build();
     }
 }

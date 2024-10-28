@@ -18,7 +18,7 @@ public class QuizRequestDto {
 
     private String answer;
 
-    private String desc;
+    private String description;
 
     private IsAcceptedByTeacher isAcceptedByTeacher;     // XR 에게 보내지 않을 정보
 
@@ -33,7 +33,7 @@ public class QuizRequestDto {
             .category(quizRequestDto.getCategory())
             .type(quizRequestDto.getType())
             .answer(quizRequestDto.getAnswer())
-            .desc(quizRequestDto.getDesc())
+            .description(quizRequestDto.getDescription())
             .isAcceptedByTeacher(quizRequestDto.getIsAcceptedByTeacher())
             .createdAt(LocalDateTime.now())
             .updatedAt(null)

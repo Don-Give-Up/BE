@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.quiz.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +28,8 @@ public class Quiz {
 
     private String answer;
 
-    private String desc;
+    @JsonProperty(namespace = "desc")
+    private String description;
 
     @Setter
     private IsAcceptedByTeacher isAcceptedByTeacher;     // XR 에게 보내지 않을 정보
@@ -37,13 +39,13 @@ public class Quiz {
     private LocalDateTime updatedAt;        // XR 에게 보내지 않을 정보
 
     @Builder
-    public Quiz(Long memberId, String category, String type, String answer, String desc,
+    public Quiz(Long memberId, String category, String type, String answer, String description,
         IsAcceptedByTeacher isAcceptedByTeacher, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.memberId = memberId;
         this.category = category;
         this.type = type;
         this.answer = answer;
-        this.desc = desc;
+        this.description = description;
         this.isAcceptedByTeacher = isAcceptedByTeacher;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
