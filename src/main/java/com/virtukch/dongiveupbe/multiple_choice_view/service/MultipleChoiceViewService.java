@@ -1,11 +1,12 @@
 package com.virtukch.dongiveupbe.multiple_choice_view.service;
 
+import com.virtukch.dongiveupbe.multiple_choice_view.dto.MultipleChoiceViewRequestDto;
 import com.virtukch.dongiveupbe.multiple_choice_view.dto.MultipleChoiceViewResponseDto;
 import com.virtukch.dongiveupbe.multiple_choice_view.entity.MultipleChoiceView;
+import com.virtukch.dongiveupbe.multiple_choice_view.exception.MultipleChoiceViewNotFoundException;
 import com.virtukch.dongiveupbe.multiple_choice_view.repository.MultipleChoiceViewRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,14 +19,21 @@ public class MultipleChoiceViewService {
         this.multipleChoiceViewRepository = multipleChoiceViewRepository;
     }
 
-    public ResponseEntity<List<MultipleChoiceViewResponseDto>> findByQuizId(Long quizId) {
+    public List<MultipleChoiceViewResponseDto> findByQuizId(Long quizId) {
         List<MultipleChoiceView> multipleChoiceViewList = multipleChoiceViewRepository.findByQuizId(
             quizId);
 
         if (multipleChoiceViewList.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            throw new MultipleChoiceViewNotFoundException("No views found for quiz id: " + quizId);
         }
-        return ResponseEntity.ok(multipleChoiceViewRepository.findByQuizId(quizId).stream()
-            .map(MultipleChoiceViewResponseDto::fromEntity).toList());
+
+        return multipleChoiceViewRepository.findByQuizId(quizId).stream()
+            .map(MultipleChoiceViewResponseDto::fromEntity).toList();
+    }
+
+    public MultipleChoiceViewResponseDto save(
+        MultipleChoiceViewRequestDto multipleChoiceViewRequestDto) {
+        return MultipleChoiceViewResponseDto.fromEntity(multipleChoiceViewRepository.save(
+            MultipleChoiceViewRequestDto.toEntity(multipleChoiceViewRequestDto)));
     }
 }

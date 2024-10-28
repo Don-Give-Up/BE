@@ -24,9 +24,7 @@ public class QuizSolveRecordRequestDto {
 
     private Correct correct;
 
-    private Integer attemptCount;
-
-    public QuizSolveRecord toEntity(
+    public static QuizSolveRecord toEntity(
         QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
         return QuizSolveRecord.builder()
             .gameMemberId(quizSolveRecordRequestDto.getGameMemberId())
@@ -34,7 +32,6 @@ public class QuizSolveRecordRequestDto {
             .roundId(quizSolveRecordRequestDto.getRoundId())
             .createdAt(quizSolveRecordRequestDto.getCreatedAt())
             .correct(quizSolveRecordRequestDto.getCorrect())
-            .attemptCount(quizSolveRecordRequestDto.getAttemptCount())
             .build();
     }
 }

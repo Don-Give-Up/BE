@@ -3,20 +3,14 @@ package com.virtukch.dongiveupbe.quiz_solve_record.service;
 import com.virtukch.dongiveupbe.essential_product.exception.EntityNotFoundException;
 import com.virtukch.dongiveupbe.game_member.dto.GameMemberRequestDto;
 import com.virtukch.dongiveupbe.game_member.dto.GameMemberResponseDto;
-import com.virtukch.dongiveupbe.game_member.entity.GameMember;
 import com.virtukch.dongiveupbe.game_member.service.GameMemberService;
 import com.virtukch.dongiveupbe.quiz_solve_record.dto.QuizSolveRecordRequestDto;
 import com.virtukch.dongiveupbe.quiz_solve_record.dto.QuizSolveRecordResponseDto;
 import com.virtukch.dongiveupbe.quiz_solve_record.entity.QuizSolveRecord;
 import com.virtukch.dongiveupbe.quiz_solve_record.repository.QuizSolveRecordRepository;
-
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-
 import com.virtukch.dongiveupbe.round.entity.Round;
 import com.virtukch.dongiveupbe.round.service.RoundService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -74,7 +68,6 @@ public class QuizSolveRecordService {
                 .roundId(requestDto.getRoundId())
                 .createdAt(requestDto.getCreatedAt())
                 .correct(requestDto.getCorrect())
-                .attemptCount(requestDto.getAttemptCount())
                 .quizCorrectMoney(salaryPerQuiz) // setter 사용 없이 빌더에서 직접 설정
                 .build();
         quizSolveRecord = quizSolveRecordRepository.save(quizSolveRecord);

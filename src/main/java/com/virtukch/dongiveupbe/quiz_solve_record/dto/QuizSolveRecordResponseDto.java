@@ -38,7 +38,6 @@ public class QuizSolveRecordResponseDto {
                 .roundId(quizSolveRecord.getRoundId())
                 .createdAt(quizSolveRecord.getCreatedAt())
                 .correct(quizSolveRecord.getCorrect())
-                .attemptCount(quizSolveRecord.getAttemptCount())
                 .quizCorrectMoney(quizSolveRecord.getQuizCorrectMoney())
                 .build();
     }
