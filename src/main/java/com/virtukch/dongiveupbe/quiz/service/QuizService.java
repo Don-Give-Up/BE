@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.quiz.service;
 
+import com.virtukch.dongiveupbe.quiz.dto.QuizRequestDto;
 import com.virtukch.dongiveupbe.quiz.dto.QuizResponseDto;
 import com.virtukch.dongiveupbe.quiz.entity.Quiz;
 import com.virtukch.dongiveupbe.quiz.repository.QuizRepository;
@@ -32,5 +33,10 @@ public class QuizService {
         }
 
         return ResponseEntity.ok(QuizResponseDto.fromEntity(quiz));
+    }
+
+    public QuizResponseDto save(QuizRequestDto quizRequestDto) {
+        Quiz quiz = quizRepository.save(QuizRequestDto.toEntity(quizRequestDto));
+        return QuizResponseDto.fromEntity(quiz);
     }
 }

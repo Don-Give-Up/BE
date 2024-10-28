@@ -24,7 +24,7 @@ public class QuizSolveRecordRequestDto {
 
     private Correct correct;
 
-    public QuizSolveRecord toEntity(
+    public static QuizSolveRecord toEntity(
         QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
         return QuizSolveRecord.builder()
             .gameMemberId(quizSolveRecordRequestDto.getGameMemberId())
