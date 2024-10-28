@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/inventories")
 @RequiredArgsConstructor
-@Tag(name = "인벤토리 API (안 쓰셔도 될 것 같습니다)", description = "이미지 관리에 대한 논의가 필요할 것 같아요")
+@Tag(name = "인벤토리 API (안 쓰셔도 될 것 같습니다. 혹여나 안 쓰시게 되면 말씀해 주세요! 백엔드 일이 많이 줄어 듭니다ㅠㅠ)", description = "이미지 관리에 대한 논의가 필요할 것 같아요")
 public class InventoryController {
 
     private final InventoryService inventoryService;
