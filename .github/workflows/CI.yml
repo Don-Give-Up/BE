@@ -5,6 +5,8 @@ on:
     branches:
       - main   # Branch to monitor for changes
       - dev
+      - feature/south-korea
+      - feature/north-korea
 
 jobs:
   build:
