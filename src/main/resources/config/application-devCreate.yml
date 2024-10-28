@@ -7,7 +7,7 @@ server:
 
 spring:
   datasource:
-    url: ${EXTERNAL_DB_URL}
+    url: ${EXTERNAL_DB_URL} # '${{ secrets.EXTERNAL_DB_URL }}' 이라고 해도 됨.
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${EXTERNAL_DB_USERNAME}
     password: ${EXTERNAL_DB_PASSWORD}

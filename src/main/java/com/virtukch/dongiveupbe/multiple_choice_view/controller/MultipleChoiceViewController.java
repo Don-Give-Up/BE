@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.multiple_choice_view.controller;
 
+import com.virtukch.dongiveupbe.multiple_choice_view.dto.MultipleChoiceViewRequestDto;
 import com.virtukch.dongiveupbe.multiple_choice_view.dto.MultipleChoiceViewResponseDto;
 import com.virtukch.dongiveupbe.multiple_choice_view.service.MultipleChoiceViewService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +32,13 @@ public class MultipleChoiceViewController {
         description = "퀴즈 아이디는 api/v1/quizs 에서 조회할 수 있습니다.")
     public ResponseEntity<List<MultipleChoiceViewResponseDto>> findByQuizId(
         @PathVariable("quizId") Long quizId) {
-        return multipleChoiceViewService.findByQuizId(quizId);
+        return ResponseEntity.ok(multipleChoiceViewService.findByQuizId(quizId));
+    }
+
+    @PostMapping
+    @Operation(summary = "객관식 번호를 추가하는 API", description = "퀴즈 아이디는 api/v1/quizs 에서 조회할 수 있습니다.")
+    public ResponseEntity<MultipleChoiceViewResponseDto> create(
+        @RequestBody MultipleChoiceViewRequestDto multipleChoiceViewRequestDto) {
+        return ResponseEntity.ok(multipleChoiceViewService.save(multipleChoiceViewRequestDto));
     }
 }
