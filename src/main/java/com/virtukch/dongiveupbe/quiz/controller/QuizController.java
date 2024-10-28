@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/quizs")
+@RequestMapping("/api/v1/quizs")
 @Tag(name = "퀴즈 API", description = "퀴즈를 조회하고 관리하기 위한 API")
 public class QuizController {
 
