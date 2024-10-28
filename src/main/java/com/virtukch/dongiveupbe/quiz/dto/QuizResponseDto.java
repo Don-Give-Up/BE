@@ -1,10 +1,7 @@
 package com.virtukch.dongiveupbe.quiz.dto;
 
 import com.virtukch.dongiveupbe.quiz.entity.IsAcceptedByTeacher;
-import com.virtukch.dongiveupbe.quiz.entity.MultipleChoiceQuizAnswer;
-import com.virtukch.dongiveupbe.quiz.entity.OXQuizAnswer;
 import com.virtukch.dongiveupbe.quiz.entity.Quiz;
-import com.virtukch.dongiveupbe.quiz.entity.QuizType;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,44 +10,23 @@ import lombok.Getter;
 @Builder
 public class QuizResponseDto {
 
-    private Long quizId;
+    private Long quizNum;
 
-    private Long memberId;
+    private String category;
 
-    private Long unitId;
+    private String type;
 
-    private String quizTitle;
+    private String answer;
 
-    private QuizType quizType;
-
-    private OXQuizAnswer oxQuizAnswer;
-
-    private MultipleChoiceQuizAnswer multipleChoiceQuizAnswer;
-
-    private String subjectiveQuizAnswer;
-
-    private IsAcceptedByTeacher isAcceptedByTeacher;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private Long quizLevel;
+    private String desc;
 
     public static QuizResponseDto fromEntity(Quiz quiz) {
         return QuizResponseDto.builder()
-            .quizId(quiz.getQuizId())
-            .memberId(quiz.getMemberId())
-            .unitId(quiz.getUnitId())
-            .quizTitle(quiz.getQuizTitle())
-            .quizType(quiz.getQuizType())
-            .oxQuizAnswer(quiz.getOxQuizAnswer())
-            .multipleChoiceQuizAnswer(quiz.getMultipleChoiceQuizAnswer())
-            .subjectiveQuizAnswer(quiz.getSubjectiveQuizAnswer())
-            .isAcceptedByTeacher(quiz.getIsAcceptedByTeacher())
-            .createdAt(quiz.getCreatedAt())
-            .updatedAt(quiz.getUpdatedAt())
-            .quizLevel(quiz.getQuizLevel())
+            .quizNum(quiz.getQuizNum())
+            .category(quiz.getCategory())
+            .type(quiz.getType())
+            .answer(quiz.getAnswer())
+            .desc(quiz.getDesc())
             .build();
     }
 }

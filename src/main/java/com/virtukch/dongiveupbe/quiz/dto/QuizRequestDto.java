@@ -1,53 +1,52 @@
 package com.virtukch.dongiveupbe.quiz.dto;
 
+import com.virtukch.dongiveupbe.member.utils.PasswordUtils;
 import com.virtukch.dongiveupbe.quiz.entity.IsAcceptedByTeacher;
-import com.virtukch.dongiveupbe.quiz.entity.MultipleChoiceQuizAnswer;
-import com.virtukch.dongiveupbe.quiz.entity.OXQuizAnswer;
 import com.virtukch.dongiveupbe.quiz.entity.Quiz;
-import com.virtukch.dongiveupbe.quiz.entity.QuizType;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Builder
 @Getter
 public class QuizRequestDto {
 
-    private Long memberId;
+    private Long memberId;                  // XR 에게 보내지 않을 정보
 
-    private Long unitId;
+    private String category;
 
-    private String quizTitle;
+    private String type;
 
-    private QuizType quizType;
+    private String answer;
 
-    private OXQuizAnswer oxQuizAnswer;
+    private String desc;
 
-    private MultipleChoiceQuizAnswer multipleChoiceQuizAnswer;
+    private IsAcceptedByTeacher isAcceptedByTeacher;     // XR 에게 보내지 않을 정보
 
-    private String subjectiveQuizAnswer;
+    private LocalDateTime createdAt;        // XR 에게 보내지 않을 정보
 
-    private IsAcceptedByTeacher isAcceptedByTeacher;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private Long quizLevel;
+    private LocalDateTime updatedAt;        // XR 에게 보내지 않을 정보
 
     public static Quiz toEntity(QuizRequestDto quizRequestDto) {
-        return Quiz.builder()
+
+        Quiz quiz = Quiz.builder()
             .memberId(quizRequestDto.getMemberId())
-            .unitId(quizRequestDto.getUnitId())
-            .quizTitle(quizRequestDto.getQuizTitle())
-            .quizType(quizRequestDto.getQuizType())
-            .oxQuizAnswer(quizRequestDto.getOxQuizAnswer())
-            .multipleChoiceQuizAnswer(quizRequestDto.getMultipleChoiceQuizAnswer())
-            .subjectiveQuizAnswer(quizRequestDto.getSubjectiveQuizAnswer())
+            .category(quizRequestDto.getCategory())
+            .type(quizRequestDto.getType())
+            .answer(quizRequestDto.getAnswer())
+            .desc(quizRequestDto.getDesc())
             .isAcceptedByTeacher(quizRequestDto.getIsAcceptedByTeacher())
-            .createdAt(quizRequestDto.getCreatedAt())
-            .updatedAt(quizRequestDto.getUpdatedAt())
-            .quizLevel(quizRequestDto.getQuizLevel())
+            .createdAt(LocalDateTime.now())
+            .updatedAt(null)
             .build();
+
+        if (quizRequestDto.getMemberId() == null) {
+            quiz.setIsAcceptedByTeacher(IsAcceptedByTeacher.NOT_ACCEPTED_BY_TEACHER);
+        } else {
+            quiz.setIsAcceptedByTeacher(IsAcceptedByTeacher.ACCEPTED_BY_TEACHER);
+        }
+
+        return quiz;
     }
 }
