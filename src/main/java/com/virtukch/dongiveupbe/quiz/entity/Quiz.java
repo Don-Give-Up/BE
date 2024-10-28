@@ -1,53 +1,41 @@
 package com.virtukch.dongiveupbe.quiz.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@Builder
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Quiz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long quizNum;
+    private Long quizId;
 
-    private Long memberId;                  // XR 에게 보내지 않을 정보
+    private Long memberId;
 
-    private String category;
+    private String quizCategory;
 
-    private String type;
+    private String quizTitle;
 
-    private String answer;
+    private String quizType;
 
-    @JsonProperty(namespace = "desc")
-    private String description;
+    private String quizAnswer;
 
-    @Setter
-    private IsAcceptedByTeacher isAcceptedByTeacher;     // XR 에게 보내지 않을 정보
+    private String quizDescription;
 
-    private LocalDateTime createdAt;        // XR 에게 보내지 않을 정보
+    private String quizLevel;
 
-    private LocalDateTime updatedAt;        // XR 에게 보내지 않을 정보
+    private IsAcceptedByTeacher isAcceptedByTeacher;
 
-    @Builder
-    public Quiz(Long memberId, String category, String type, String answer, String description,
-        IsAcceptedByTeacher isAcceptedByTeacher, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.memberId = memberId;
-        this.category = category;
-        this.type = type;
-        this.answer = answer;
-        this.description = description;
-        this.isAcceptedByTeacher = isAcceptedByTeacher;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
+    private LocalDateTime createdAt;
 }

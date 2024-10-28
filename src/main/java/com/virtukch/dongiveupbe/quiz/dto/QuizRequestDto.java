@@ -3,48 +3,56 @@ package com.virtukch.dongiveupbe.quiz.dto;
 import com.virtukch.dongiveupbe.quiz.entity.IsAcceptedByTeacher;
 import com.virtukch.dongiveupbe.quiz.entity.Quiz;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Builder
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class QuizRequestDto {
 
-    private Long memberId;                  // XR 에게 보내지 않을 정보
+    // 퀴즈를 생성하는 사람은 AI 혹은 Web 내의 선생님
 
-    private String category;
+    private Long memberId; // AI 는 memberId 가 null, 선생님은 토큰에 가지고 있음.
 
-    private String type;
+    private String quizCategory; // 필수 등록
 
-    private String answer;
+    private String quizTitle; // 필수 등록
 
-    private String description;
+    private String quizType; // 필수 등록
 
-    private IsAcceptedByTeacher isAcceptedByTeacher;     // XR 에게 보내지 않을 정보
+    private String quizAnswer; // 필수 등록
 
-    private LocalDateTime createdAt;        // XR 에게 보내지 않을 정보
+    private String quizDescription; // 필수 등록
 
-    private LocalDateTime updatedAt;        // XR 에게 보내지 않을 정보
+    private String quizLevel; // 필수 등록
+
+    private IsAcceptedByTeacher isAcceptedByTeacher; // AI 인 경우 NOT_ACCEPTED_BY_TEACHER
+
+    private LocalDateTime createdAt; // 입력하지 않아도 됨.
 
     public static Quiz toEntity(QuizRequestDto quizRequestDto) {
 
-        Quiz quiz = Quiz.builder()
-            .memberId(quizRequestDto.getMemberId())
-            .category(quizRequestDto.getCategory())
-            .type(quizRequestDto.getType())
-            .answer(quizRequestDto.getAnswer())
-            .description(quizRequestDto.getDescription())
-            .isAcceptedByTeacher(quizRequestDto.getIsAcceptedByTeacher())
-            .createdAt(LocalDateTime.now())
-            .updatedAt(null)
-            .build();
-
-        if (quizRequestDto.getMemberId() == null) {
-            quiz.setIsAcceptedByTeacher(IsAcceptedByTeacher.NOT_ACCEPTED_BY_TEACHER);
+        // AI 가 퀴즈의 생성을 요구하는 경우
+        if (quizRequestDto.memberId == null) {
+            quizRequestDto.isAcceptedByTeacher = IsAcceptedByTeacher.NOT_ACCEPTED_BY_TEACHER;
         } else {
-            quiz.setIsAcceptedByTeacher(IsAcceptedByTeacher.ACCEPTED_BY_TEACHER);
+            quizRequestDto.isAcceptedByTeacher = IsAcceptedByTeacher.ACCEPTED_BY_TEACHER;
         }
 
-        return quiz;
+        return Quiz.builder()
+            .memberId(quizRequestDto.getMemberId())
+            .quizCategory(quizRequestDto.getQuizCategory())
+            .quizTitle(quizRequestDto.getQuizTitle())
+            .quizType(quizRequestDto.getQuizType())
+            .quizAnswer(quizRequestDto.getQuizAnswer())
+            .quizDescription(quizRequestDto.getQuizDescription())
+            .quizLevel(quizRequestDto.getQuizLevel())
+            .isAcceptedByTeacher(quizRequestDto.getIsAcceptedByTeacher())
+            .createdAt(LocalDateTime.now())
+            .build();
     }
 }
