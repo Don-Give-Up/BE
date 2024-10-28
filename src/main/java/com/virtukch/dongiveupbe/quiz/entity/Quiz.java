@@ -1,10 +1,14 @@
 package com.virtukch.dongiveupbe.quiz.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -13,46 +17,35 @@ public class Quiz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long quizId;
+    private Long quizNum;
 
-    private Long memberId;
+    private Long memberId;                  // XR 에게 보내지 않을 정보
 
-    private Long unitId;
+    private String category;
 
-    private String quizTitle;
+    private String type;
 
-    private QuizType quizType;
+    private String answer;
 
-    private OXQuizAnswer oxQuizAnswer;
+    private String desc;
 
-    private MultipleChoiceQuizAnswer multipleChoiceQuizAnswer;
+    @Setter
+    private IsAcceptedByTeacher isAcceptedByTeacher;     // XR 에게 보내지 않을 정보
 
-    private String subjectiveQuizAnswer;
+    private LocalDateTime createdAt;        // XR 에게 보내지 않을 정보
 
-    private IsAcceptedByTeacher isAcceptedByTeacher;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
-
-    private Long quizLevel;
+    private LocalDateTime updatedAt;        // XR 에게 보내지 않을 정보
 
     @Builder
-    public Quiz(Long memberId, Long unitId, String quizTitle, QuizType quizType,
-        OXQuizAnswer oxQuizAnswer, MultipleChoiceQuizAnswer multipleChoiceQuizAnswer,
-        String subjectiveQuizAnswer, IsAcceptedByTeacher isAcceptedByTeacher,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt, Long quizLevel) {
+    public Quiz(Long memberId, String category, String type, String answer, String desc,
+        IsAcceptedByTeacher isAcceptedByTeacher, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.memberId = memberId;
-        this.unitId = unitId;
-        this.quizTitle = quizTitle;
-        this.quizType = quizType;
-        this.oxQuizAnswer = oxQuizAnswer;
-        this.multipleChoiceQuizAnswer = multipleChoiceQuizAnswer;
-        this.subjectiveQuizAnswer = subjectiveQuizAnswer;
+        this.category = category;
+        this.type = type;
+        this.answer = answer;
+        this.desc = desc;
         this.isAcceptedByTeacher = isAcceptedByTeacher;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.quizLevel = quizLevel;
     }
 }
