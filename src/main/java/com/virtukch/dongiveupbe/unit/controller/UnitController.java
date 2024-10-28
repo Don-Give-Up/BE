@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.unit.controller;
 import com.virtukch.dongiveupbe.unit.dto.UnitRequestDto;
 import com.virtukch.dongiveupbe.unit.dto.UnitResponseDto;
 import com.virtukch.dongiveupbe.unit.service.UnitService;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Hidden
 @RestController
 @RequestMapping("api/v1/units")
 @Tag(name = "단원 API", description = "문제가 속할 단원을 미리 만들고 관리하기 위한 API")
