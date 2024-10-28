@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonPropertyOrder({ "quizNum", "category", "quiz", "type", "answer", "desc", "level" }) // 원하는 순서 지정
+@JsonPropertyOrder({"quizNum", "category", "quiz", "type", "answer", "desc", "level"}) // 원하는 순서 지정
 public class QuizResponseDto {
 
     @JsonProperty(value = "quizNum")
