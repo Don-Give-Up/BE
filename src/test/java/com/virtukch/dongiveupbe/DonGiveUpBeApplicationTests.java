@@ -10,6 +10,7 @@ class DonGiveUpBeApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("Database URL: " + System.getenv("EXTERNAL_DB_URL"));
     }
 
 }

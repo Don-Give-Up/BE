@@ -36,6 +36,9 @@ jobs:
           EXTERNAL_DB_URL: ${{ secrets.EXTERNAL_DB_URL }}  # Get DB_URL from GitHub Secrets
           EXTERNAL_DB_USERNAME: ${{ secrets.EXTERNAL_DB_USERNAME }}  # Username
           EXTERNAL_DB_PASSWORD: ${{ secrets.EXTERNAL_DB_PASSWORD }}  # Password
+          AWS_DB_URL: ${{ secrets.AWS_DB_URL }}
+          AWS_DB_USERNAME: ${{ secrets.AWS_DB_USERNAME }}  # Username
+          AWS_DB_PASSWORD: ${{ secrets.AWS_DB_PASSWORD }}  # Password
           # Note: The variable names on the left must match those in application.
           # properties or application.yml.
           # Otherwise, it will cause a compile error (contextLoads() FAILED)

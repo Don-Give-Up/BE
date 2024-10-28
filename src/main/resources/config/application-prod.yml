@@ -7,10 +7,10 @@ server:
 
 spring:
   datasource:
-    url: ${EXTERNAL_DB_URL}
+    url: ${AWS_DB_URL}
     driver-class-name:
-    username: ${EXTERNAL_DB_USERNAME}
-    password: ${EXTERNAL_DB_PASSWORD}
+    username: ${AWS_DB_USERNAME}
+    password: ${AWS_DB_PASSWORD}
 
   jpa:
     show-sql: true
