@@ -1,4 +1,4 @@
-package com.virtukch.dongiveupbe.quiz;
+package com.virtukch.dongiveupbe.quiz.exception;
 
 public class QuizNotFoundException extends RuntimeException {
 

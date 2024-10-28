@@ -2,7 +2,6 @@ package com.virtukch.dongiveupbe.quiz.controller;
 
 import com.virtukch.dongiveupbe.quiz.dto.QuizRequestDto;
 import com.virtukch.dongiveupbe.quiz.dto.QuizResponseDto;
-import com.virtukch.dongiveupbe.quiz.entity.Quiz;
 import com.virtukch.dongiveupbe.quiz.service.QuizService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
@@ -44,6 +43,4 @@ public class QuizController {
     public ResponseEntity<QuizResponseDto> create(@RequestBody QuizRequestDto quizRequestDto) {
         return ResponseEntity.ok(quizService.save(quizRequestDto));
     }
-
-    // 4. 퀴즈 더미 생성 -> 서비스 로직으로 바로 수행
 }
