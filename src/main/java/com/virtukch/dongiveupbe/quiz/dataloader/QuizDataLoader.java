@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile({"localCreate", "devCreate", "prod"})
+@Profile({"localCreate", "devCreate"})
 public class QuizDataLoader implements CommandLineRunner {
 
     private final QuizRepository quizRepository;
