@@ -14,7 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-
       - name: Cache Gradle packages
         uses: actions/cache@v3
         with:
@@ -41,10 +40,7 @@ jobs:
           # properties or application.yml.
           # Otherwise, it will cause a compile error (contextLoads() FAILED)
           # If you push devCreate or dev Profile, you should write like "EXTERNAL_DB_URL"
-        run: ./gradlew clean build -x test
-
-      - name: Run tests
-        run: ./gradlew test  # Command to run tests
+        run: ./gradlew clean build
 
       - name: Send Discord Notification
         if: ${{ always() }}  # Set to always run (regardless of build success)
