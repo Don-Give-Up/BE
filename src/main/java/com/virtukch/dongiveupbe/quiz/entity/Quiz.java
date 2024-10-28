@@ -37,10 +37,9 @@ public class Quiz {
     private LocalDateTime updatedAt;        // XR 에게 보내지 않을 정보
 
     @Builder
-    public Quiz(Long quizNum, Long memberId, String category, String type, String answer,
+    public Quiz(Long memberId, String category, String type, String answer,
         String desc, IsAcceptedByTeacher isAcceptedByTeacher, LocalDateTime createdAt,
         LocalDateTime updatedAt) {
-        this.quizNum = quizNum;
         this.memberId = memberId;
         this.category = category;
         this.type = type;

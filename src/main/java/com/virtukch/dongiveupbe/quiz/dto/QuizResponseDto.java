@@ -1,8 +1,6 @@
 package com.virtukch.dongiveupbe.quiz.dto;
 
-import com.virtukch.dongiveupbe.quiz.entity.IsAcceptedByTeacher;
 import com.virtukch.dongiveupbe.quiz.entity.Quiz;
-import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
 
