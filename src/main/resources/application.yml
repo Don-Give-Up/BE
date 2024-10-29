@@ -3,6 +3,4 @@ spring:
     active: prod # when deploy -> prod
     # local (ddl-auto: none, DataLoader X, LocalDB)
     # localCreate (ddl-auto: create, DataLoader O, LocalDB)
-    # dev (ddl-auto: none, DataLoader X, ExternalDB)
-    # devCreate (ddl-auto: create, DataLoader O, ExternalDB)
-    # prod (ddl-auto: create, DataLoader O, ExternalDB)
+    # prod (ddl-auto: create, DataLoader O, AWS DB)
