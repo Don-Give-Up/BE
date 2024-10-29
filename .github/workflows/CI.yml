@@ -5,6 +5,8 @@ on:
     branches:
       - main   # Branch to monitor for changes
       - dev
+      - feature/south-korea
+      - feature/north-korea
 
 jobs:
   build:
@@ -33,16 +35,12 @@ jobs:
 
       - name: Build with Gradle
         env:
-          EXTERNAL_DB_URL: ${{ secrets.EXTERNAL_DB_URL }}  # Get DB_URL from GitHub Secrets
-          EXTERNAL_DB_USERNAME: ${{ secrets.EXTERNAL_DB_USERNAME }}  # Username
-          EXTERNAL_DB_PASSWORD: ${{ secrets.EXTERNAL_DB_PASSWORD }}  # Password
           AWS_DB_URL: ${{ secrets.AWS_DB_URL }}
           AWS_DB_USERNAME: ${{ secrets.AWS_DB_USERNAME }}  # Username
           AWS_DB_PASSWORD: ${{ secrets.AWS_DB_PASSWORD }}  # Password
-          # Note: The variable names on the left must match those in application.
-          # properties or application.yml.
+          # Note: The variable names on the left must match those in application.properties or application.yml.
           # Otherwise, it will cause a compile error (contextLoads() FAILED)
-          # If you push devCreate or dev Profile, you should write like "EXTERNAL_DB_URL"
+          # If you push local or localCreate Profile, you should write like "LOCAL_DB_URL"
         run: ./gradlew clean build -x test
 
       - name: Send Discord Notification

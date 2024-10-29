@@ -3,7 +3,6 @@ package com.virtukch.dongiveupbe.quiz.controller;
 import com.virtukch.dongiveupbe.quiz.dto.QuizRequestDto;
 import com.virtukch.dongiveupbe.quiz.dto.QuizResponseDto;
 import com.virtukch.dongiveupbe.quiz.service.QuizService;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,21 +26,21 @@ public class QuizController {
         this.quizService = quizService;
     }
 
+    // 1. 퀴즈 전체 조회
     @GetMapping
-    @Operation(summary = "모든 퀴즈를 조회하고 싶을 때 호출해 주시면 됩니다.")
     public ResponseEntity<List<QuizResponseDto>> findAll() {
-        return quizService.findAll();
+        return ResponseEntity.ok(quizService.findAll());
     }
 
+    // 2. 퀴즈 아이디로 조회
     @GetMapping("{quizId}")
-    @Operation(summary = "특정 퀴즈를 조회하고 싶을 때 호출해 주시면 됩니다. 퀴즈 아이디를 path 에 담아야 합니다.", description = "퀴즈 아이디는 api/v1/quizs 에서 조회할 수 있습니다.")
     public ResponseEntity<QuizResponseDto> findById(@PathVariable Long quizId) {
-        return quizService.findById(quizId);
+        return ResponseEntity.ok(quizService.findById(quizId));
     }
 
+    // 3. 퀴즈 단일 생성
     @PostMapping
-    @Operation(summary = "퀴즈를 생성하고 싶을 때 호출해 주시면 됩니다.")
-    public ResponseEntity<QuizResponseDto> save(@RequestBody QuizRequestDto quizRequestDto) {
+    public ResponseEntity<QuizResponseDto> create(@RequestBody QuizRequestDto quizRequestDto) {
         return ResponseEntity.ok(quizService.save(quizRequestDto));
     }
 }

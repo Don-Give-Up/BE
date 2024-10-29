@@ -1,0 +1,242 @@
+[
+  {
+    "quizCategory": "용돈관리",
+    "quizTitle": "저축이란 미래를 위해 현재의 돈을 다 쓰지 않고 남겨두는 것을 말한다",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "저축은 급한 돈이 필요할 때나 미래에 하고 싶은 것이 있을 때를 위해 필요합니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "용돈관리",
+    "quizTitle": "여가 생활을 하는 데 돈은 필요 없다",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "'돈은 일상생활에서 항상 필요하며, 여가 생활을 위해서도 필요합니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "용돈관리",
+    "quizTitle": "계획을 세우는 데는 시간이 많이 걸리므로 그때그때 필요에 따라 돈을 사용하는 것이 바람직하다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "'계획을 세우는 것이 귀찮다고 해서 그때그때 소비하면, 돈이 '꼭 필요한 순간에 없을 수 있어' 바람직하지 않습니다'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "용돈관리",
+    "quizTitle": "용돈 기입장을 쓰면 계획적인 소비생활을 하는데 도움이 된다.",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "'용돈 기입장을 쓰면, '수입과 지출을 파악'하여 계획적인 소비생활을 하는데 도움이 됩니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "용돈관리",
+    "quizTitle": "'정기예금이란, 매달 일정한 돈을 정해진 기간 동안 저금하는 것을 말한다.'",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "'정기예금이란, 일정한 돈을 약속한 기간동안 저금하는 것을 말한다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "용돈관리",
+    "quizTitle": "'정기적금이란, 일정한 돈을 약속한 기간 동안 저금하는 것을 말한다.'",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "매달 일정한 돈을 정해진 기간 동안 저금하는 것은 정기 적금 입니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "용돈관리",
+    "quizTitle": "용돈기입장에 용돈을 적을때는 수입이나 지출이 있던 날의 날짜순으로 쓰고 금액을 적는다",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "용돈기입장은 날짜순으로 기록함으로써 수입과 지출을 관리할 수 있습니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "용돈관리",
+    "quizTitle": "'소득이란, 물건을 파는 등 경제활동을 통해 얻은 대가를 의미한다.'",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "'소득'이란, 물건을 파는 등 '경제활동을 통해 얻은 대가'를 의미합니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "화폐",
+    "quizTitle": "우리나라 지폐 중 가장 큰 액수의 지폐는 5만원권이다.",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "'우리나라 지폐는 천원권, 5천원권, 만원권, 5만원권이 있습니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "화폐",
+    "quizTitle": "우리나라에서 일반적으로 발행하는 지폐는 총 4종이다.",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "'우리나라 지폐는 천원권, 5천원권, 만원권, 5만원권으로 총 4종 있습니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "화폐",
+    "quizTitle": "화폐는 공공저작물이기 때문에 개인이 마음대로 만들어도 된다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "화폐는 국가 안보와 관련된 저작물이므로 개인이 마음대로 만든다면 이는 '통화위조변조죄'에 해당합니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "화폐",
+    "quizTitle": "천원 지폐와 만원 지폐의 크기는 같다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "화폐 위변조 등을 방지하고자 금액에 따라 지폐의 크기는 다르며 천원권-5천원권-만원권-5만원권 순으로 크기가 큽니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "화폐",
+    "quizTitle": "찢어진 화폐는 은행에서 교환이 불가하다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "일정한 범위 내에서 훼손된 화폐는 은행에서 교환이 가능합니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "화폐",
+    "quizTitle": "신용카드의 크기는 모두 다르다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "신용카드의 크기는 국제 표준 규격에 따르기 때문에 모두 같습니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "화폐",
+    "quizTitle": "동전에는 위조방지장치가 없다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "동전에도 위조방지장치가 있어 위조 여부를 판별할 수 있습니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "신용과 위험관리",
+    "quizTitle": "주민등록번호는 개인 정보에 해당한다.",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "'개인정보란, 이름, 주민등록번호, 주소 등을 의미하며 이를 잘 관리해야 합니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "신용과 위험관리",
+    "quizTitle": "신용카드를 사용하면 충동구매로 인한 과소비를 줄일 수 있다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "'자신의 소득을 고려하지 않고, 신용카드를 사용한다면 과소비할 수 있습니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "신용과 위험관리",
+    "quizTitle": "1년 후나 10년 후나 돈의 가치는 변하지 않는다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "돈의 가치는 시간에 따라 달라집니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "신용과 위험관리",
+    "quizTitle": "나에게는 위험한 상황이 발생할리가 없다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "'위험한 상황은 '누구에게나 발생'할 수 있으며, 저축 등을 통해 이를 대비할 수 있습니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "신용과 위험관리",
+    "quizTitle": "물가는 항상 그대로다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "'물가란, 일반적인 물건들의 평균 가격으로 시기에 따라 다릅니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "신용과 위험관리",
+    "quizTitle": "여러 사람이 돈을 모아 공동 재산을 마련하고 사고를 당한 사람을 도와주는 제도를 보험이라고 한다.",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "경제적 손해를 대비'하기 위해 사람들이 미리 일정한 돈을 '함께 적립'하여 두었다가 사고를 당한 사람에게 일정 금액을 주어 돕는 것을 '보험'이라고 합니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "개인정보보호와 금융사기 예방",
+    "quizTitle": "금융사기 피해상담 위한 금융감독원 상담센터의 번호는 1332이다.",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "'금융감독원은 고금리, 불법 채권추심, 대출사기 등 불법사금융 피해 예방을 위한 신고센터(1332)를 운영 중에 있습니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "개인정보보호와 금융사기 예방",
+    "quizTitle": "비밀번호는 기억하기 쉽게 항상 같은 번호로 설정한다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "동일한 비밀번호'를 사용할 경우 '보안에 취약'하므로 여러 개의 비밀번호를 사용하는 것이 좋습니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "개인정보보호와 금융사기 예방",
+    "quizTitle": "광고는 자세하게 정보를 제공하므로 항상 믿을 수 있다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "'판매자가 허위, 과장하여 광고할 수 있기 때문에 무조건 믿는 것은 좋지 않습니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "개인정보보호와 금융사기 예방",
+    "quizTitle": "통장 비밀번호를 물어본 경우 알려주어도 문제 없다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "'비밀번호는 항상 본인만 알고 있어야하며, 주기적으로 변경하는 것이 중요합니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "금융회사",
+    "quizTitle": "저축은행은 금융 회사이다.",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "저축은행'은 서민과 중소기업의 금융편의를 도모하고 저축을 증대하기 위해 설립된 '서민금융기관' 입니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "금융회사",
+    "quizTitle": "'저축은행은 지역 서민, 기업을 대상으로 예금과 대출 업무를 수행한다.'",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "저축은행'은 서민과 중소기업의 금융편의를 도모하고 저축을 증대하기 위해 설립된 '서민금융기관' 입니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "금융회사",
+    "quizTitle": "저축은행은 저축 이외 금융업무는 할 수 없다.",
+    "quizType": "O/X",
+    "quizAnswer": "X",
+    "quizDescription": "저축은행은 예·적금 업무 및 대출 업무 등 금융 서비스를 제공하고 있습니다.",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "금융회사",
+    "quizTitle": "'저축은행, 협동조합, 새마을금고에서 은행처럼 저축을 할 수 있다.'",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "'저축은행, 협동조합, 새마을금고 등에서 예금, 적금 업무를 할 수 있습니다.'",
+    "quizLevel": "easy"
+  },
+  {
+    "quizCategory": "금융회사",
+    "quizTitle": "은행에서 내 돈을 외국돈으로 바꿀 수 있다.",
+    "quizType": "O/X",
+    "quizAnswer": "O",
+    "quizDescription": "은행에서는 우리나라 돈을 외국 돈과 바꾸는 환전이 가능합니다.",
+    "quizLevel": "easy"
+  }
+]

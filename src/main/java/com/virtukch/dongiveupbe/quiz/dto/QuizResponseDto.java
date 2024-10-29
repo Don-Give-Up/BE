@@ -1,30 +1,50 @@
 package com.virtukch.dongiveupbe.quiz.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.virtukch.dongiveupbe.quiz.entity.Quiz;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonPropertyOrder({"quizNum", "category", "quiz", "type", "answer", "desc", "level"}) // 원하는 순서 지정
 public class QuizResponseDto {
 
-    private Long quizNum;
+    @JsonProperty(value = "quizNum")
+    private Long quizId;
 
-    private String category;
+    @JsonProperty(value = "category")
+    private String quizCategory;
 
-    private String type;
+    @JsonProperty(value = "quiz")
+    private String quizTitle;
 
-    private String answer;
+    @JsonProperty(value = "type")
+    private String quizType;
 
-    private String desc;
+    @JsonProperty(value = "answer")
+    private String quizAnswer;
+
+    @JsonProperty(value = "desc")
+    private String quizDescription;
+
+    @JsonProperty(value = "level")
+    private String quizLevel;
 
     public static QuizResponseDto fromEntity(Quiz quiz) {
         return QuizResponseDto.builder()
-            .quizNum(quiz.getQuizNum())
-            .category(quiz.getCategory())
-            .type(quiz.getType())
-            .answer(quiz.getAnswer())
-            .desc(quiz.getDescription())
+            .quizId(quiz.getQuizId())
+            .quizCategory(quiz.getQuizCategory())
+            .quizTitle(quiz.getQuizTitle())
+            .quizType(quiz.getQuizType())
+            .quizAnswer(quiz.getQuizAnswer())
+            .quizDescription(quiz.getQuizDescription())
+            .quizLevel(quiz.getQuizLevel())
             .build();
     }
 }
