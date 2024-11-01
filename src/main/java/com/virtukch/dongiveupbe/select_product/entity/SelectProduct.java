@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,7 +25,10 @@ public class SelectProduct {
 
     private String selectProductUrl;
 
-    public SelectProduct(String selectProductName, String selectProductDescription, Long selectProductViewAmount, String selectProductUrl) {
+    @Builder
+
+    public SelectProduct(Long selectProductId, String selectProductName, String selectProductDescription, Long selectProductViewAmount, String selectProductUrl) {
+        this.selectProductId = selectProductId;
         this.selectProductName = selectProductName;
         this.selectProductDescription = selectProductDescription;
         this.selectProductViewAmount = selectProductViewAmount;
