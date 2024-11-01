@@ -17,6 +17,7 @@ public class GameMemberRequestDto {
     private Long gameMemberId;
     private Long memberId;
     private Long gameId;
+    @Schema(hidden = true)
     private Integer gameMemberMoney;
 
 
