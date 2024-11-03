@@ -1,14 +1,14 @@
-package com.virtukch.dongiveupbe.domain.member.service;
+package com.virtukch.dongiveupbe.security.member.service;
 
-import com.virtukch.dongiveupbe.domain.member.dto.MemberRequestDto;
-import com.virtukch.dongiveupbe.domain.member.entity.Member;
-import com.virtukch.dongiveupbe.domain.member.exception.PasswordNotEqualsException;
-import com.virtukch.dongiveupbe.domain.member.repository.MemberRepository;
-import com.virtukch.dongiveupbe.domain.member.utils.PasswordUtils;
-import com.virtukch.dongiveupbe.domain.member.dto.MemberLoginRequestDto;
-import com.virtukch.dongiveupbe.domain.member.dto.MemberResponseDto;
-import com.virtukch.dongiveupbe.domain.member.exception.MemberEmailAlreadyExistException;
-import com.virtukch.dongiveupbe.domain.member.exception.MemberNotFoundException;
+import com.virtukch.dongiveupbe.security.member.dto.MemberRequestDto;
+import com.virtukch.dongiveupbe.security.member.entity.Member;
+import com.virtukch.dongiveupbe.security.member.exception.PasswordNotEqualsException;
+import com.virtukch.dongiveupbe.security.member.repository.MemberRepository;
+import com.virtukch.dongiveupbe.security.member.utils.PasswordUtils;
+import com.virtukch.dongiveupbe.security.member.dto.MemberLoginRequestDto;
+import com.virtukch.dongiveupbe.security.member.dto.MemberResponseDto;
+import com.virtukch.dongiveupbe.security.member.exception.MemberEmailAlreadyExistException;
+import com.virtukch.dongiveupbe.security.member.exception.MemberNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

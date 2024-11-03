@@ -1,6 +1,6 @@
-package com.virtukch.dongiveupbe.domain.member.utils;
+package com.virtukch.dongiveupbe.security.member.utils;
 
-import com.virtukch.dongiveupbe.domain.member.exception.AlgorithmNotFoundException;
+import com.virtukch.dongiveupbe.security.member.exception.AlgorithmNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

@@ -1,4 +1,4 @@
-package com.virtukch.dongiveupbe.domain.member.exception;
+package com.virtukch.dongiveupbe.security.member.exception;
 
 public class MemberNotFoundException extends RuntimeException {
 

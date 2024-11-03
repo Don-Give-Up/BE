@@ -1,4 +1,4 @@
-package com.virtukch.dongiveupbe.domain.member.dto;
+package com.virtukch.dongiveupbe.security.member.dto;
 
 import lombok.Builder;
 import lombok.Getter;

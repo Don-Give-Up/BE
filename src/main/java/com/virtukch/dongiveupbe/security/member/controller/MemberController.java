@@ -1,9 +1,9 @@
-package com.virtukch.dongiveupbe.domain.member.controller;
+package com.virtukch.dongiveupbe.security.member.controller;
 
-import com.virtukch.dongiveupbe.domain.member.dto.MemberLoginRequestDto;
-import com.virtukch.dongiveupbe.domain.member.dto.MemberRequestDto;
-import com.virtukch.dongiveupbe.domain.member.dto.MemberResponseDto;
-import com.virtukch.dongiveupbe.domain.member.service.MemberService;
+import com.virtukch.dongiveupbe.security.member.dto.MemberLoginRequestDto;
+import com.virtukch.dongiveupbe.security.member.dto.MemberRequestDto;
+import com.virtukch.dongiveupbe.security.member.dto.MemberResponseDto;
+import com.virtukch.dongiveupbe.security.member.service.MemberService;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

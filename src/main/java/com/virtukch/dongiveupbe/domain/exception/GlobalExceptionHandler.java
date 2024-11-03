@@ -1,7 +1,7 @@
 package com.virtukch.dongiveupbe.domain.exception;
 
 import com.virtukch.dongiveupbe.domain.essential_product.exception.EntityNotFoundException;
-import com.virtukch.dongiveupbe.domain.member.exception.MemberEmailAlreadyExistException;
+import com.virtukch.dongiveupbe.security.member.exception.MemberEmailAlreadyExistException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

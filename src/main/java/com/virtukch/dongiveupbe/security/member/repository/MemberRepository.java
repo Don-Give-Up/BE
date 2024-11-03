@@ -1,6 +1,6 @@
-package com.virtukch.dongiveupbe.domain.member.repository;
+package com.virtukch.dongiveupbe.security.member.repository;
 
-import com.virtukch.dongiveupbe.domain.member.entity.Member;
+import com.virtukch.dongiveupbe.security.member.entity.Member;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

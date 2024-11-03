@@ -1,4 +1,4 @@
-package com.virtukch.dongiveupbe.domain.member.exception;
+package com.virtukch.dongiveupbe.security.member.exception;
 
 public class AlgorithmNotFoundException extends RuntimeException {
     public AlgorithmNotFoundException(String algorithm) {

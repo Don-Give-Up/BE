@@ -1,9 +1,9 @@
-package com.virtukch.dongiveupbe.domain.member.dataloader;
+package com.virtukch.dongiveupbe.security.member.dataloader;
 
-import com.virtukch.dongiveupbe.domain.member.repository.MemberRepository;
-import com.virtukch.dongiveupbe.domain.member.entity.Member;
-import com.virtukch.dongiveupbe.domain.member.entity.MemberRole;
-import com.virtukch.dongiveupbe.domain.member.utils.PasswordUtils;
+import com.virtukch.dongiveupbe.security.member.repository.MemberRepository;
+import com.virtukch.dongiveupbe.security.member.entity.Member;
+import com.virtukch.dongiveupbe.security.member.entity.MemberRole;
+import com.virtukch.dongiveupbe.security.member.utils.PasswordUtils;
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

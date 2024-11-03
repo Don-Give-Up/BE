@@ -1,7 +1,7 @@
-package com.virtukch.dongiveupbe.domain.member.dto;
+package com.virtukch.dongiveupbe.security.member.dto;
 
-import com.virtukch.dongiveupbe.domain.member.entity.Member;
-import com.virtukch.dongiveupbe.domain.member.entity.MemberRole;
+import com.virtukch.dongiveupbe.security.member.entity.Member;
+import com.virtukch.dongiveupbe.security.member.entity.MemberRole;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
