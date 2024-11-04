@@ -2,12 +2,16 @@ package com.virtukch.dongiveupbe.domain.quiz.service;
 
 import com.virtukch.dongiveupbe.domain.quiz.dto.QuizRequestDto;
 import com.virtukch.dongiveupbe.domain.quiz.dto.QuizResponseDto;
+import com.virtukch.dongiveupbe.domain.quiz.entity.Quiz;
 import com.virtukch.dongiveupbe.domain.quiz.exception.QuizNotFoundException;
 import com.virtukch.dongiveupbe.domain.quiz.repository.QuizRepository;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class QuizService {
 
@@ -30,8 +34,29 @@ public class QuizService {
     }
 
     // 3. 퀴즈 단일 생성
-    public QuizResponseDto save(QuizRequestDto quizRequestDto) {
-        return QuizResponseDto.fromEntity(
-            quizRepository.save(QuizRequestDto.toEntity(quizRequestDto)));
+    public QuizResponseDto save(QuizRequestDto quizRequestDto, Long memberId) {
+        // 입력값 로깅
+        log.info("Received QuizRequestDto: {}", quizRequestDto);
+        log.info("MemberId: {}", memberId);
+
+        Quiz quiz = Quiz.builder()
+                .quizCategory(quizRequestDto.getQuizCategory())
+                .quizTitle(quizRequestDto.getQuizTitle())
+                .quizType(quizRequestDto.getQuizType())
+                .quizLevel(quizRequestDto.getQuizLevel())
+                .quizAnswer(quizRequestDto.getQuizAnswer())
+                .quizDescription(quizRequestDto.getQuizDescription())
+                .memberId(memberId)
+                .build();
+
+        // 변환된 Quiz 엔티티 로깅
+        log.info("Constructed Quiz Entity: {}", quiz);
+
+        Quiz savedQuiz = quizRepository.save(quiz);
+
+        // 저장된 Quiz 엔티티 로깅
+        log.info("Saved Quiz Entity: {}", savedQuiz);
+
+        return QuizResponseDto.fromEntity(savedQuiz);
     }
 }
