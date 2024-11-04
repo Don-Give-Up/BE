@@ -124,7 +124,6 @@ public class TokenUtils {
         claims.put("memberEmail", member.getMemberEmail());
         claims.put("memberName", member.getMemberName());
         claims.put("memberSchool", member.getMemberSchool());
-        claims.put("memberBirthday", member.getMemberBirthday());
         claims.put("memberNickname", member.getMemberNickname());
         claims.put("memberRole", member.getMemberRole());
         claims.put("memberGrade", member.getMemberGrade());

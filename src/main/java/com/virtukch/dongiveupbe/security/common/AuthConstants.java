@@ -7,6 +7,6 @@ package com.virtukch.dongiveupbe.security.common;
  */
 public class AuthConstants {
 
-    public static final String AUTH_HEADER = "Authorization"; // Authorization 헤더 이름
-    public static final String TOKEN_TYPE = "BEARER"; // 토큰 유형
+    public static final String AUTH_HEADER = "Authorization";
+    public static final String AUTH_HEADER_PREFIX = "Bearer ";
 }

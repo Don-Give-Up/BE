@@ -1,8 +1,11 @@
 package com.virtukch.dongiveupbe.security.member.controller;
 
+import com.virtukch.dongiveupbe.security.common.AuthConstants;
+import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
 import com.virtukch.dongiveupbe.security.member.dto.MemberLoginRequestDto;
 import com.virtukch.dongiveupbe.security.member.dto.MemberRequestDto;
 import com.virtukch.dongiveupbe.security.member.dto.MemberResponseDto;
+import com.virtukch.dongiveupbe.security.member.entity.Member;
 import com.virtukch.dongiveupbe.security.member.service.MemberService;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,10 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
 
     private final MemberService memberService;
+    private final TokenUtils tokenUtils;
 
     @Autowired
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, TokenUtils tokenUtils) {
         this.memberService = memberService;
+        this.tokenUtils = tokenUtils;
     }
 
     // 1. 회원 생성 (회원가입)
@@ -39,8 +44,23 @@ public class MemberController {
     // 2. 회원 로그인
     @PostMapping("/login")
     @Operation(summary = "로그인 하실 때 호출해 주세요", description = "응답으로 memberId 를 얻을 수 있습니다. 추후 토큰 방식으로 변경될 예정입니다.")
-    public ResponseEntity<MemberResponseDto> login(@RequestBody MemberLoginRequestDto memberLoginRequestDto) {
-        return ResponseEntity.ok(memberService.login(memberLoginRequestDto));
+    public String login(@RequestBody MemberLoginRequestDto memberLoginRequestDto) {
+
+        MemberResponseDto memberResponseDto = memberService.login(memberLoginRequestDto);
+        Member member = Member.builder()
+            .memberId(memberResponseDto.getMemberId())
+            .memberEmail(memberResponseDto.getMemberEmail())
+            .memberName(memberResponseDto.getMemberName())
+            .memberSchool(memberResponseDto.getMemberSchool())
+            .memberBirthday(memberResponseDto.getMemberBirthday())
+            .memberNickname(memberResponseDto.getMemberNickname())
+            .memberRole(memberResponseDto.getMemberRole())
+            .memberGrade(memberResponseDto.getMemberGrade())
+            .memberClass(memberResponseDto.getMemberClass())
+            .build();
+
+        // 2. 이런 정보를 돌려 주라
+        return AuthConstants.AUTH_HEADER_PREFIX + TokenUtils.generateJwtToken(member);
     }
 
     // 3. 회원 아이디로 회원 찾기
