@@ -5,6 +5,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -45,5 +46,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public JwtTokenInterceptor jwtTokenInterceptor() {
         return new JwtTokenInterceptor();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(jwtTokenInterceptor())
+                .addPathPatterns("/api/**") // 토큰 검증을 적용할 경로를 지정합니다.
+                .excludePathPatterns("/api/v1/members/login", "/api/v1/members/register"); // 로그인 및 회원가입 등 제외 경로
     }
 }
