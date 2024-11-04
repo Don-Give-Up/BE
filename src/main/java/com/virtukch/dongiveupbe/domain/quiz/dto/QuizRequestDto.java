@@ -3,15 +3,14 @@ package com.virtukch.dongiveupbe.domain.quiz.dto;
 import com.virtukch.dongiveupbe.domain.quiz.entity.IsAcceptedByTeacher;
 import com.virtukch.dongiveupbe.domain.quiz.entity.Quiz;
 import java.time.LocalDateTime;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class QuizRequestDto {
 
     // 퀴즈를 생성하는 사람은 AI 혹은 Web 내의 선생님

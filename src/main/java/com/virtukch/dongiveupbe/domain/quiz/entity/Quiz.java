@@ -5,16 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 @Builder
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Quiz {
 
     @Id
@@ -38,4 +37,7 @@ public class Quiz {
     private IsAcceptedByTeacher isAcceptedByTeacher;
 
     private LocalDateTime createdAt;
+
+    public Quiz(String quizCategory, String quizTitle, String quizType, String quizLevel, String quizAnswer, String quizDescription, Long memberId) {
+    }
 }
