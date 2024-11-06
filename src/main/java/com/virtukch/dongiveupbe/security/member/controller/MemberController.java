@@ -25,12 +25,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
 
     private final MemberService memberService;
-    private final TokenUtils tokenUtils;
 
     @Autowired
-    public MemberController(MemberService memberService, TokenUtils tokenUtils) {
+    public MemberController(MemberService memberService) {
         this.memberService = memberService;
-        this.tokenUtils = tokenUtils;
     }
 
     // 1. 회원 생성 (회원가입)
@@ -77,7 +75,7 @@ public class MemberController {
         return ResponseEntity.ok(memberService.findByMemberEmail(memberEmail));
     }
 
-    // Id로 nickname찾기
+    // Id로 nickname 찾기
     @GetMapping("{memberId}/nickname")
     public ResponseEntity<String> getMemberNickname(@PathVariable Long memberId) {
         MemberResponseDto member = memberService.findById(memberId);
