@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.domain.quiz.controller;
 
+import com.virtukch.dongiveupbe.domain.quiz.dto.QuizBEResponseDto;
 import com.virtukch.dongiveupbe.domain.quiz.service.QuizService;
 import com.virtukch.dongiveupbe.domain.quiz.dto.QuizRequestDto;
 import com.virtukch.dongiveupbe.domain.quiz.dto.QuizResponseDto;
@@ -34,6 +35,11 @@ public class QuizController {
     @GetMapping
     public ResponseEntity<List<QuizResponseDto>> findAll() {
         return ResponseEntity.ok(quizService.findAll());
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<QuizBEResponseDto>> findAllQuiz() {
+        return ResponseEntity.ok(quizService.findAllQuiz());
     }
 
     // 2. 퀴즈 아이디로 조회

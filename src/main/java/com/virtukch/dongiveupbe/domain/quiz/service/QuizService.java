@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.domain.quiz.service;
 
+import com.virtukch.dongiveupbe.domain.quiz.dto.QuizBEResponseDto;
 import com.virtukch.dongiveupbe.domain.quiz.dto.QuizRequestDto;
 import com.virtukch.dongiveupbe.domain.quiz.dto.QuizResponseDto;
 import com.virtukch.dongiveupbe.domain.quiz.entity.Quiz;
@@ -25,6 +26,17 @@ public class QuizService {
     // 1. 퀴즈 전체 조회
     public List<QuizResponseDto> findAll() {
         return quizRepository.findAll().stream().map(QuizResponseDto::fromEntity).toList();
+    }
+
+    public List<QuizBEResponseDto> findAllQuiz() {
+        return quizRepository.findAll()
+                .stream()
+                .map(quiz -> {
+                    quiz.increaseCount(); // 조회수 증가
+                    quizRepository.save(quiz); // 증가한 조회수 저장
+                    return QuizBEResponseDto.from(quiz);
+                })
+                .toList();
     }
 
     // 2. 퀴즈 아이디로 조회
