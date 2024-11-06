@@ -4,6 +4,10 @@ import com.virtukch.dongiveupbe.domain.article.dto.ArticleRequestDto;
 import com.virtukch.dongiveupbe.domain.article.dto.ArticleResponseDto;
 import com.virtukch.dongiveupbe.domain.article.entity.Article;
 import com.virtukch.dongiveupbe.domain.article.service.ArticleService;
+import com.virtukch.dongiveupbe.domain.quiz.dto.QuizResponseDto;
+import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
+import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -51,7 +55,15 @@ public class ArticleController {
 
     // 5. 글 단일 작성
     @PostMapping
-    public ResponseEntity<ArticleResponseDto> save(@RequestBody ArticleRequestDto articleRequestDto) {
-        return ResponseEntity.ok(articleService.save(articleRequestDto));
+    public ResponseEntity<ArticleResponseDto> save(@RequestBody ArticleRequestDto articleRequestDto,
+        HttpServletRequest request) {
+        String token = TokenUtils.splitHeader(request.getHeader("Authorization"));
+        if (token != null && TokenUtils.isValidToken(token)) {
+            Claims claims = TokenUtils.getClaimsFromToken(token); // 토큰에서 사용자 정보 추출
+            Long memberId = claims.get("memberId", Long.class); // 사용자 ID 추출
+            return ResponseEntity.ok(articleService.save(articleRequestDto, memberId));
+        } else {
+            return ResponseEntity.status(401).build(); // 인증 실패 시 401 Unauthorized 반환
+        }
     }
 }

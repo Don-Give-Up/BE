@@ -56,6 +56,7 @@ public class TokenUtils {
      * @throws ExpiredJwtException, JwtException, NullPointerException
      */
     public static boolean isValidToken(String token) {
+        log.info(token);
         try {
             getClaimsFromToken(token); // 토큰에서 클레임을 추출하여 유효성 검사
             return true; // 유효한 경우 true 반환

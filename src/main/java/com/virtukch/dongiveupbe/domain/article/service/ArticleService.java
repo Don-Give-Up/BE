@@ -5,9 +5,12 @@ import com.virtukch.dongiveupbe.domain.article.dto.ArticleResponseDto;
 import com.virtukch.dongiveupbe.domain.article.entity.Article;
 import com.virtukch.dongiveupbe.domain.article.exception.ArticleNotFoundException;
 import com.virtukch.dongiveupbe.domain.article.repository.ArticleRepository;
+import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
+import io.jsonwebtoken.Claims;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @Service
 public class ArticleService {
@@ -43,7 +46,8 @@ public class ArticleService {
     }
 
     // 5. 글 단일 작성
-    public ArticleResponseDto save(ArticleRequestDto articleRequestDto) {
+    public ArticleResponseDto save(ArticleRequestDto articleRequestDto, Long memberId) {
+        articleRequestDto.setMemberId(memberId);
         return ArticleResponseDto.fromEntity(
             articleRepository.save(ArticleRequestDto.toEntity(articleRequestDto)));
     }
