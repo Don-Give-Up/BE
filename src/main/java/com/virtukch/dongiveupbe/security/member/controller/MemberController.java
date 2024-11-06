@@ -81,5 +81,4 @@ public class MemberController {
         MemberResponseDto member = memberService.findById(memberId);
         return ResponseEntity.ok(member.getMemberNickname());
     }
-
 }
