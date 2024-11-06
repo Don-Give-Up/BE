@@ -76,4 +76,12 @@ public class MemberController {
     public ResponseEntity<MemberResponseDto> findByEmail(@PathVariable String memberEmail) {
         return ResponseEntity.ok(memberService.findByMemberEmail(memberEmail));
     }
+
+    // Id로 nickname찾기
+    @GetMapping("{memberId}/nickname")
+    public ResponseEntity<String> getMemberNickname(@PathVariable Long memberId) {
+        MemberResponseDto member = memberService.findById(memberId);
+        return ResponseEntity.ok(member.getMemberNickname());
+    }
+
 }
