@@ -38,6 +38,16 @@ public class Quiz {
 
     private LocalDateTime createdAt;
 
+    private Integer count = 0;
+
     public Quiz(String quizCategory, String quizTitle, String quizType, String quizLevel, String quizAnswer, String quizDescription, Long memberId) {
     }
+
+    public void increaseCount() {
+        if (this.count == null) {
+            this.count = 0;
+        }
+        this.count++;
+    }
+
 }
