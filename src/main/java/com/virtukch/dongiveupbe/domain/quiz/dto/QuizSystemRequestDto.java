@@ -30,6 +30,7 @@ public class QuizSystemRequestDto {
 
     public static Quiz toEntity(QuizSystemRequestDto quizSystemRequestDto) {
         return Quiz.builder()
+            .memberId(1L)
             .quizCategory(quizSystemRequestDto.getQuizCategory())
             .quizTitle(quizSystemRequestDto.getQuizTitle())
             .quizType(quizSystemRequestDto.getQuizType())
