@@ -43,13 +43,6 @@ jobs:
           # If you push local or localCreate Profile, you should write like "LOCAL_DB_URL"
         run: ./gradlew clean build -x test
 
-      - name: Send Discord Notification
-        if: ${{ always() }}  # Set to always run (regardless of build success)
-        run: |
-          curl -X POST -H "Content-type: application/json" --data '{
-            "content": "CI Workflow Notification: \n**There are changes in the backend server!**\n**Branch:** '${{ github.ref }}'\n**Status:** '${{ job.status }}'\n---"
-          }' ${{ secrets.DISCORD_WEBHOOK_URL }}
-
       # 여기서부터 AWS CD 와 관련된 이야기
 
       # 1. AWS 민감 정보 설정
@@ -104,3 +97,10 @@ jobs:
           region: ${{ secrets.AWS_REGION }}    ## ap-northeast-2
           deployment_package: deploy/deploy.zip
           wait_for_environment_recovery: 200
+
+      - name: Send Discord Notification
+        if: ${{ always() }}  # Set to always run (regardless of build success)
+        run: |
+          curl -X POST -H "Content-type: application/json" --data '{
+            "content": "CI Workflow Notification: \n**There are changes in the backend server!**\n**Branch:** '${{ github.ref }}'\n**Status:** '${{ job.status }}'\n---"
+          }' ${{ secrets.DISCORD_WEBHOOK_URL }}
