@@ -29,14 +29,7 @@ public class QuizService {
     }
 
     public List<QuizBEResponseDto> findAllQuiz() {
-        return quizRepository.findAll()
-                .stream()
-                .map(quiz -> {
-                    quiz.increaseCount(); // 조회수 증가
-                    quizRepository.save(quiz); // 증가한 조회수 저장
-                    return QuizBEResponseDto.from(quiz);
-                })
-                .toList();
+        return quizRepository.findAll().stream().map(QuizBEResponseDto::from).toList();
     }
 
     // 2. 퀴즈 아이디로 조회
