@@ -12,7 +12,7 @@ import java.io.FileReader;
 
 @Slf4j
 @Component
-@Profile({"localCreate", "devCreate", "prod"})
+@Profile({"localCreate", "devCreate", "prodCreate"})
 public class StockStatusDataLoader implements CommandLineRunner {
 
     private final StockStatusRepository stockStatusRepository;

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@Profile({"localCreate", "devCreate", "prod"})
+@Profile({"localCreate", "devCreate", "prodCreate"})
 public class QuizDataLoader implements CommandLineRunner {
 
     private final QuizRepository quizRepository;
