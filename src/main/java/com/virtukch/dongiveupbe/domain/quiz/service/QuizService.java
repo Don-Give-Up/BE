@@ -51,15 +51,7 @@ public class QuizService {
         log.info("Received QuizRequestDto: {}", quizRequestDto);
         log.info("MemberId: {}", memberId);
 
-        Quiz quiz = Quiz.builder()
-                .quizCategory(quizRequestDto.getQuizCategory())
-                .quizTitle(quizRequestDto.getQuizTitle())
-                .quizType(quizRequestDto.getQuizType())
-                .quizLevel(quizRequestDto.getQuizLevel())
-                .quizAnswer(quizRequestDto.getQuizAnswer())
-                .quizDescription(quizRequestDto.getQuizDescription())
-                .memberId(memberId)
-                .build();
+        Quiz quiz = QuizRequestDto.toEntity(quizRequestDto);
 
         // 변환된 Quiz 엔티티 로깅
         log.info("Constructed Quiz Entity: {}", quiz);
