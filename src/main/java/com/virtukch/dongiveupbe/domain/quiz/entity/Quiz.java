@@ -8,11 +8,9 @@ import java.time.LocalDateTime;
 
 import lombok.*;
 
-@Builder
 @Entity
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 public class Quiz {
 
@@ -40,7 +38,18 @@ public class Quiz {
 
     private Integer count = 0;
 
-    public Quiz(String quizCategory, String quizTitle, String quizType, String quizLevel, String quizAnswer, String quizDescription, Long memberId) {
+    @Builder
+    public Quiz(Long memberId, String quizCategory, String quizTitle, String quizType, String quizAnswer, String quizDescription, String quizLevel, IsAcceptedByTeacher isAcceptedByTeacher, LocalDateTime createdAt, Integer count) {
+        this.memberId = memberId;
+        this.quizCategory = quizCategory;
+        this.quizTitle = quizTitle;
+        this.quizType = quizType;
+        this.quizAnswer = quizAnswer;
+        this.quizDescription = quizDescription;
+        this.quizLevel = quizLevel;
+        this.isAcceptedByTeacher = isAcceptedByTeacher;
+        this.createdAt = createdAt;
+        this.count = count;
     }
 
     public void increaseCount() {
