@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@Profile({"localCreate", "devCreate"})
+@Profile({"localCreate", "devCreate", "prod"})
 public class EssentialProductDataLoader implements CommandLineRunner {
 
     private final EssentialProductRepository essentialProductRepository;

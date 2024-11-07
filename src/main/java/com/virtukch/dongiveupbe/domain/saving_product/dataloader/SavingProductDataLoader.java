@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile({"localCreate", "devCreate"})
+@Profile({"localCreate", "devCreate", "prod"})
 public class SavingProductDataLoader implements CommandLineRunner {
 
     private final SavingProductRepository savingProductRepository;

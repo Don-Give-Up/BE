@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@Profile({"localCreate", "devCreate"})
+@Profile({"localCreate", "devCreate", "prod"})
 public class TaxStatusDataLoader implements CommandLineRunner {
 
     private final TaxStatusRepository taxStatusRepository;

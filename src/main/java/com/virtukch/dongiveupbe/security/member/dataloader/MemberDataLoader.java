@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile({"localCreate", "devCreate"})
+@Profile({"localCreate", "devCreate", "prod"})
 public class MemberDataLoader implements CommandLineRunner {
 
     private final MemberRepository memberRepository;
