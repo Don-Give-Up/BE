@@ -29,14 +29,7 @@ public class QuizService {
     }
 
     public List<QuizBEResponseDto> findAllQuiz() {
-        return quizRepository.findAll()
-                .stream()
-                .map(quiz -> {
-                    quiz.increaseCount(); // 조회수 증가
-                    quizRepository.save(quiz); // 증가한 조회수 저장
-                    return QuizBEResponseDto.from(quiz);
-                })
-                .toList();
+        return quizRepository.findAll().stream().map(QuizBEResponseDto::from).toList();
     }
 
     // 2. 퀴즈 아이디로 조회
@@ -51,15 +44,7 @@ public class QuizService {
         log.info("Received QuizRequestDto: {}", quizRequestDto);
         log.info("MemberId: {}", memberId);
 
-        Quiz quiz = Quiz.builder()
-                .quizCategory(quizRequestDto.getQuizCategory())
-                .quizTitle(quizRequestDto.getQuizTitle())
-                .quizType(quizRequestDto.getQuizType())
-                .quizLevel(quizRequestDto.getQuizLevel())
-                .quizAnswer(quizRequestDto.getQuizAnswer())
-                .quizDescription(quizRequestDto.getQuizDescription())
-                .memberId(memberId)
-                .build();
+        Quiz quiz = QuizRequestDto.toEntity(quizRequestDto);
 
         // 변환된 Quiz 엔티티 로깅
         log.info("Constructed Quiz Entity: {}", quiz);
