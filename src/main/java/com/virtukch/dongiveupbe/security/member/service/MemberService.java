@@ -4,6 +4,7 @@ import com.virtukch.dongiveupbe.security.member.dto.MemberRequestDto;
 import com.virtukch.dongiveupbe.security.member.entity.Member;
 import com.virtukch.dongiveupbe.security.member.exception.PasswordNotEqualsException;
 import com.virtukch.dongiveupbe.security.member.repository.MemberRepository;
+import com.virtukch.dongiveupbe.security.member.repository.projection.MemberNickname;
 import com.virtukch.dongiveupbe.security.member.utils.PasswordUtils;
 import com.virtukch.dongiveupbe.security.member.dto.MemberLoginRequestDto;
 import com.virtukch.dongiveupbe.security.member.dto.MemberResponseDto;
@@ -69,5 +70,12 @@ public class MemberService {
         Member member = memberRepository.findByMemberEmail(memberEmail)
             .orElseThrow(() -> new MemberNotFoundException("해당하는 이메일과 일치하는 Member 가 존재하지 않습니다."));
         return MemberResponseDto.fromEntity(member);
+    }
+
+    // 5. 회원 아이디로 멤버 닉네임'만' 찾기
+    public String findMemberNicknameByMemberId(Long memberId) {
+        return memberRepository.findMemberNicknameByMemberId(memberId)
+            .orElseThrow(() -> new MemberNotFoundException("Can't find member"))
+            .getMemberNickname();
     }
 }
