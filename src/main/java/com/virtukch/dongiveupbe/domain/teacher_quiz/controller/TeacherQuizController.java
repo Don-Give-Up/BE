@@ -28,6 +28,7 @@ public class TeacherQuizController {
     @PostMapping("/member/{memberId}")
     public ResponseEntity<TeacherQuizResponseDto> save(@PathVariable("memberId") Long memberId,
                                                        @RequestBody TeacherQuizRequestDto requestDto) {
+        System.out.println("Received gameId: " + requestDto.getGameId());
         TeacherQuizResponseDto responseDto = teacherQuizService.save(memberId, requestDto);
         return ResponseEntity.ok(responseDto);
     }
@@ -36,5 +37,10 @@ public class TeacherQuizController {
     public ResponseEntity<Void> delete(@PathVariable("quizId") Long quizId) {
         teacherQuizService.delete(quizId);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/game/{gameId}")
+    public ResponseEntity<List<TeacherQuizResponseDto>> getQuizzesByGameId(@PathVariable("gameId") Long gameId) {
+        List<TeacherQuizResponseDto> quizzes = teacherQuizService.findByGameId(gameId);
+        return ResponseEntity.ok(quizzes);
     }
 }
