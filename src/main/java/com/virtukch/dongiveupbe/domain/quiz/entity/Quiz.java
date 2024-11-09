@@ -1,9 +1,7 @@
 package com.virtukch.dongiveupbe.domain.quiz.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 import lombok.*;
@@ -28,6 +26,7 @@ public class Quiz {
 
     private String quizAnswer;
 
+    @Column(columnDefinition = "TEXT")
     private String quizDescription;
 
     private String quizLevel;
