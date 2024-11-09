@@ -14,8 +14,8 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-//        config.addAllowedOrigin("http://localhost:8080"); // 요청을 허용할 프론트엔드 URL
-        config.addAllowedOrigin("*"); // 모든 FE URL 허용??
+        config.addAllowedOrigin("http://localhost:8080"); // 요청을 허용할 프론트엔드 URL
+//        config.addAllowedOrigin("*"); // 모든 FE URL 허용??
         config.addAllowedHeader("*"); // 모든 헤더 허용
         config.addAllowedMethod("*"); // 모든 HTTP 메서드 허용
         source.registerCorsConfiguration("/**", config);
