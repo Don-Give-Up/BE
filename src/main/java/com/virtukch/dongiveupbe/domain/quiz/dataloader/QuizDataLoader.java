@@ -49,7 +49,7 @@ public class QuizDataLoader implements CommandLineRunner {
         try {
             quizSystemRequestDtoList = objectMapper.readValue(
                 new File("src/main/resources/json/quiz01.json"),
-                new TypeReference<List<QuizSystemRequestDto>>() {
+                new TypeReference<>() {
                 });
         } catch (IOException e) {
             throw new DeveloperParsingException("퀴즈 데이터 1 파싱 중 오류 발생");
@@ -67,7 +67,7 @@ public class QuizDataLoader implements CommandLineRunner {
         try {
             quizSystemRequestDtoList = objectMapper.readValue(
                 new File("src/main/resources/json/quiz02.json"),
-                new TypeReference<List<QuizSystemRequestDto>>() {
+                new TypeReference<>() {
                 });
         } catch (IOException e) {
             throw new DeveloperParsingException("퀴즈 데이터 2 파싱 중 오류 발생");
@@ -85,7 +85,7 @@ public class QuizDataLoader implements CommandLineRunner {
         try {
             quizSystemRequestDtoList = objectMapper.readValue(
                 new File("src/main/resources/json/quiz03.json"),
-                new TypeReference<List<QuizSystemRequestDto>>() {
+                new TypeReference<>() {
                 });
         } catch (IOException e) {
             throw new DeveloperParsingException("퀴즈 데이터 3 파싱 중 오류 발생");
