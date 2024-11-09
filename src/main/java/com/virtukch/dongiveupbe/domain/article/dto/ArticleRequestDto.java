@@ -1,6 +1,7 @@
 package com.virtukch.dongiveupbe.domain.article.dto;
 
 import com.virtukch.dongiveupbe.domain.article.entity.Article;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,11 +21,14 @@ public class ArticleRequestDto {
 
     private String articleContents;
 
+    private LocalDateTime createdAt;
+
     public static Article toEntity(ArticleRequestDto articleRequestDto) {
         return Article.builder()
             .memberId(articleRequestDto.getMemberId())
             .articleTitle(articleRequestDto.getArticleTitle())
             .articleContents(articleRequestDto.getArticleContents())
+            .createdAt(LocalDateTime.now())
             .build();
     }
 }

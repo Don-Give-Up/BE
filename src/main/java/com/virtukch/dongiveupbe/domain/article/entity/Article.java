@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,6 +26,8 @@ public class Article {
 
     private String articleTitle;
 
-    @Lob
+    @Lob // Mysql.TEXT
     private String articleContents;
+
+    private LocalDateTime createdAt;
 }
