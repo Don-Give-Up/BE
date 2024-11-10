@@ -7,7 +7,6 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import java.security.Key;
 import java.util.Date;
@@ -27,18 +26,14 @@ public class TokenUtils {
     private static Long tokenValidateTime; // 토큰의 유효 시간
 
     @Value("${jwt.key}")
-    private static String jwtSecretKeyValue; // 주입된 JWT 비밀 키
-
-    @Value("${jwt.time}")
-    private static Long tokenValidateTimeValue; // 주입된 토큰 유효 시간
-
-    @PostConstruct
-    public static void init() {
-        jwtSecretKey = jwtSecretKeyValue;
-        tokenValidateTime = tokenValidateTimeValue;
+    public void setJwtSecretKey(String jwtSecretKey) {
+        TokenUtils.jwtSecretKey = jwtSecretKey; // JWT 비밀 키 설정
     }
 
-    private TokenUtils() {}
+    @Value("${jwt.time}")
+    public void setTokenValidateTime(Long tokenValidateTime) {
+        TokenUtils.tokenValidateTime = tokenValidateTime; // 토큰 유효 시간 설정
+    }
 
     /**
      * Authorization 헤더에서 토큰을 분리하는 메서드입니다.
