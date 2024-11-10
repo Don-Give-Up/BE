@@ -25,11 +25,13 @@ public class TokenUtils {
     private static String jwtSecretKey; // JWT 서명에 사용되는 비밀 키
     private static Long tokenValidateTime; // 토큰의 유효 시간
 
+    // SonarLint 오류 발생하나, 메서드를 전부 바꿔 주어야 하므로 일단 패스
     @Value("${jwt.key}")
     public void setJwtSecretKey(String jwtSecretKey) {
         TokenUtils.jwtSecretKey = jwtSecretKey; // JWT 비밀 키 설정
     }
 
+    // SonarLint 오류 발생하나, 메서드를 전부 바꿔 주어야 하므로 일단 패스
     @Value("${jwt.time}")
     public void setTokenValidateTime(Long tokenValidateTime) {
         TokenUtils.tokenValidateTime = tokenValidateTime; // 토큰 유효 시간 설정
