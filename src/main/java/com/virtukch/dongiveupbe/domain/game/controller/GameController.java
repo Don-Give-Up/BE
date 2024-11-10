@@ -36,7 +36,6 @@ public class GameController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @Hidden
     @GetMapping("/{gameId}")
     @Operation(summary = "특정 게임 조회", description = "특정 게임을 ID로 조회합니다.")
     @ApiResponse(responseCode = "200", description = "게임이 성공적으로 조회되었습니다.")
@@ -46,7 +45,6 @@ public class GameController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @Hidden
     @GetMapping
     @Operation(summary = "전체 게임 조회", description = "등록된 모든 게임을 조회합니다.")
     @ApiResponse(responseCode = "200", description = "전체 게임이 성공적으로 조회되었습니다.")
