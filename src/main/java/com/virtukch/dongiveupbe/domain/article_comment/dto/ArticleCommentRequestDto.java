@@ -28,7 +28,7 @@ public class ArticleCommentRequestDto {
             .articleId(articleCommentRequestDto.articleId)
             .memberId(articleCommentRequestDto.memberId)
             .articleCommentContent(articleCommentRequestDto.articleCommentContent)
-            .articleCommentCreatedAt(articleCommentRequestDto.articleCommentCreatedAt)
+            .articleCommentCreatedAt(LocalDateTime.now())
             .build();
     }
 }

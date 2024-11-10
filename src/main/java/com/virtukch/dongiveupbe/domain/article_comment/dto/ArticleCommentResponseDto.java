@@ -23,6 +23,8 @@ public class ArticleCommentResponseDto {
 
     private LocalDateTime articleCommentCreatedAt;
 
+    private LocalDateTime articleCommentUpdatedAt;
+
     public static ArticleCommentResponseDto fromEntity(ArticleComment articleComment, String memberNickname) {
         return ArticleCommentResponseDto.builder()
             .articleCommentId(articleComment.getArticleCommentId())
@@ -30,6 +32,7 @@ public class ArticleCommentResponseDto {
             .memberNickname(memberNickname)
             .articleCommentContent(articleComment.getArticleCommentContent())
             .articleCommentCreatedAt(articleComment.getArticleCommentCreatedAt())
+            .articleCommentUpdatedAt(articleComment.getArticleCommentUpdatedAt())
             .build();
     }
 }
