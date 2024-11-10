@@ -108,7 +108,7 @@ public class TokenUtils {
     /**
      * 주어진 사용자에 대한 JWT 토큰을 생성하는 메서드입니다.
      *
-     * @param user 사용자 엔티티
+     * @param member 사용자 엔티티
      * @return 생성된 JWT 토큰
      */
     public static String generateJwtToken(Member member) {

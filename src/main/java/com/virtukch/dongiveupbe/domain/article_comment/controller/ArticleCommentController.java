@@ -28,7 +28,7 @@ public class ArticleCommentController {
 
     // 1. 댓글 전체 조회
     @GetMapping
-    public ResponseEntity<List<ArticleCommentResponseDto>> findAll(@RequestParam(required = true) Long articleId) {
+    public ResponseEntity<List<ArticleCommentResponseDto>> findAll(@RequestParam Long articleId) {
         return ResponseEntity.ok(articleCommentService.findAllByArticleId(articleId));
     }
 
@@ -39,4 +39,8 @@ public class ArticleCommentController {
         Long memberId = TokenUtils.getClaimsFromRequest(httpServletRequest).get("memberId", Long.class);
         return ResponseEntity.ok(articleCommentService.save(articleCommentRequestDto, memberId));
     }
+
+    // 3. 댓글 수정
+
+    // 4. 댓글 삭제
 }
