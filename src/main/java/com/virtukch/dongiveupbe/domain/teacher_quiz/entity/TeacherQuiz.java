@@ -23,12 +23,15 @@ public class TeacherQuiz {
 
     private Long quizId;
 
+    private Long gameId;
+
     private Integer isStopped;
 
     @Builder
-    public TeacherQuiz(Long memberId, Long quizId, Integer isStopped) {
+    public TeacherQuiz(Long memberId, Long quizId, Long gameId, Integer isStopped) {
         this.memberId = memberId;
         this.quizId = quizId;
+        this.gameId = gameId;
         this.isStopped = isStopped;
     }
 }

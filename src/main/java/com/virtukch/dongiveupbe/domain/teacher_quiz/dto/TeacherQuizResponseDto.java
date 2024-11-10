@@ -17,6 +17,8 @@ public class TeacherQuizResponseDto {
 
     private Long quizId;
 
+    private Long gameId;
+
     private Integer isStopped;
 
     public static TeacherQuizResponseDto fromEntity(TeacherQuiz teacherQuiz) {
@@ -24,6 +26,7 @@ public class TeacherQuizResponseDto {
                 .teacherQuizId(teacherQuiz.getTeacherQuizId())
                 .memberId(teacherQuiz.getMemberId())
                 .quizId(teacherQuiz.getQuizId())
+                .gameId(teacherQuiz.getGameId())
                 .isStopped(teacherQuiz.getIsStopped())
                 .build();
     }

@@ -10,4 +10,6 @@ public interface TeacherQuizRepository extends JpaRepository<TeacherQuiz, Long> 
     List<TeacherQuiz> findByMemberId(Long memberId);
 
     Optional<TeacherQuiz> findByQuizId(Long quizId);
+
+    List<TeacherQuiz> findByGameId(Long gameId);
 }
