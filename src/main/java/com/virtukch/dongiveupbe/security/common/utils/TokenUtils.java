@@ -7,6 +7,7 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.servlet.http.HttpServletRequest;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,11 +25,13 @@ public class TokenUtils {
     private static String jwtSecretKey; // JWT 서명에 사용되는 비밀 키
     private static Long tokenValidateTime; // 토큰의 유효 시간
 
+    // SonarLint 오류 발생하나, 메서드를 전부 바꿔 주어야 하므로 일단 패스
     @Value("${jwt.key}")
     public void setJwtSecretKey(String jwtSecretKey) {
         TokenUtils.jwtSecretKey = jwtSecretKey; // JWT 비밀 키 설정
     }
 
+    // SonarLint 오류 발생하나, 메서드를 전부 바꿔 주어야 하므로 일단 패스
     @Value("${jwt.time}")
     public void setTokenValidateTime(Long tokenValidateTime) {
         TokenUtils.tokenValidateTime = tokenValidateTime; // 토큰 유효 시간 설정
@@ -73,6 +76,15 @@ public class TokenUtils {
     }
 
     /**
+     * request 를 파라미터로 받아 Request 를 보낸 사용자의 Token 을 받아 오는 메서드입니다.
+     *
+     * @return memberId
+     */
+    public static String getMemberToken(HttpServletRequest request) {
+        return TokenUtils.splitHeader(request.getHeader("Authorization"));
+    }
+
+    /**
      * 주어진 토큰을 복호화하여 클레임을 반환하는 메서드입니다.
      *
      * @param token 복호화할 JWT 토큰
@@ -84,9 +96,19 @@ public class TokenUtils {
     }
 
     /**
+     * request 를 파라미터로 받아 Request 를 보낸 사용자의 Token 을 통해 Claims 을 받아 오는 메서드입니다.
+     *
+     * @param request 사용자의 request
+     * @return Claims 객체
+     */
+    public static Claims getClaimsFromRequest(HttpServletRequest request) {
+        return TokenUtils.getClaimsFromToken(TokenUtils.getMemberToken(request));
+    }
+
+    /**
      * 주어진 사용자에 대한 JWT 토큰을 생성하는 메서드입니다.
      *
-     * @param user 사용자 엔티티
+     * @param member 사용자 엔티티
      * @return 생성된 JWT 토큰
      */
     public static String generateJwtToken(Member member) {

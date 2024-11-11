@@ -8,6 +8,7 @@ import com.virtukch.dongiveupbe.domain.quiz.exception.QuizNotFoundException;
 import com.virtukch.dongiveupbe.domain.quiz.repository.QuizRepository;
 import java.util.List;
 
+import com.virtukch.dongiveupbe.security.member.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,12 @@ import org.springframework.stereotype.Service;
 public class QuizService {
 
     private final QuizRepository quizRepository;
+    private final MemberService memberService;
 
     @Autowired
-    public QuizService(QuizRepository quizRepository) {
+    public QuizService(QuizRepository quizRepository, MemberService memberService) {
         this.quizRepository = quizRepository;
+        this.memberService = memberService;
     }
 
     // 1. 퀴즈 전체 조회
@@ -29,7 +32,10 @@ public class QuizService {
     }
 
     public List<QuizBEResponseDto> findAllQuiz() {
-        return quizRepository.findAll().stream().map(QuizBEResponseDto::from).toList();
+        return quizRepository.findAll().stream()
+                .map(quiz -> QuizBEResponseDto.from(quiz,
+                        memberService.findMemberNicknameByMemberId(quiz.getMemberId())))
+                .toList();
     }
 
     // 2. 퀴즈 아이디로 조회

@@ -43,7 +43,7 @@ public class QuizSystemRequestDto {
             .quizLevel(quizSystemRequestDto.getQuizLevel())
             .isAcceptedByTeacher(IsAcceptedByTeacher.ACCEPTED_BY_TEACHER)
             .createdAt(LocalDateTime.now())
-                .count(0)
+            .count(0)
             .build();
     }
 }

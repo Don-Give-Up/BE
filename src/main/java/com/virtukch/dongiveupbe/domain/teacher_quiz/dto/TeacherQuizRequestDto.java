@@ -17,12 +17,16 @@ public class TeacherQuizRequestDto {
 
     private Long quizId;
 
+    private Long gameId;
+
     private Integer isStopped;
 
     public static TeacherQuiz toEntity(Long memberId, TeacherQuizRequestDto requestDto) {
+        System.out.println("toEntity gameId: " + requestDto.getGameId());
         return TeacherQuiz.builder()
                 .memberId(memberId)
                 .quizId(requestDto.getQuizId())
+                .gameId(requestDto.getGameId())
                 .isStopped(requestDto.getIsStopped())
                 .build();
     }

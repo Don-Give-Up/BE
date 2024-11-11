@@ -1,33 +1,36 @@
-package com.virtukch.dongiveupbe.domain.article.entity;
+package com.virtukch.dongiveupbe.domain.article_comment.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class Article {
+@NoArgsConstructor
+public class ArticleComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long articleCommentId;
+
     private Long articleId;
 
     private Long memberId;
 
-    private String articleTitle;
+    @Setter
+    private String articleCommentContent;
 
-    @Lob // Mysql.TEXT
-    private String articleContents;
+    private LocalDateTime articleCommentCreatedAt;
 
-    private LocalDateTime createdAt;
+    @Setter
+    private LocalDateTime articleCommentUpdatedAt;
 }

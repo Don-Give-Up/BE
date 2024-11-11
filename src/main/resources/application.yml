@@ -1,7 +1,7 @@
 spring:
   profiles:
-    active: prod # when deploy -> prod
+    active: localCreate # when deploy -> prod
     # local (ddl-auto: none, DataLoader X, LocalDB)
     # localCreate (ddl-auto: create, DataLoader O, LocalDB)
     # prod (ddl-auto: none, DataLoader X, AWS DB)
-    # prod (ddl-auto: create, DataLoader O, AWS DB)
+    # prodCreate (ddl-auto: create, DataLoader O, AWS DB)
