@@ -18,9 +18,11 @@ public class TeacherQuizController {
     }
 
     // 특정 선생님의 퀴즈 조회
-    @GetMapping("/member/{memberId}")
-    public ResponseEntity<List<TeacherQuizResponseDto>> getQuizzesByMemberId(@PathVariable("memberId") Long memberId) {
-        List<TeacherQuizResponseDto> quizzes = teacherQuizService.findAll(memberId);
+    @GetMapping("/member/{memberId}/game/{gameId}")
+    public ResponseEntity<List<TeacherQuizResponseDto>> getQuizzesByMemberIdAndGameId(
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("gameId") Long gameId) {
+        List<TeacherQuizResponseDto> quizzes = teacherQuizService.findAll(memberId, gameId);
         return ResponseEntity.ok(quizzes);
     }
 

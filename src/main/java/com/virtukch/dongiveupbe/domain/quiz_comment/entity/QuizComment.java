@@ -1,6 +1,6 @@
-package com.virtukch.dongiveupbe.domain.comment.entity;
+package com.virtukch.dongiveupbe.domain.quiz_comment.entity;
 
-import com.virtukch.dongiveupbe.domain.comment.dto.QuizCommentRequestDto;
+import com.virtukch.dongiveupbe.domain.quiz_comment.dto.QuizCommentRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

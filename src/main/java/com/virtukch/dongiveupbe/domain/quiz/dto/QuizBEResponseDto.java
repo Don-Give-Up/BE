@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class QuizBEResponseDto {
     private Long quizId;
-    private Long memberId;
+    private String memberNickname;
     private String quizCategory;
     private String quizTitle;
     private String quizLevel;
@@ -24,10 +24,10 @@ public class QuizBEResponseDto {
     private LocalDateTime date;
     private Integer count;
 
-    public static QuizBEResponseDto from(Quiz quiz) {
+    public static QuizBEResponseDto from(Quiz quiz, String memberNickname) {
         return QuizBEResponseDto.builder()
                 .quizId(quiz.getQuizId())
-                .memberId(quiz.getMemberId())
+                .memberNickname(memberNickname)
                 .quizCategory(quiz.getQuizCategory())
                 .quizTitle(quiz.getQuizTitle())
                 .quizLevel(quiz.getQuizLevel())
