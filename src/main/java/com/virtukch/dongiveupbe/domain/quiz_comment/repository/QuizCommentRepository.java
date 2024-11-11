@@ -1,6 +1,6 @@
-package com.virtukch.dongiveupbe.domain.comment.repository;
+package com.virtukch.dongiveupbe.domain.quiz_comment.repository;
 
-import com.virtukch.dongiveupbe.domain.comment.entity.QuizComment;
+import com.virtukch.dongiveupbe.domain.quiz_comment.entity.QuizComment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

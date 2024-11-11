@@ -1,11 +1,10 @@
-package com.virtukch.dongiveupbe.domain.comment.service;
+package com.virtukch.dongiveupbe.domain.quiz_comment.service;
 
-import com.virtukch.dongiveupbe.domain.comment.dto.QuizCommentRequestDto;
-import com.virtukch.dongiveupbe.domain.comment.dto.QuizCommentResponseDto;
-import com.virtukch.dongiveupbe.domain.comment.entity.QuizComment;
-import com.virtukch.dongiveupbe.domain.comment.exception.QuizCommentNotFoundException;
-import com.virtukch.dongiveupbe.domain.comment.repository.QuizCommentRepository;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import com.virtukch.dongiveupbe.domain.quiz_comment.dto.QuizCommentRequestDto;
+import com.virtukch.dongiveupbe.domain.quiz_comment.dto.QuizCommentResponseDto;
+import com.virtukch.dongiveupbe.domain.quiz_comment.entity.QuizComment;
+import com.virtukch.dongiveupbe.domain.quiz_comment.exception.QuizCommentNotFoundException;
+import com.virtukch.dongiveupbe.domain.quiz_comment.repository.QuizCommentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

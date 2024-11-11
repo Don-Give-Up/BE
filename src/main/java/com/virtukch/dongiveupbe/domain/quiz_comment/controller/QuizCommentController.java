@@ -1,8 +1,8 @@
-package com.virtukch.dongiveupbe.domain.comment.controller;
+package com.virtukch.dongiveupbe.domain.quiz_comment.controller;
 
-import com.virtukch.dongiveupbe.domain.comment.dto.QuizCommentRequestDto;
-import com.virtukch.dongiveupbe.domain.comment.dto.QuizCommentResponseDto;
-import com.virtukch.dongiveupbe.domain.comment.service.QuizCommentService;
+import com.virtukch.dongiveupbe.domain.quiz_comment.dto.QuizCommentRequestDto;
+import com.virtukch.dongiveupbe.domain.quiz_comment.dto.QuizCommentResponseDto;
+import com.virtukch.dongiveupbe.domain.quiz_comment.service.QuizCommentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

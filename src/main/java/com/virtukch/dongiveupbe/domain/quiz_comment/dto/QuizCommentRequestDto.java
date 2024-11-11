@@ -1,8 +1,7 @@
-package com.virtukch.dongiveupbe.domain.comment.dto;
+package com.virtukch.dongiveupbe.domain.quiz_comment.dto;
 
-import com.virtukch.dongiveupbe.domain.comment.entity.QuizComment;
+import com.virtukch.dongiveupbe.domain.quiz_comment.entity.QuizComment;
 import io.swagger.v3.oas.annotations.Hidden;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
