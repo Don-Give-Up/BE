@@ -22,14 +22,10 @@ import java.util.List;
 public class TeacherQuizService {
     private final TeacherQuizRepository teacherQuizRepository;
     private final GameService gameService;
-    private final MemberService memberService;
-    private final QuizService quizService;
 
-    public TeacherQuizService(TeacherQuizRepository teacherQuizRepository, GameService gameService, MemberService memberService, QuizService quizService) {
+    public TeacherQuizService(TeacherQuizRepository teacherQuizRepository, GameService gameService) {
         this.teacherQuizRepository = teacherQuizRepository;
         this.gameService = gameService;
-        this.memberService = memberService;
-        this.quizService = quizService;
     }
 
     // 1. 특정 선생님 id로 가지고 있는 퀴즈 전체 조회
