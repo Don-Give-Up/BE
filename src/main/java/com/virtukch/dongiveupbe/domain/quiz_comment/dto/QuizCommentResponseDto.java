@@ -1,6 +1,6 @@
-package com.virtukch.dongiveupbe.domain.comment.dto;
+package com.virtukch.dongiveupbe.domain.quiz_comment.dto;
 
-import com.virtukch.dongiveupbe.domain.comment.entity.QuizComment;
+import com.virtukch.dongiveupbe.domain.quiz_comment.entity.QuizComment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,18 +17,18 @@ public class QuizCommentResponseDto {
 
     private Long quizId;
 
-    private Long memberId;
+    private String memberNickname;
 
     private String quizCommentContent;
 
     private LocalDateTime quizCommentCreatedAt;
 
 
-    public static QuizCommentResponseDto fromEntity(QuizComment quizComment) {
+    public static QuizCommentResponseDto fromEntity(QuizComment quizComment, String memberNickname) {
         return QuizCommentResponseDto.builder()
                 .quizCommentId(quizComment.getQuizCommentId())
                 .quizId(quizComment.getQuizId())
-                .memberId(quizComment.getMemberId())
+                .memberNickname(memberNickname)
                 .quizCommentContent(quizComment.getQuizCommentContent())
                 .quizCommentCreatedAt(quizComment.getQuizCommentCreatedAt())
                 .build();

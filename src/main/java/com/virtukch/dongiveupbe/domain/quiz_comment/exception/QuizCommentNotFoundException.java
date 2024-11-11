@@ -1,4 +1,4 @@
-package com.virtukch.dongiveupbe.domain.comment.exception;
+package com.virtukch.dongiveupbe.domain.quiz_comment.exception;
 
 public class QuizCommentNotFoundException extends RuntimeException {
 
