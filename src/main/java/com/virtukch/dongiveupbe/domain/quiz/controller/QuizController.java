@@ -10,14 +10,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -39,8 +34,10 @@ public class QuizController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<QuizBEResponseDto>> findAllQuiz() {
-        return ResponseEntity.ok(quizService.findAllQuiz());
+    public ResponseEntity<Page<QuizBEResponseDto>> findAllQuiz(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return ResponseEntity.ok(quizService.findAllQuiz(page, size));
     }
 
     // 2. 퀴즈 아이디로 조회

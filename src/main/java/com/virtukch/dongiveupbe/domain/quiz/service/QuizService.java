@@ -11,6 +11,9 @@ import java.util.List;
 import com.virtukch.dongiveupbe.security.member.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -31,11 +34,10 @@ public class QuizService {
         return quizRepository.findAll().stream().map(QuizResponseDto::fromEntity).toList();
     }
 
-    public List<QuizBEResponseDto> findAllQuiz() {
-        return quizRepository.findAll().stream()
-                .map(quiz -> QuizBEResponseDto.from(quiz,
-                        memberService.findMemberNicknameByMemberId(quiz.getMemberId())))
-                .toList();
+    public Page<QuizBEResponseDto> findAllQuiz(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return quizRepository.findAll(pageable)
+                .map(quiz -> QuizBEResponseDto.from(quiz, memberService.findMemberNicknameByMemberId(quiz.getMemberId())));
     }
 
     // 2. 퀴즈 아이디로 조회
