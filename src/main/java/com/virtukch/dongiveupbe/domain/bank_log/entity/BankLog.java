@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class BankLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long BankLogId;
+    private Long bankLogId;
 
     private Long gameMemberId;
 
