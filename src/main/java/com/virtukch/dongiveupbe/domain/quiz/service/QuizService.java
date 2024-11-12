@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -34,10 +35,20 @@ public class QuizService {
         return quizRepository.findAll().stream().map(QuizResponseDto::fromEntity).toList();
     }
 
-    public Page<QuizBEResponseDto> findAllQuiz(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return quizRepository.findAll(pageable)
-                .map(quiz -> QuizBEResponseDto.from(quiz, memberService.findMemberNicknameByMemberId(quiz.getMemberId())));
+    public Page<QuizBEResponseDto> findAllQuiz(Pageable pageable) {
+        // 기본 정렬을 quizId 내림차순으로 설정
+        Sort sort = Sort.by(Sort.Direction.DESC, "quizId");
+        Pageable pageableWithSort = PageRequest.of(
+                pageable.getPageNumber(),
+                pageable.getPageSize(),
+                sort
+        );
+
+        return quizRepository.findAll(pageableWithSort)
+                .map(quiz -> {
+                    String nickname = memberService.findMemberNicknameByMemberId(quiz.getMemberId());
+                    return QuizBEResponseDto.from(quiz, nickname);
+                });
     }
 
     // 2. 퀴즈 아이디로 조회
@@ -63,5 +74,13 @@ public class QuizService {
         log.info("Saved Quiz Entity: {}", savedQuiz);
 
         return QuizResponseDto.fromEntity(savedQuiz);
+    }
+
+    public QuizBEResponseDto findByQuizId(Long quizId) {
+        Quiz quiz = quizRepository.findById(quizId)
+                .orElseThrow(() -> new QuizNotFoundException("퀴즈가 없음" + quizId));
+        String memberNickname = memberService.findMemberNicknameByMemberId(quiz.getMemberId());
+
+        return QuizBEResponseDto.from(quiz, memberNickname);
     }
 }
