@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +39,14 @@ public class QuizController {
     public ResponseEntity<Page<QuizBEResponseDto>> findAllQuiz(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return ResponseEntity.ok(quizService.findAllQuiz(page, size));
+        Sort sort = Sort.by(Sort.Direction.DESC, "quizId");
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
+        return ResponseEntity.ok(quizService.findAllQuiz(pageRequest));
+    }
+
+    @GetMapping("quiz/{quizId}")
+    public ResponseEntity<QuizBEResponseDto> findByQuizId(@PathVariable Long quizId) {  // QuizResponseDto -> QuizBEResponseDto로 변경
+        return ResponseEntity.ok(quizService.findByQuizId(quizId));  // 작성자 닉네임을 포함하여 반환
     }
 
     // 2. 퀴즈 아이디로 조회
