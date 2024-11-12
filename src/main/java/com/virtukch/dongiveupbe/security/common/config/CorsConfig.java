@@ -14,6 +14,7 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
+        config.addAllowedOrigin("https://fe-alpha-six.vercel.app/"); // 배포한 FE URL
         config.addAllowedOrigin("http://localhost:8080"); // 요청을 허용할 프론트엔드 URL
 //        config.addAllowedOriginPattern("*"); // 모든 Pattern 에 대하여 CORS 허용
         config.addAllowedHeader("*"); // 모든 헤더 허용
