@@ -12,31 +12,35 @@ import lombok.NoArgsConstructor;
 public class StockTradeRecordResponseDto {
     @Schema(description = "주식 거래 기록 ID")
     private Long stockTradeRecordId;
-    @Schema(description = "주식 상태 ID")
-    private Long stockStatusId;
+
     @Schema(description = "게임 멤버 ID")
     private Long gameMemberId;
+
     @Schema(description = "주식 거래 수량")
     private Long stockTradeRecordAmount;
+
     @Schema(description = "거래 유형 (BUY or SELL)")
     private BuyOrSell tradeType;
 
+    @Schema(description = "주식 이름")
+    private String stockName;
+
     @Builder
-    public StockTradeRecordResponseDto(Long stockTradeRecordId, Long stockStatusId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType) {
+    public StockTradeRecordResponseDto(Long stockTradeRecordId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, String stockName) {
         this.stockTradeRecordId = stockTradeRecordId;
-        this.stockStatusId = stockStatusId;
         this.gameMemberId = gameMemberId;
         this.stockTradeRecordAmount = stockTradeRecordAmount;
         this.tradeType = tradeType;
+        this.stockName = stockName;
     }
 
-    public static StockTradeRecordResponseDto fromDto(StockTradeRecord stockTradeRecord) {
+    public static StockTradeRecordResponseDto fromDto(StockTradeRecord stockTradeRecord, String stockName) {
         return StockTradeRecordResponseDto.builder()
                 .stockTradeRecordId(stockTradeRecord.getStockTradeRecordId())
-                .stockStatusId(stockTradeRecord.getStockStatusId())
                 .gameMemberId(stockTradeRecord.getGameMemberId())
                 .stockTradeRecordAmount(stockTradeRecord.getStockTradeRecordAmount())
                 .tradeType(stockTradeRecord.getTradeType())
+                .stockName(stockName)
                 .build();
     }
 }

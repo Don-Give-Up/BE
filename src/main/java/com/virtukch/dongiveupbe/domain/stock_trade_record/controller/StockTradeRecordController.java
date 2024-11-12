@@ -40,18 +40,17 @@ public class StockTradeRecordController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @Hidden
     @GetMapping
     @Operation(summary = "전체 거래 내역 조회", description = "전체 주식 거래 내역을 조회합니다.")
     @ApiResponse(responseCode = "200", description = "전체 주식 거래 내역 조회 성공",
         content = @Content(mediaType = "application/json",
             schema = @Schema(implementation = StockTradeRecordResponseDto.class)))
     public ResponseEntity<List<StockTradeRecordResponseDto>> getAllTradeRecords() {
-        List<StockTradeRecordResponseDto> tradeRecords = stockTradeRecordService.getALlTradeRecords();
+        List<StockTradeRecordResponseDto> tradeRecords = stockTradeRecordService.getAllTradeRecords();
         return ResponseEntity.ok(tradeRecords);
     }
 
-    @Hidden
+
     @GetMapping("/gameMember/{gameMemberId}")
     @Operation(summary = "특정 멤버의 거래 내역 조회", description = "특정 게임 멤버의 주식 거래 내역을 조회합니다.")
     @ApiResponse(responseCode = "200", description = "특정 게임 멤버의 거래 내역 조회 성공",
