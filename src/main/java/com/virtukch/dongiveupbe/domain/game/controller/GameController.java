@@ -54,4 +54,12 @@ public class GameController {
         List<GameResponseDto> responseDtos = gameService.getAllGames();
         return ResponseEntity.ok(responseDtos);
     }
+
+    @GetMapping("/member/{memberId}")
+    @Operation(summary = "특정 사용자가 만든 게임 목록 조회", description = "memberId로 특정 사용자가 만든 게임들을 조회합니다.")
+    @ApiResponse(responseCode = "200", description = "게임 목록이 성공적으로 조회되었습니다.")
+    public ResponseEntity<List<GameResponseDto>> getGamesByMemberId(@PathVariable Long memberId) {
+        List<GameResponseDto> responseDtos = gameService.getGamesByMemberId(memberId);
+        return ResponseEntity.ok(responseDtos);
+    }
 }

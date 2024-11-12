@@ -38,10 +38,15 @@ public class QuizController {
     @GetMapping("/all")
     public ResponseEntity<Page<QuizBEResponseDto>> findAllQuiz(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) String searchType,
+            @RequestParam(required = false) String searchKeyword) {
+
         Sort sort = Sort.by(Sort.Direction.DESC, "quizId");
         PageRequest pageRequest = PageRequest.of(page, size, sort);
-        return ResponseEntity.ok(quizService.findAllQuiz(pageRequest));
+
+        // searchType과 searchKeyword를 서비스로 전달
+        return ResponseEntity.ok(quizService.findAllQuiz(pageRequest, searchType, searchKeyword));
     }
 
     @GetMapping("quiz/{quizId}")

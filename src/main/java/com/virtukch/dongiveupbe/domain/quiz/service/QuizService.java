@@ -35,20 +35,35 @@ public class QuizService {
         return quizRepository.findAll().stream().map(QuizResponseDto::fromEntity).toList();
     }
 
-    public Page<QuizBEResponseDto> findAllQuiz(Pageable pageable) {
-        // 기본 정렬을 quizId 내림차순으로 설정
-        Sort sort = Sort.by(Sort.Direction.DESC, "quizId");
-        Pageable pageableWithSort = PageRequest.of(
-                pageable.getPageNumber(),
-                pageable.getPageSize(),
-                sort
-        );
+    public Page<QuizBEResponseDto> findAllQuiz(Pageable pageable, String searchType, String searchKeyword) {
+        Page<Quiz> quizPage;
 
-        return quizRepository.findAll(pageableWithSort)
-                .map(quiz -> {
-                    String nickname = memberService.findMemberNicknameByMemberId(quiz.getMemberId());
-                    return QuizBEResponseDto.from(quiz, nickname);
-                });
+        if (searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+            searchKeyword = searchKeyword.toLowerCase();
+            switch (searchType) {
+                case "title":
+                    quizPage = quizRepository.findByQuizTitleContainingIgnoreCase(searchKeyword, pageable);
+                    break;
+                case "category":
+                    quizPage = quizRepository.findByQuizCategoryContainingIgnoreCase(searchKeyword, pageable);
+                    break;
+                case "level":
+                    quizPage = quizRepository.findByQuizLevelContainingIgnoreCase(searchKeyword, pageable);
+                    break;
+                case "all":
+                    quizPage = quizRepository.findByAllFields(searchKeyword, pageable);
+                    break;
+                default:
+                    quizPage = quizRepository.findAll(pageable);
+            }
+        } else {
+            quizPage = quizRepository.findAll(pageable);
+        }
+
+        return quizPage.map(quiz -> {
+            String nickname = memberService.findMemberNicknameByMemberId(quiz.getMemberId());
+            return QuizBEResponseDto.from(quiz, nickname);
+        });
     }
 
     // 2. 퀴즈 아이디로 조회
