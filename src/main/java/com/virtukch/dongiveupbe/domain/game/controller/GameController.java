@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
+
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +33,7 @@ public class GameController {
 
     @PostMapping
     @Operation(summary = "새로운 게임을 생성할 때 호출해 주세요", description = "호출 이후, 게임 아이디를 받을 수 있습니다.")
-    public ResponseEntity<GameResponseDto> saveGame(@RequestBody GameRequestDto requestDto) {
+    public ResponseEntity<GameResponseDto> saveGame(@RequestBody @Valid GameRequestDto requestDto) {
         GameResponseDto responseDto = gameService.saveGame(requestDto);
         return ResponseEntity.ok(responseDto);
     }

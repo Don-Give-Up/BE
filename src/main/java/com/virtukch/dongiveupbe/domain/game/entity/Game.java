@@ -1,9 +1,6 @@
 package com.virtukch.dongiveupbe.domain.game.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +15,10 @@ public class Game {
 
     private Long memberId;
 
+    @Column(nullable = false)
     private String gameName;
 
+    @Column(nullable = false)
     private String gamePassword;
 
     @Builder
