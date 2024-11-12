@@ -60,4 +60,13 @@ public class GameService {
         return gameRepository.findById(gameId)
                 .orElseThrow(() -> new EntityNotFoundException("Game을 찾을 수 없습니다. ID: " + gameId));
     }
+
+    @Transactional(readOnly = true)
+    public List<GameResponseDto> getGamesByMemberId(Long memberId) {
+        List<Game> games = gameRepository.findByMemberId(memberId);
+        return games.stream()
+                .map(GameResponseDto::fromEntity)
+                .toList();
+    }
+
 }
