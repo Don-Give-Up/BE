@@ -25,14 +25,14 @@ public class StockTradeRecord {
 
     private BuyOrSell tradeType;
 
-    private Integer totalPrice;
+    private Integer StockTotalPrice;
 
     @Builder
-    public StockTradeRecord(Long stockId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, Integer totalPrice) {
+    public StockTradeRecord(Long stockId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, Integer StockTotalPrice) {
         this.stockId = stockId;
         this.gameMemberId = gameMemberId;
         this.stockTradeRecordAmount = stockTradeRecordAmount;
         this.tradeType = tradeType;
-        this.totalPrice = totalPrice;
+        this.StockTotalPrice = StockTotalPrice;
     }
 }

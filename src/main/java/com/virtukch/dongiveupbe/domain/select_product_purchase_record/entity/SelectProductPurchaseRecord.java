@@ -20,13 +20,13 @@ public class SelectProductPurchaseRecord {
     private Long selectProductStatusId;
     private Long gameMemberId;
     private Long selectProductPurchaseAmount;
-    private Integer totalPrice;
+    private Integer productTotalPrice;
 
     @Builder
-    public SelectProductPurchaseRecord(Long selectProductStatusId, Long gameMemberId, Long selectProductPurchaseAmount, Integer totalPrice) {
+    public SelectProductPurchaseRecord(Long selectProductStatusId, Long gameMemberId, Long selectProductPurchaseAmount, Integer productTotalPrice) {
         this.selectProductStatusId = selectProductStatusId;
         this.gameMemberId = gameMemberId;
         this.selectProductPurchaseAmount = selectProductPurchaseAmount;
-        this.totalPrice = totalPrice;
+        this.productTotalPrice = productTotalPrice;
     }
 }

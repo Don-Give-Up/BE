@@ -51,7 +51,7 @@ public class StockTradeRecordService {
                 savedRecord.getStockTradeRecordAmount(),
                 savedRecord.getTradeType(),
                 stock.getStockName(),  // Stock 엔티티에서 바로 stockName을 가져옴
-                savedRecord.getTotalPrice()
+                savedRecord.getStockTotalPrice()
         );
     }
 

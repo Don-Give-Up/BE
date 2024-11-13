@@ -27,15 +27,15 @@ public class StockTradeRecordResponseDto {
     private String stockName;
 
     @Schema(description = "총 거래 금액")
-    private Integer totalPrice;
+    private Integer StockTotalPrice;
 
 
-    public StockTradeRecordResponseDto(Long stockTradeRecordId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, String stockName, Integer totalPrice) {
+    public StockTradeRecordResponseDto(Long stockTradeRecordId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, String stockName, Integer StockTotalPrice) {
         this.stockTradeRecordId = stockTradeRecordId;
         this.gameMemberId = gameMemberId;
         this.stockTradeRecordAmount = stockTradeRecordAmount;
         this.tradeType = tradeType;
         this.stockName = stockName;
-        this.totalPrice = totalPrice;
+        this.StockTotalPrice = StockTotalPrice;
     }
 }

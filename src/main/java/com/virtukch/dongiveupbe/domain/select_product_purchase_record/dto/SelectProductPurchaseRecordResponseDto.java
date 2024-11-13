@@ -12,6 +12,6 @@ public class SelectProductPurchaseRecordResponseDto {
     private String selectProductName;
     private Long gameMemberId;
     private Long selectProductPurchaseAmount;
-    private Integer totalPrice;
+    private Integer productTotalPrice;
 
 }

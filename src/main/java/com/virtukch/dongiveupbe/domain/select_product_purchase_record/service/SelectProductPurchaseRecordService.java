@@ -32,7 +32,7 @@ public class SelectProductPurchaseRecordService {
                 selectProductName,
                 savedRecord.getGameMemberId(),
                 savedRecord.getSelectProductPurchaseAmount(),
-                savedRecord.getTotalPrice()
+                savedRecord.getProductTotalPrice()
         );
     }
 
