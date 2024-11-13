@@ -11,12 +11,10 @@ import java.util.Optional;
 
 public interface BankLogRepository extends JpaRepository<BankLog, Long> {
 
-    @Query("SELECT new com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogResponseDto(" +
-            "b.bankLogId, b.gameMemberId, sp.savingProductName) " +
-            "FROM BankLog b " +
-            "JOIN com.virtukch.dongiveupbe.domain.saving_product.entity.SavingProduct sp ON b.savingProductStatusId = sp.savingProductId " +
-            "WHERE b.gameMemberId = :gameMemberId")
-    List<BankLogResponseDto> findBankLogsWithProductNameByGameMemberId(Long gameMemberId);
+    @Query("SELECT new com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogResponseDto(b.bankLogId, b.gameMemberId, sp.savingProductName, b.totalPrice) " +
+            "FROM BankLog b JOIN com.virtukch.dongiveupbe.domain.saving_product.entity.SavingProduct sp " +
+            "ON b.savingProductStatusId = sp.savingProductId WHERE b.gameMemberId = :gameMemberId")
+    List<BankLogResponseDto> findBankLogsWithProductNameByGameMemberId(@Param("gameMemberId") Long gameMemberId);
 
     @Query("SELECT new com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogResponseDto(" +
             "b.bankLogId, b.gameMemberId, sp.savingProductName) " +

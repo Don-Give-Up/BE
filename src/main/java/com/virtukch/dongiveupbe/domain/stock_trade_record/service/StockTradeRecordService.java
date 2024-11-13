@@ -50,7 +50,8 @@ public class StockTradeRecordService {
                 savedRecord.getGameMemberId(),
                 savedRecord.getStockTradeRecordAmount(),
                 savedRecord.getTradeType(),
-                stock.getStockName()  // Stock 엔티티에서 바로 stockName을 가져옴
+                stock.getStockName(),  // Stock 엔티티에서 바로 stockName을 가져옴
+                savedRecord.getTotalPrice()
         );
     }
 

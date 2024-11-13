@@ -34,14 +34,9 @@ public class StockTradeRecordDataLoader implements CommandLineRunner {
 
             // 주식 구매 이력
             List<StockTradeRecord> stockTradeRecords = Arrays.asList(
-                    new StockTradeRecord(1L, memberId, 4L, tradeType), // 주식 ID 1
-                    new StockTradeRecord(2L, memberId, 3L, tradeType), // 주식 ID 2
-                    new StockTradeRecord(3L, memberId, 2L, tradeType), // 주식 ID 3
-                    new StockTradeRecord(4L, memberId, 1L, tradeType), // 주식 ID 4
-                    new StockTradeRecord(5L, memberId, 2L, tradeType), // 주식 ID 5
-                    new StockTradeRecord(6L, memberId, 3L, tradeType), // 주식 ID 6
-                    new StockTradeRecord(7L, memberId, 4L, tradeType), // 주식 ID 7
-                    new StockTradeRecord(8L, memberId, 5L, tradeType)  // 주식 ID 8
+                    new StockTradeRecord(1L, memberId, 4L, tradeType, 268400), // 주식 ID 1
+                    new StockTradeRecord(4L, memberId, 3L, tradeType, 130599), // 주식 ID 2
+                    new StockTradeRecord(6L, memberId, 10L, tradeType, 41800) // 주식 ID 8
             );
 
             stockTradeRecordRepository.saveAll(stockTradeRecords);

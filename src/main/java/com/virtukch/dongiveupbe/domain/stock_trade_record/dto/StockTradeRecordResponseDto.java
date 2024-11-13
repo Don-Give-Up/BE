@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.domain.stock_trade_record.dto;
 import com.virtukch.dongiveupbe.domain.stock_trade_record.entity.StockTradeRecord;
 import com.virtukch.dongiveupbe.domain.stock_trade_record.entity.BuyOrSell;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,22 +26,16 @@ public class StockTradeRecordResponseDto {
     @Schema(description = "주식 이름")
     private String stockName;
 
-    @Builder
-    public StockTradeRecordResponseDto(Long stockTradeRecordId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, String stockName) {
+    @Schema(description = "총 거래 금액")
+    private Integer totalPrice;
+
+
+    public StockTradeRecordResponseDto(Long stockTradeRecordId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, String stockName, Integer totalPrice) {
         this.stockTradeRecordId = stockTradeRecordId;
         this.gameMemberId = gameMemberId;
         this.stockTradeRecordAmount = stockTradeRecordAmount;
         this.tradeType = tradeType;
         this.stockName = stockName;
-    }
-
-    public static StockTradeRecordResponseDto fromDto(StockTradeRecord stockTradeRecord, String stockName) {
-        return StockTradeRecordResponseDto.builder()
-                .stockTradeRecordId(stockTradeRecord.getStockTradeRecordId())
-                .gameMemberId(stockTradeRecord.getGameMemberId())
-                .stockTradeRecordAmount(stockTradeRecord.getStockTradeRecordAmount())
-                .tradeType(stockTradeRecord.getTradeType())
-                .stockName(stockName)
-                .build();
+        this.totalPrice = totalPrice;
     }
 }
