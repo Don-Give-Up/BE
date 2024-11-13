@@ -31,7 +31,8 @@ public class SelectProductPurchaseRecordService {
                 savedRecord.getSelectProductPurchaseRecordId(),
                 selectProductName,
                 savedRecord.getGameMemberId(),
-                savedRecord.getSelectProductPurchaseAmount()
+                savedRecord.getSelectProductPurchaseAmount(),
+                savedRecord.getTotalPrice()
         );
     }
 

@@ -16,8 +16,11 @@ public class Stock {
 
     private String stockName;
 
+    private Integer stockPrice;
+
     @Builder
-    public Stock(String stockName) {
+    public Stock(String stockName, Integer stockPrice) {
         this.stockName = stockName;
+        this.stockPrice = stockPrice;
     }
 }

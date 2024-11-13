@@ -11,5 +11,6 @@ public class StockRequestDto {
 
     private Long stockId;
     private String stockName;
+    private String stockPrice;
 
 }

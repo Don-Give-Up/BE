@@ -29,14 +29,14 @@ public class StockDataLoader implements CommandLineRunner {
     private void loadStockData() {
         if (stockRepository.count() == 0) {
             List<Stock> stocks = Arrays.asList(
-                    new Stock("삼성전자"),
-                    new Stock("테슬라"),
-                    new Stock("애플"),
-                    new Stock("화이자"),
-                    new Stock("삼양식품"),
-                    new Stock("한진중공업홀딩스"),
-                    new Stock("대한항공"),
-                    new Stock("SK이노베이션")
+                    new Stock("삼성전자",67100),
+                    new Stock("테슬라", 220096),
+                    new Stock("애플", 133703),
+                    new Stock("화이자", 43533),
+                    new Stock("삼양식품", 102000),
+                    new Stock("한진중공업홀딩스", 4180),
+                    new Stock("대한항공", 25950),
+                    new Stock("SK이노베이션", 176000)
             );
 
             stockRepository.saveAll(stocks);

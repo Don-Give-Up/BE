@@ -11,7 +11,8 @@ import java.util.List;
 public interface SelectProductPurchaseRecordRepository extends JpaRepository<SelectProductPurchaseRecord, Long> {
 
     @Query("SELECT new com.virtukch.dongiveupbe.domain.select_product_purchase_record.dto.SelectProductPurchaseRecordResponseDto(" +
-            "r.selectProductPurchaseRecordId, p.selectProductName, r.gameMemberId, r.selectProductPurchaseAmount) " +
+            "r.selectProductPurchaseRecordId, p.selectProductName, r.gameMemberId, r.selectProductPurchaseAmount, " +
+            "r.totalPrice) " + // totalPrice 필드 추가
             "FROM SelectProductPurchaseRecord r " +
             "JOIN SelectProduct p ON r.selectProductStatusId = p.selectProductId " +
             "WHERE r.gameMemberId = :gameMemberId")
