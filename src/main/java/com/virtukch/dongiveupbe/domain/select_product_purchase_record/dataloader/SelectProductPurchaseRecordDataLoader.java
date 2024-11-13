@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@Profile({"localCreate", "devCreate"})
+@Profile({"localCreate", "devCreate", "prodCreate"})
 public class SelectProductPurchaseRecordDataLoader implements CommandLineRunner {
 
     private final SelectProductPurchaseRecordRepository purchaseRecordRepository;
@@ -24,7 +24,7 @@ public class SelectProductPurchaseRecordDataLoader implements CommandLineRunner 
         SelectProductPurchaseRecord purchaseRecord1 = SelectProductPurchaseRecord.builder()
                 .selectProductStatusId(6L)  // 선생님 쿠폰 ID
                 .gameMemberId(6L)           // 학생 ID 6번
-                .selectProductPurchaseAmount(3L)  // 구매 금액 5,000원
+                .selectProductPurchaseAmount(3L)  // 구매 갯수
                 .build();
 
         purchaseRecordRepository.save(purchaseRecord1);
