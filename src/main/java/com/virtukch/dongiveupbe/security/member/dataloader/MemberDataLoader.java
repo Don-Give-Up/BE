@@ -107,5 +107,18 @@ public class MemberDataLoader implements CommandLineRunner {
                 .memberClass(4)
                 .build();
         memberRepository.save(teacher3);
+
+        Member teacher4 = Member.builder()
+            .memberEmail("AI@naver.com")
+            .memberPassword(passwordUtils.hashPassword("AI"))
+            .memberName("박민정")
+            .memberSchool("AI")
+            .memberBirthday(LocalDate.of(2024, 11, 11))
+            .memberNickname("AI")
+            .memberRole(MemberRole.TEACHER)
+            .memberGrade(1)
+            .memberClass(1)
+            .build();
+        memberRepository.save(teacher4);
     }
 }
