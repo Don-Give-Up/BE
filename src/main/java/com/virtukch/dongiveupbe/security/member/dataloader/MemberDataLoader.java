@@ -33,7 +33,7 @@ public class MemberDataLoader implements CommandLineRunner {
         Member member1 = Member.builder()
             .memberEmail("kch4731@naver.com")
             .memberPassword(passwordUtils.hashPassword("kch4731@naver.com"))
-            .memberName("김채호")
+            .memberName("관리자")
             .memberSchool("경신중학교")
             .memberBirthday(LocalDate.of(2001, 1, 24))
             .memberNickname("채채핑")
