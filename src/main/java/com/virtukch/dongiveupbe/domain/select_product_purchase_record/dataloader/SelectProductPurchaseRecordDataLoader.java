@@ -25,7 +25,7 @@ public class SelectProductPurchaseRecordDataLoader implements CommandLineRunner 
                 .selectProductStatusId(6L)  // 선생님 쿠폰 ID
                 .gameMemberId(6L)           // 학생 ID 6번
                 .selectProductPurchaseAmount(3L)  // 구매 갯수
-                .totalPrice(10000)
+                .productTotalPrice(9000)
                 .build();
 
         purchaseRecordRepository.save(purchaseRecord1);

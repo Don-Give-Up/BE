@@ -27,7 +27,7 @@ public class BankDataLoader implements CommandLineRunner {
         if (bankLogRepository.count() == 0) {
             Long gameMemberId = 6L;
             Long savingProductStatusId = 3L;
-            Integer bankTotalPrice = 9000;  // amount 설정
+            Integer bankTotalPrice = 10000;  // amount 설정
 
             // 수정된 생성자를 통해 BankLog 생성
             BankLog bankLog = new BankLog(gameMemberId, savingProductStatusId, bankTotalPrice);
