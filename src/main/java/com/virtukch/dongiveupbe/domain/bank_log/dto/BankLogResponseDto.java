@@ -14,13 +14,21 @@ public class BankLogResponseDto {
     private Long bankLogId;
     private Long gameMemberId;
     private String savingProductName;
+    private Integer totalPrice;
 
+
+    public BankLogResponseDto(Long bankLogId, Long gameMemberId, String savingProductName) {
+        this.bankLogId = bankLogId;
+        this.gameMemberId = gameMemberId;
+        this.savingProductName = savingProductName;
+    }
     // 엔티티에서 DTO로 변환
     public static BankLogResponseDto fromEntity(BankLog bankLog, String savingProductName) {
         return BankLogResponseDto.builder()
                 .bankLogId(bankLog.getBankLogId())
                 .gameMemberId(bankLog.getGameMemberId())
                 .savingProductName(savingProductName)
+                .totalPrice(bankLog.getTotalPrice())
                 .build();
     }
 }
