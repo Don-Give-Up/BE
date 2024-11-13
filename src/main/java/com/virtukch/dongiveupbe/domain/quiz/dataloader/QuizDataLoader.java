@@ -4,15 +4,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.virtukch.dongiveupbe.domain.quiz.dto.QuizAIRequestDto;
 import com.virtukch.dongiveupbe.domain.quiz.dto.QuizRequestDto;
+import com.virtukch.dongiveupbe.domain.quiz.dto.QuizSystemRequestDto;
 import com.virtukch.dongiveupbe.domain.quiz.exception.DeveloperParsingException;
 import com.virtukch.dongiveupbe.domain.quiz.repository.QuizRepository;
-import com.virtukch.dongiveupbe.domain.quiz.dto.QuizSystemRequestDto;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerRequestFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
