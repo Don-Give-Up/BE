@@ -27,20 +27,20 @@ public class QuizDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        if (quizRepository.findById(1L).isEmpty()) {
-//            parseFirstQuizData();
-//            log.info("퀴즈 데이터 1이 생성되었습니다.");
-//        }
-//
-//        if (quizRepository.findById(31L).isEmpty()) {
-//            parseSecondQuizData();
-//            log.info("퀴즈 데이터 2가 생성되었습니다.");
-//        }
-//
-//        if (quizRepository.findById(66L).isEmpty()) {
-//            parseThirdQuizData();
-//            log.info("퀴즈 데이터 3이 생성되었습니다.");
-//        }
+        if (quizRepository.findById(1L).isEmpty()) {
+            parseFirstQuizData();
+            log.info("퀴즈 데이터 1이 생성되었습니다.");
+        }
+
+        if (quizRepository.findById(31L).isEmpty()) {
+            parseSecondQuizData();
+            log.info("퀴즈 데이터 2가 생성되었습니다.");
+        }
+
+        if (quizRepository.findById(66L).isEmpty()) {
+            parseThirdQuizData();
+            log.info("퀴즈 데이터 3이 생성되었습니다.");
+        }
 
         createAIQuizData();
     }

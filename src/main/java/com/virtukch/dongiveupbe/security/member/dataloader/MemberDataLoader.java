@@ -59,7 +59,7 @@ public class MemberDataLoader implements CommandLineRunner {
         Member teacher1 = Member.builder()
             .memberEmail("ybd4731@gmail.com")
             .memberPassword(passwordUtils.hashPassword("ybd4731@gmail.com"))
-            .memberName("김채호")
+            .memberName("관리자")
             .memberSchool("경신중학교")
             .memberBirthday(LocalDate.of(2001, 1, 24))
             .memberNickname("채채핑담임")
@@ -96,16 +96,16 @@ public class MemberDataLoader implements CommandLineRunner {
         memberRepository.save(admin);
 
         Member teacher3 = Member.builder()
-                .memberEmail("qkralswn306@naver.com")
-                .memberPassword(passwordUtils.hashPassword("1234"))
-                .memberName("박민주")
-                .memberSchool("로딩중")
-                .memberBirthday(LocalDate.of(2004, 4, 11))
-                .memberNickname("박민쥬라기공원")
-                .memberRole(MemberRole.TEACHER)
-                .memberGrade(1)
-                .memberClass(4)
-                .build();
+            .memberEmail("qkralswn306@naver.com")
+            .memberPassword(passwordUtils.hashPassword("1234"))
+            .memberName("박민주")
+            .memberSchool("로딩중")
+            .memberBirthday(LocalDate.of(2004, 4, 11))
+            .memberNickname("박민쥬라기공원")
+            .memberRole(MemberRole.TEACHER)
+            .memberGrade(1)
+            .memberClass(4)
+            .build();
         memberRepository.save(teacher3);
 
         Member teacher4 = Member.builder()
