@@ -94,7 +94,7 @@ public class MemberDataLoader implements CommandLineRunner {
         memberRepository.save(admin);
 
         Member teacher3 = Member.builder()
-            .memberEmail("qkralswn306@naver.com")
+            .memberEmail("meami@gmail.com")
             .memberPassword(PasswordUtils.hashPassword("1234"))
             .memberName("박민주")
             .memberSchool("로딩중")
