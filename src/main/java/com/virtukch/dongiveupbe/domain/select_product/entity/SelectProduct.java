@@ -26,7 +26,6 @@ public class SelectProduct {
     private String selectProductUrl;
 
     @Builder
-
     public SelectProduct(Long selectProductId, String selectProductName, String selectProductDescription, Long selectProductViewAmount, String selectProductUrl) {
         this.selectProductId = selectProductId;
         this.selectProductName = selectProductName;

@@ -1,7 +1,7 @@
 package com.virtukch.dongiveupbe.domain.bank_log.controller;
 
-import com.virtukch.dongiveupbe.domain.bank_log.Dto.BankLogRequestDto;
-import com.virtukch.dongiveupbe.domain.bank_log.Dto.BankLogResponseDto;
+import com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogRequestDto;
+import com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogResponseDto;
 import com.virtukch.dongiveupbe.domain.bank_log.service.BankLogService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

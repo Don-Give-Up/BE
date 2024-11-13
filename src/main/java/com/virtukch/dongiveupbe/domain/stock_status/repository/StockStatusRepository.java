@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StockStatusRepository extends JpaRepository<StockStatus, Long> {
 
+    // stockStatusId로 StockStatus만 조회하는 메소드
 }

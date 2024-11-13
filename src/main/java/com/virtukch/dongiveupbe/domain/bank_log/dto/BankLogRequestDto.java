@@ -1,4 +1,4 @@
-package com.virtukch.dongiveupbe.domain.bank_log.Dto;
+package com.virtukch.dongiveupbe.domain.bank_log.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

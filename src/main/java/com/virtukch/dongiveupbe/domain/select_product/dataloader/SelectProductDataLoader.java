@@ -21,6 +21,7 @@ public class SelectProductDataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        // 기존 작품들
         SelectProduct artwork1 = SelectProduct.builder()
                 .selectProductName("호진의 자연 속 여행")
                 .selectProductDescription("송호진이 직접 그린 자연 풍경화 작품입니다.")
@@ -56,12 +57,20 @@ public class SelectProductDataLoader implements CommandLineRunner {
                 .selectProductUrl("https://cdn.imweb.me/thumbnail/20210327/866828f717370.jpg")
                 .build();
 
+        SelectProduct teacherProduct = SelectProduct.builder()
+                .selectProductName("급식 빨리먹기 쿠폰")
+                .selectProductDescription("선생님이 주시는 특별한 급식 빨리먹기 쿠폰입니다.")
+                .selectProductViewAmount(50L)
+                .selectProductUrl("https://example.com/teacher_product_image.jpg")
+                .build();
+
         selectProductRepository.save(artwork1);
         selectProductRepository.save(artwork2);
         selectProductRepository.save(artwork3);
         selectProductRepository.save(artwork4);
         selectProductRepository.save(artwork5);
+        selectProductRepository.save(teacherProduct);
 
-        log.info("SelectProduct 창작물 스텁 데이터가 삽입되었습니다.");
+        log.info("SelectProduct 창작물 및 선생님 상품 스텁 데이터가 삽입되었습니다.");
     }
 }
