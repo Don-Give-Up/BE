@@ -15,12 +15,10 @@ import org.springframework.stereotype.Component;
 public class MemberDataLoader implements CommandLineRunner {
 
     private final MemberRepository memberRepository;
-    private final PasswordUtils passwordUtils;
 
     @Autowired
-    public MemberDataLoader(MemberRepository memberRepository, PasswordUtils passwordUtils) {
+    public MemberDataLoader(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
-        this.passwordUtils = passwordUtils;
     }
 
     // local (ddl-auto: none, DataLoader 작동 X)
@@ -32,11 +30,11 @@ public class MemberDataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Member member1 = Member.builder()
             .memberEmail("kch4731@naver.com")
-            .memberPassword(passwordUtils.hashPassword("kch4731@naver.com"))
+            .memberPassword(PasswordUtils.hashPassword("kch4731@naver.com"))
             .memberName("김채호")
             .memberSchool("경신중학교")
             .memberBirthday(LocalDate.of(2001, 1, 24))
-            .memberNickname("채채핑")
+            .memberNickname("관리자")
             .memberRole(MemberRole.STUDENT)
             .memberGrade(1)
             .memberClass(1)
@@ -45,7 +43,7 @@ public class MemberDataLoader implements CommandLineRunner {
 
         Member member2 = Member.builder()
             .memberEmail("0918syj@naver.com")
-            .memberPassword(passwordUtils.hashPassword("0918syj@naver.com"))
+            .memberPassword(PasswordUtils.hashPassword("0918syj@naver.com"))
             .memberName("송호진")
             .memberSchool("신창중학교")
             .memberBirthday(LocalDate.of(1999, 7, 29))
@@ -58,7 +56,7 @@ public class MemberDataLoader implements CommandLineRunner {
 
         Member teacher1 = Member.builder()
             .memberEmail("ybd4731@gmail.com")
-            .memberPassword(passwordUtils.hashPassword("ybd4731@gmail.com"))
+            .memberPassword(PasswordUtils.hashPassword("ybd4731@gmail.com"))
             .memberName("김채호")
             .memberSchool("경신중학교")
             .memberBirthday(LocalDate.of(2001, 1, 24))
@@ -71,7 +69,7 @@ public class MemberDataLoader implements CommandLineRunner {
 
         Member teacher2 = Member.builder()
             .memberEmail("0918syj@gmail.com")
-            .memberPassword(passwordUtils.hashPassword("0918syj@gmail.com"))
+            .memberPassword(PasswordUtils.hashPassword("0918syj@gmail.com"))
             .memberName("송호진")
             .memberSchool("신창중학교")
             .memberBirthday(LocalDate.of(1999, 7, 29))
@@ -84,7 +82,7 @@ public class MemberDataLoader implements CommandLineRunner {
 
         Member admin = Member.builder()
             .memberEmail("admin1234@naver.com")
-            .memberPassword(passwordUtils.hashPassword("admin1234@naver.com"))
+            .memberPassword(PasswordUtils.hashPassword("admin1234@naver.com"))
             .memberName("admin")
             .memberSchool("ADMIN")
             .memberBirthday(LocalDate.now())
@@ -96,21 +94,21 @@ public class MemberDataLoader implements CommandLineRunner {
         memberRepository.save(admin);
 
         Member teacher3 = Member.builder()
-                .memberEmail("qkralswn306@naver.com")
-                .memberPassword(passwordUtils.hashPassword("1234"))
-                .memberName("박민주")
-                .memberSchool("로딩중")
-                .memberBirthday(LocalDate.of(2004, 4, 11))
-                .memberNickname("박민쥬라기공원")
-                .memberRole(MemberRole.TEACHER)
-                .memberGrade(1)
-                .memberClass(4)
-                .build();
+            .memberEmail("meami@gmail.com")
+            .memberPassword(PasswordUtils.hashPassword("1234"))
+            .memberName("박민주")
+            .memberSchool("로딩중")
+            .memberBirthday(LocalDate.of(2004, 4, 11))
+            .memberNickname("박민쥬라기공원")
+            .memberRole(MemberRole.TEACHER)
+            .memberGrade(1)
+            .memberClass(4)
+            .build();
         memberRepository.save(teacher3);
 
         Member teacher4 = Member.builder()
             .memberEmail("AI@naver.com")
-            .memberPassword(passwordUtils.hashPassword("AI"))
+            .memberPassword(PasswordUtils.hashPassword("AI"))
             .memberName("박민정")
             .memberSchool("AI")
             .memberBirthday(LocalDate.of(2024, 11, 11))
