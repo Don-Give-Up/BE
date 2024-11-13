@@ -51,15 +51,15 @@ public class StockTradeRecordController {
     }
 
 
-    @GetMapping("/gameMember/{gameMemberId}")
+    @GetMapping("/member/{memberId}")
     @Operation(summary = "특정 멤버의 거래 내역 조회", description = "특정 게임 멤버의 주식 거래 내역을 조회합니다.")
     @ApiResponse(responseCode = "200", description = "특정 게임 멤버의 거래 내역 조회 성공",
         content = @Content(mediaType = "application/json",
             schema = @Schema(implementation = StockTradeRecordResponseDto.class)))
     public ResponseEntity<List<StockTradeRecordResponseDto>> getTradeRecordsByMemberId(
-        @PathVariable Long gameMemberId) {
+        @PathVariable Long memberId) {
         List<StockTradeRecordResponseDto> tradeRecords = stockTradeRecordService.getTradeRecordsByGameMemberId(
-            gameMemberId);
+                memberId);
         return ResponseEntity.ok(tradeRecords);
     }
 }
