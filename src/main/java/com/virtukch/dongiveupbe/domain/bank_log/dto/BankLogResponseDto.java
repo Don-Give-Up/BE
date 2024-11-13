@@ -14,7 +14,7 @@ public class BankLogResponseDto {
     private Long bankLogId;
     private Long gameMemberId;
     private String savingProductName;
-    private Integer totalPrice;
+    private Integer bankTotalPrice;
 
 
     public BankLogResponseDto(Long bankLogId, Long gameMemberId, String savingProductName) {
@@ -28,7 +28,7 @@ public class BankLogResponseDto {
                 .bankLogId(bankLog.getBankLogId())
                 .gameMemberId(bankLog.getGameMemberId())
                 .savingProductName(savingProductName)
-                .totalPrice(bankLog.getTotalPrice())
+                .bankTotalPrice(bankLog.getBankTotalPrice())
                 .build();
     }
 }
