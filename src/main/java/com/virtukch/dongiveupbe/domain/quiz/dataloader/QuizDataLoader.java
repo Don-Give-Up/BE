@@ -86,8 +86,16 @@ public class QuizDataLoader implements CommandLineRunner {
         } catch (IOException e) {
             throw new DeveloperParsingException("AI 퀴즈 파싱 중 오류 발생");
         }
+        long memberId = 1L;
         for (QuizAIRequestDto quizAIRequestDto : quizAIRequestDtoList) {
-            quizRepository.save(QuizAIRequestDto.toEntity(quizAIRequestDto));
+            if (memberId >= 7) {
+                memberId = 0L;
+            }
+            memberId++;
+            while (memberId == 1 || memberId == 5) {
+                memberId++;
+            }
+            quizRepository.save(QuizAIRequestDto.toEntity(quizAIRequestDto, memberId));
         }
     }
 

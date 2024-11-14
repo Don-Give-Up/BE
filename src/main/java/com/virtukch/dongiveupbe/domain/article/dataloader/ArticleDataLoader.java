@@ -46,7 +46,7 @@ public class ArticleDataLoader implements CommandLineRunner {
 
         ArticleRequestDto articleRequestDto4 = ArticleRequestDto.builder()
             .memberId(4L)
-            .articleTitle("호진희 담임입니다. 너무 좋은 서비스를 만들어 주셔서 다행입니다.")
+            .articleTitle("다른 선생님들이 만든 퀴즈를 추가할 수 있는 기능이 너무 좋은 것 같아요.")
             .articleContents("채호진님들 정말 천재에요!")
             .build();
 
@@ -54,7 +54,7 @@ public class ArticleDataLoader implements CommandLineRunner {
 
         ArticleRequestDto articleRequestDto6 = ArticleRequestDto.builder()
             .memberId(6L)
-            .articleTitle("오 마이! 너무 좋아요~!~!")
+            .articleTitle("북마크 기능 정말 유용하게 사용하고 있습니다!")
             .articleContents("어떻게 이런 걸 만들 생각을 하셨죠?? 채호진님들 정말 천재에요!")
             .build();
 
@@ -62,7 +62,7 @@ public class ArticleDataLoader implements CommandLineRunner {
 
         ArticleRequestDto articleRequestDto7 = ArticleRequestDto.builder()
             .memberId(7L)
-            .articleTitle("굿이에요 굿~~!~!~!")
+            .articleTitle("AI 에 의해 자동으로 작성 된 글입니다.")
             .articleContents("어떻게 이런 걸 만들 생각을 하셨죠?? 채호진님들 정말 천재에요!")
             .build();
 

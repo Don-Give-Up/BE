@@ -4,6 +4,7 @@ import com.virtukch.dongiveupbe.domain.game.entity.Game;
 import com.virtukch.dongiveupbe.domain.game.service.GameService;
 import com.virtukch.dongiveupbe.domain.quiz.dto.QuizResponseDto;
 import com.virtukch.dongiveupbe.domain.quiz.entity.Quiz;
+import com.virtukch.dongiveupbe.domain.quiz.repository.QuizRepository;
 import com.virtukch.dongiveupbe.domain.quiz.service.QuizService;
 import com.virtukch.dongiveupbe.domain.teacher_quiz.dto.TeacherQuizRequestDto;
 import com.virtukch.dongiveupbe.domain.teacher_quiz.dto.TeacherQuizResponseDto;
@@ -16,16 +17,19 @@ import com.virtukch.dongiveupbe.security.member.service.MemberService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class TeacherQuizService {
     private final TeacherQuizRepository teacherQuizRepository;
     private final GameService gameService;
+    private final QuizRepository quizRepository;
 
-    public TeacherQuizService(TeacherQuizRepository teacherQuizRepository, GameService gameService) {
+    public TeacherQuizService(TeacherQuizRepository teacherQuizRepository, GameService gameService, QuizRepository quizRepository) {
         this.teacherQuizRepository = teacherQuizRepository;
         this.gameService = gameService;
+        this.quizRepository = quizRepository;
     }
 
     // 1. 특정 선생님 id로 가지고 있는 퀴즈 전체 조회
@@ -76,7 +80,21 @@ public class TeacherQuizService {
         teacherQuizRepository.delete(teacherQuiz);
     }
 
-    public List<TeacherQuizResponseDto> findByGameId(Long gameId) {
+    public List<QuizResponseDto> findByGameId(Long gameId) {
+        List<QuizResponseDto> quizResponseDtoList = new ArrayList<>();
+
+        List<Quiz> quizList = teacherQuizRepository.findByGameId(gameId)
+                .stream()
+                .map(teacherQuiz -> quizRepository.findById(teacherQuiz.getQuizId()).orElse(null)).toList();
+
+        for (Quiz quiz : quizList) {
+            quizResponseDtoList.add(QuizResponseDto.fromEntity(quiz));
+        }
+
+        return quizResponseDtoList;
+    }
+
+    public List<TeacherQuizResponseDto> findByGameIdForBE(Long gameId) {
         return teacherQuizRepository.findByGameId(gameId)
                 .stream()
                 .map(TeacherQuizResponseDto::fromEntity)
