@@ -86,8 +86,16 @@ public class QuizDataLoader implements CommandLineRunner {
         } catch (IOException e) {
             throw new DeveloperParsingException("AI 퀴즈 파싱 중 오류 발생");
         }
+        long memberId = 1L;
         for (QuizAIRequestDto quizAIRequestDto : quizAIRequestDtoList) {
-            quizRepository.save(QuizAIRequestDto.toEntity(quizAIRequestDto));
+            if (memberId >= 7) {
+                memberId = 0L;
+            }
+            memberId++;
+            while (memberId == 1 || memberId == 5) {
+                memberId++;
+            }
+            quizRepository.save(QuizAIRequestDto.toEntity(quizAIRequestDto, memberId));
         }
     }
 
@@ -172,7 +180,7 @@ public class QuizDataLoader implements CommandLineRunner {
         quizRepository.save(QuizRequestDto.toEntity(quizRequestDto2));
 
         QuizRequestDto quizRequestDto3 = QuizRequestDto.builder()
-            .memberId(1L)
+            .memberId(3L)
             .quizCategory("경제 퀴즈")
             .quizTitle("한 주 당 만 원인 주식이 월요일에 100% 상승하고, 화요일에 100% 하락했습니다. 수요일의 주식 가겨은 만 원인가요?")
             .quizType("주식")
