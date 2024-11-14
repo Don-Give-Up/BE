@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.domain.teacher_quiz.controller;
 
+import com.virtukch.dongiveupbe.domain.quiz.dto.QuizResponseDto;
 import com.virtukch.dongiveupbe.domain.teacher_quiz.dto.TeacherQuizRequestDto;
 import com.virtukch.dongiveupbe.domain.teacher_quiz.dto.TeacherQuizResponseDto;
 import com.virtukch.dongiveupbe.domain.teacher_quiz.service.TeacherQuizService;
@@ -40,9 +41,27 @@ public class TeacherQuizController {
         teacherQuizService.delete(quizId);
         return ResponseEntity.noContent().build();
     }
+
+    /**
+     * XR 통신 위한 메서드
+     *
+     * @param gameId
+     * @return
+     */
     @GetMapping("/game/{gameId}")
-    public ResponseEntity<List<TeacherQuizResponseDto>> getQuizzesByGameId(@PathVariable("gameId") Long gameId) {
-        List<TeacherQuizResponseDto> quizzes = teacherQuizService.findByGameId(gameId);
+    public ResponseEntity<List<QuizResponseDto>> getQuizzesByGameId(@PathVariable("gameId") Long gameId) {
+        return ResponseEntity.ok(teacherQuizService.findByGameId(gameId));
+    }
+
+    /**
+     * Web 내 BE 사용 위한 메서드
+     *
+     * @param gameId
+     * @return
+     */
+    @GetMapping("/be/game/{gameId}")
+    public ResponseEntity<List<TeacherQuizResponseDto>> getQuizzesByGameIdForBE(@PathVariable("gameId") Long gameId) {
+        List<TeacherQuizResponseDto> quizzes = teacherQuizService.findByGameIdForBE(gameId);
         return ResponseEntity.ok(quizzes);
     }
 }
