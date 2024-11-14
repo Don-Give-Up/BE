@@ -43,4 +43,19 @@ public class QuizAIRequestDto {
             .count(0)
             .build();
     }
+
+    public static Quiz toEntity(QuizAIRequestDto quizAIRequestDto, long memberId) {
+        return Quiz.builder()
+            .memberId(memberId)
+            .quizCategory(quizAIRequestDto.getQuizCategory())
+            .quizTitle(quizAIRequestDto.getQuizTitle())
+            .quizType(quizAIRequestDto.getQuizType())
+            .quizAnswer(quizAIRequestDto.getQuizAnswer())
+            .quizDescription(quizAIRequestDto.getQuizDescription())
+            .quizLevel(quizAIRequestDto.getQuizLevel())
+            .isAcceptedByTeacher(IsAcceptedByTeacher.ACCEPTED_BY_TEACHER)
+            .createdAt(LocalDateTime.now())
+            .count(0)
+            .build();
+    }
 }
