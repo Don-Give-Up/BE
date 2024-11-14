@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuizCommentRequestDto {
