@@ -99,7 +99,7 @@ public class MemberDataLoader implements CommandLineRunner {
             .memberName("박민주")
             .memberSchool("로딩중")
             .memberBirthday(LocalDate.of(2004, 4, 11))
-            .memberNickname("박민쥬라기공원")
+            .memberNickname("송호진 선생님")
             .memberRole(MemberRole.TEACHER)
             .memberGrade(1)
             .memberClass(4)
