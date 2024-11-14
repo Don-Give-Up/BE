@@ -14,8 +14,8 @@ public class CorsConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:7557"); // 모든 출처 허용
-        config.addAllowedOrigin("http://125.132.216.190:7557"); // 모든 출처 허용
+        config.addAllowedOrigin("http://localhost:7557");
+        config.addAllowedOrigin("http://125.132.216.190:7557");
         config.addAllowedHeader("*"); // 모든 헤더 허용
         config.addAllowedMethod("*"); // 모든 HTTP 메서드 허용
         source.registerCorsConfiguration("/**", config);

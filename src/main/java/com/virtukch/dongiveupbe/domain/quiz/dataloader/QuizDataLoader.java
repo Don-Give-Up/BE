@@ -170,5 +170,16 @@ public class QuizDataLoader implements CommandLineRunner {
             .quizLevel("normal")
             .build();
         quizRepository.save(QuizRequestDto.toEntity(quizRequestDto2));
+
+        QuizRequestDto quizRequestDto3 = QuizRequestDto.builder()
+            .memberId(1L)
+            .quizCategory("경제 퀴즈")
+            .quizTitle("한 주 당 만 원인 주식이 월요일에 100% 상승하고, 화요일에 100% 하락했습니다. 수요일의 주식 가겨은 만 원인가요?")
+            .quizType("주식")
+            .quizAnswer("X")
+            .quizDescription("100% 하락한 다음 날의 주가는 0원 입니다.")
+            .quizLevel("normal")
+            .build();
+        quizRepository.save(QuizRequestDto.toEntity(quizRequestDto3));
     }
 }
