@@ -1,15 +1,19 @@
 package com.virtukch.dongiveupbe.domain.stock_trade_record.dto;
 
 import com.virtukch.dongiveupbe.domain.stock_trade_record.entity.BuyOrSell;
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
 public class StockTradeRecordRequestDto {
 
     private Long stockId;
+    @Hidden
+    @Setter
     private Long gameMemberId;
     private Long stockTradeRecordAmount;
     private BuyOrSell tradeType;

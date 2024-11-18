@@ -163,4 +163,16 @@ public class TokenUtils {
         byte[] secretBytes = DatatypeConverter.parseBase64Binary(jwtSecretKey); // 비밀 키 변환
         return new SecretKeySpec(secretBytes, SignatureAlgorithm.HS256.getJcaName()); // 서명 키 생성
     }
+
+    public static Long getMemberIdFromToken(String token) {
+        Claims claims = getClaimsFromToken(token);
+        return claims.get("memberId", Long.class); // 클레임에서 memberId 추출
+    }
+
+    public static Long getMemberIdFromRequest(HttpServletRequest request) {
+        String token = getMemberToken(request); // Authorization 헤더에서 토큰 추출
+        return getMemberIdFromToken(token); // 토큰에서 memberId 추출
+    }
+
+
 }
