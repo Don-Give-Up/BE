@@ -18,13 +18,16 @@ public class SelectProductResponseDto {
 
     private String selectProductUrl;
 
+    private Integer selectProductPrice;
+
     @Builder
-    public SelectProductResponseDto(Long selectProductId, String selectProductName, String selectProductDescription, Long selectProductViewAmount, String selectProductUrl) {
+    public SelectProductResponseDto(Long selectProductId, String selectProductName, String selectProductDescription, Long selectProductViewAmount, String selectProductUrl, Integer selectProductPrice) {
         this.selectProductId = selectProductId;
         this.selectProductName = selectProductName;
         this.selectProductDescription = selectProductDescription;
         this.selectProductViewAmount = selectProductViewAmount;
         this.selectProductUrl = selectProductUrl;
+        this.selectProductPrice = selectProductPrice;
     }
 
     public static SelectProductResponseDto fromEntity(SelectProduct selectProduct) {
@@ -34,6 +37,7 @@ public class SelectProductResponseDto {
                 .selectProductDescription(selectProduct.getSelectProductDescription())
                 .selectProductViewAmount(selectProduct.getSelectProductViewAmount())
                 .selectProductUrl(selectProduct.getSelectProductUrl())
+                .selectProductPrice(selectProduct.getSelectProductPrice())
                 .build();
     }
 }

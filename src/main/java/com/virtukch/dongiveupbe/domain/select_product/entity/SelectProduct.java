@@ -25,12 +25,15 @@ public class SelectProduct {
 
     private String selectProductUrl;
 
+    private Integer selectProductPrice;
+
     @Builder
-    public SelectProduct(Long selectProductId, String selectProductName, String selectProductDescription, Long selectProductViewAmount, String selectProductUrl) {
+    public SelectProduct(Long selectProductId, String selectProductName, String selectProductDescription, Long selectProductViewAmount, String selectProductUrl, Integer selectProductPrice) {
         this.selectProductId = selectProductId;
         this.selectProductName = selectProductName;
         this.selectProductDescription = selectProductDescription;
         this.selectProductViewAmount = selectProductViewAmount;
         this.selectProductUrl = selectProductUrl;
+        this.selectProductPrice = selectProductPrice;
     }
 }

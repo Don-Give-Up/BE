@@ -15,6 +15,7 @@ public class SelectProductRequestDto {
 
     private String selectProductUrl;
 
+    private Integer selectProductPrice;
 
     public SelectProduct toEntity() {
         return SelectProduct.builder()
@@ -22,6 +23,7 @@ public class SelectProductRequestDto {
                 .selectProductDescription(selectProductDescription)
                 .selectProductViewAmount(selectProductViewAmount)
                 .selectProductUrl(selectProductUrl)
+                .selectProductPrice(selectProductPrice)
                 .build();
     }
 }
