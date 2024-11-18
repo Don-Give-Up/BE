@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.domain.stock_trade_record.controller;
 import com.virtukch.dongiveupbe.domain.stock_trade_record.dto.StockTradeRecordResponseDto;
 import com.virtukch.dongiveupbe.domain.stock_trade_record.service.StockTradeRecordService;
 import com.virtukch.dongiveupbe.domain.stock_trade_record.dto.StockTradeRecordRequestDto;
+import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,6 +11,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
+
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +38,10 @@ public class StockTradeRecordController {
         content = @Content(mediaType = "application/json",
             schema = @Schema(implementation = StockTradeRecordRequestDto.class)))
     public ResponseEntity<StockTradeRecordResponseDto> createTradeRecord(
-        @RequestBody StockTradeRecordRequestDto requestDto) {
+        @RequestBody StockTradeRecordRequestDto requestDto,
+        HttpServletRequest request) {
+        Long memberId = TokenUtils.getMemberIdFromRequest(request);
+        requestDto.setGameMemberId(memberId);
         StockTradeRecordResponseDto responseDto = stockTradeRecordService.tradeStock(requestDto);
         return ResponseEntity.ok(responseDto);
     }

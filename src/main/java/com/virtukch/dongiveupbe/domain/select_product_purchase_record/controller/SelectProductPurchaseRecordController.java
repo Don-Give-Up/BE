@@ -3,11 +3,13 @@ package com.virtukch.dongiveupbe.domain.select_product_purchase_record.controlle
 import com.virtukch.dongiveupbe.domain.select_product_purchase_record.dto.SelectProductPurchaseRecordRequestDto;
 import com.virtukch.dongiveupbe.domain.select_product_purchase_record.dto.SelectProductPurchaseRecordResponseDto;
 import com.virtukch.dongiveupbe.domain.select_product_purchase_record.service.SelectProductPurchaseRecordService;
+import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +35,10 @@ public class SelectProductPurchaseRecordController {
             }
     )
     public ResponseEntity<SelectProductPurchaseRecordResponseDto> save(
-            @RequestBody SelectProductPurchaseRecordRequestDto requestDto) {
+            @RequestBody SelectProductPurchaseRecordRequestDto requestDto,
+            HttpServletRequest request) {
+        Long memberId = TokenUtils.getMemberIdFromRequest(request);
+        requestDto.setGameMemberId(memberId);
         SelectProductPurchaseRecordResponseDto response = purchaseRecordService.save(requestDto);
         return ResponseEntity.ok(response);
     }

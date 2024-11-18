@@ -3,11 +3,13 @@ package com.virtukch.dongiveupbe.domain.bank_log.controller;
 import com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogRequestDto;
 import com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogResponseDto;
 import com.virtukch.dongiveupbe.domain.bank_log.service.BankLogService;
+import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,7 +66,10 @@ public class BankLogController {
                                     schema = @Schema(implementation = BankLogResponseDto.class)))
             }
     )
-    public ResponseEntity<BankLogResponseDto> save(@Valid @RequestBody BankLogRequestDto requestDto) {
+    public ResponseEntity<BankLogResponseDto> save(@Valid @RequestBody BankLogRequestDto requestDto,
+                                                   HttpServletRequest request) {
+        Long memberId = TokenUtils.getMemberIdFromRequest(request);
+        requestDto.setGameMemberId(memberId);
         BankLogResponseDto responseDto = bankLogService.save(requestDto);
         return ResponseEntity.ok(responseDto);
     }
