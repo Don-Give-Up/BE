@@ -32,13 +32,14 @@ public class StockTradeRecordService {
         // StockService를 통해 Stock을 가져옵니다.
         Stock stock = stockService.findStockById(requestDto.getStockId()) // StockService에서 Stock을 조회
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID의 Stock을 찾을 수 없습니다: " + requestDto.getStockId()));
-
+        int totalPrice = stock.getStockPrice() * requestDto.getStockTradeRecordAmount().intValue();
         // 거래 기록 생성
         StockTradeRecord stockTradeRecord = StockTradeRecord.builder()
                 .stockId(stock.getStockId()) // Stock 엔티티의 ID를 사용
                 .gameMemberId(requestDto.getGameMemberId())
                 .stockTradeRecordAmount(requestDto.getStockTradeRecordAmount())
                 .tradeType(requestDto.getTradeType())
+                .stockTotalPrice(totalPrice)
                 .build();
 
         // 거래 기록 저장
