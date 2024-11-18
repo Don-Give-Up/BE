@@ -12,9 +12,9 @@ public interface SelectProductPurchaseRecordRepository extends JpaRepository<Sel
 
     @Query("SELECT new com.virtukch.dongiveupbe.domain.select_product_purchase_record.dto.SelectProductPurchaseRecordResponseDto(" +
             "r.selectProductPurchaseRecordId, p.selectProductName, r.gameMemberId, r.selectProductPurchaseAmount, " +
-            "r.productTotalPrice) " + // totalPrice 필드 추가
+            "r.productTotalPrice) " +
             "FROM SelectProductPurchaseRecord r " +
-            "JOIN SelectProduct p ON r.selectProductStatusId = p.selectProductId " +
+            "JOIN SelectProduct p ON r.selectProductId = p.selectProductId " +
             "WHERE r.gameMemberId = :gameMemberId")
     List<SelectProductPurchaseRecordResponseDto> findPurchaseRecordsWithProductNameByGameMemberId(@Param("gameMemberId") Long gameMemberId);
 }

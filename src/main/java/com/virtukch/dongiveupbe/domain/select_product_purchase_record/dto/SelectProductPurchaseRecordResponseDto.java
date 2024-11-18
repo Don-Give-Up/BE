@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.domain.select_product_purchase_record.dto;
 
+import com.virtukch.dongiveupbe.domain.select_product_purchase_record.entity.SelectProductPurchaseRecord;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,16 @@ public class SelectProductPurchaseRecordResponseDto {
     private Long gameMemberId;
     private Long selectProductPurchaseAmount;
     private Integer productTotalPrice;
+
+
+    public static SelectProductPurchaseRecordResponseDto fromEntity(SelectProductPurchaseRecord entity, String selectProductName) {
+        return new SelectProductPurchaseRecordResponseDto(
+                entity.getSelectProductPurchaseRecordId(),
+                selectProductName,
+                entity.getGameMemberId(),
+                entity.getSelectProductPurchaseAmount(),
+                entity.getProductTotalPrice()
+        );
+    }
 
 }

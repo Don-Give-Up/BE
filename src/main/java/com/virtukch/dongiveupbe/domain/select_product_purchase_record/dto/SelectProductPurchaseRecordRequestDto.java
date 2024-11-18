@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SelectProductPurchaseRecordRequestDto {
-    private Long selectProductStatusId;
+    private Long selectProductId;
     private Long gameMemberId;
     private Long selectProductPurchaseAmount;
 
     // DTO에서 엔티티로 변환
     public SelectProductPurchaseRecord toEntity() {
         return SelectProductPurchaseRecord.builder()
-                .selectProductStatusId(this.selectProductStatusId)
+                .selectProductId(this.selectProductId)
                 .gameMemberId(this.gameMemberId)
                 .selectProductPurchaseAmount(this.selectProductPurchaseAmount)
                 .build();

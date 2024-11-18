@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/purchase-records")
+@RequestMapping("/api/v1/select-product-purchase-records")
 @RequiredArgsConstructor
 public class SelectProductPurchaseRecordController {
 
@@ -26,7 +26,7 @@ public class SelectProductPurchaseRecordController {
     @GetMapping("/member/{memberId}")
     public ResponseEntity<List<SelectProductPurchaseRecordResponseDto>> getPurchaseRecordsByStudent(
             @PathVariable Long memberId) {
-        List<SelectProductPurchaseRecordResponseDto> responseList = purchaseRecordService.getPurchaseRecordsByStudent(memberId);
+        List<SelectProductPurchaseRecordResponseDto> responseList = purchaseRecordService.getPurchaseRecordsByGameMemberId(memberId);
         return ResponseEntity.ok(responseList);
     }
 }
