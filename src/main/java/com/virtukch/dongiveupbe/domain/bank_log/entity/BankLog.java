@@ -17,18 +17,18 @@ public class BankLog {
 
     private Long gameMemberId;
 
-    private Long savingProductStatusId;
+    private Long savingProductId;
 
     private Integer bankTotalPrice;
 
-    public BankLog(Long gameMemberId, Long savingProductStatusId) {
+    public BankLog(Long gameMemberId, Long savingProductId) {
         this.gameMemberId = gameMemberId;
-        this.savingProductStatusId = savingProductStatusId;
+        this.savingProductId = savingProductId;
     }
 
-    public BankLog(Long gameMemberId, Long savingProductStatusId, Integer bankTotalPrice) {
+    public BankLog(Long gameMemberId, Long savingProductId, Integer bankTotalPrice) {
         this.gameMemberId = gameMemberId;
-        this.savingProductStatusId = savingProductStatusId;
+        this.savingProductId = savingProductId;
         this.bankTotalPrice = bankTotalPrice;
     }
 }
