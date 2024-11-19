@@ -29,14 +29,12 @@ public class StockTradeRecordDataLoader implements CommandLineRunner {
 
     private void loadStockTradeRecords() {
         if (stockTradeRecordRepository.count() == 0) {
-            Long memberId = 6L;
             BuyOrSell tradeType = BuyOrSell.BUY;
 
             // 주식 구매 이력
             List<StockTradeRecord> stockTradeRecords = Arrays.asList(
-                    new StockTradeRecord(1L, memberId, 4L, tradeType, 268400), // 주식 ID 1
-                    new StockTradeRecord(4L, memberId, 3L, tradeType, 130599), // 주식 ID 2
-                    new StockTradeRecord(6L, memberId, 10L, tradeType, 41800) // 주식 ID 8
+                    new StockTradeRecord(6L, 1L, 6L, tradeType, 25080), // 주식 ID 1
+                    new StockTradeRecord(7L, 2L, 1L, tradeType, 25950) // 주식 ID 2
             );
 
             stockTradeRecordRepository.saveAll(stockTradeRecords);
