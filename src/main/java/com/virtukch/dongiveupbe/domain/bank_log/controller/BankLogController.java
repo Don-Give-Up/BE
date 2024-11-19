@@ -54,7 +54,7 @@ public class BankLogController {
                                     schema = @Schema(implementation = BankLogResponseDto.class)))
             }
     )
-    public ResponseEntity<List<BankLogResponseDto>> getAllBankLogsByMemberId(@PathVariable("memberId") Long memberId) {
+    public ResponseEntity<List<BankLogResponseDto>> getAllBankLogsByMemberId(@PathVariable("gameMemberId") Long memberId) {
         List<BankLogResponseDto> bankLogs = bankLogService.getBankLogsByMemberId(memberId);
         return ResponseEntity.ok(bankLogs);
     }
