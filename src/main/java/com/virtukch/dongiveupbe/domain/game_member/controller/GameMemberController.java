@@ -90,9 +90,8 @@ public class GameMemberController {
         @ApiResponse(responseCode = "404", description = "해당 게임의 멤버를 찾을 수 없음",
             content = @Content)
     })
-    public ResponseEntity<GameMemberResponseDto> findCurrentGameMember(HttpServletRequest request, @PathVariable Long gameId) {
-        Long memberId = TokenUtils.getMemberIdFromRequest(request); // JWT 토큰에서 memberId 추출
-        GameMemberResponseDto currentGameMember = gameMemberService.findCurrentGameMemberByMemberId(memberId, gameId);
-        return ResponseEntity.ok(currentGameMember);
+    public ResponseEntity<List<GameMemberResponseDto>> findGameMembersByGameId(@PathVariable Long gameId) {
+        List<GameMemberResponseDto> gameMembers = gameMemberService.findGameMembersByGameId(gameId);
+        return ResponseEntity.ok(gameMembers);
     }
 }

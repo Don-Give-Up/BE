@@ -23,4 +23,6 @@ public interface GameMemberRepository extends JpaRepository<GameMember, Long> {
     Optional<GameMemberResponseDto> findCurrentGameMemberByMemberId(
             @Param("memberId") Long memberId,
             @Param("gameId") Long gameId);
+
+    List<GameMember> findAllByGameId(Long gameId);
 }
