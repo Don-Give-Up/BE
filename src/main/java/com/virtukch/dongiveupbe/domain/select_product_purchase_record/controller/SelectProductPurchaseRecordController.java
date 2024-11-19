@@ -1,5 +1,6 @@
 package com.virtukch.dongiveupbe.domain.select_product_purchase_record.controller;
 
+import com.virtukch.dongiveupbe.domain.game_member.service.GameMemberService;
 import com.virtukch.dongiveupbe.domain.select_product_purchase_record.dto.SelectProductPurchaseRecordRequestDto;
 import com.virtukch.dongiveupbe.domain.select_product_purchase_record.dto.SelectProductPurchaseRecordResponseDto;
 import com.virtukch.dongiveupbe.domain.select_product_purchase_record.service.SelectProductPurchaseRecordService;
@@ -23,6 +24,7 @@ import java.util.List;
 public class SelectProductPurchaseRecordController {
 
     private final SelectProductPurchaseRecordService purchaseRecordService;
+    private final GameMemberService gameMemberService;
 
     @PostMapping
     @Operation(
@@ -38,12 +40,14 @@ public class SelectProductPurchaseRecordController {
             @RequestBody SelectProductPurchaseRecordRequestDto requestDto,
             HttpServletRequest request) {
         Long memberId = TokenUtils.getMemberIdFromRequest(request);
-        requestDto.setGameMemberId(memberId);
+        Long gameId = requestDto.getGameId();
+        Long gameMemberId = gameMemberService.findCurrentGameMemberByMemberId(memberId, gameId).getGameMemberId();
+        requestDto.setGameMemberId(gameMemberId);
         SelectProductPurchaseRecordResponseDto response = purchaseRecordService.save(requestDto);
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/member/{memberId}")
+    @GetMapping("/game-member/{gameMemberId}")
     @Operation(
             summary = "특정 멤버의 구매 기록 조회",
             description = "특정 게임 멤버의 구매 기록을 조회합니다.",
@@ -54,8 +58,8 @@ public class SelectProductPurchaseRecordController {
             }
     )
     public ResponseEntity<List<SelectProductPurchaseRecordResponseDto>> getPurchaseRecordsByStudent(
-            @PathVariable Long memberId) {
-        List<SelectProductPurchaseRecordResponseDto> responseList = purchaseRecordService.getPurchaseRecordsByGameMemberId(memberId);
+            @PathVariable Long gameMemberId) {
+        List<SelectProductPurchaseRecordResponseDto> responseList = purchaseRecordService.getPurchaseRecordsByGameMemberId(gameMemberId);
         return ResponseEntity.ok(responseList);
     }
 }

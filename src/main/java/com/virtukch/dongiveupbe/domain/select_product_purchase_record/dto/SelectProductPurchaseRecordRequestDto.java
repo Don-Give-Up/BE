@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SelectProductPurchaseRecordRequestDto {
+    private Long gameId;
     private Long selectProductId;
     @Hidden
     @Setter

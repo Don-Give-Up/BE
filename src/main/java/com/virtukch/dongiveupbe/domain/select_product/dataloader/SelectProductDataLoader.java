@@ -21,60 +21,14 @@ public class SelectProductDataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        // 기존 작품들
-        SelectProduct artwork1 = SelectProduct.builder()
-                .selectProductName("호진의 자연 속 여행")
-                .selectProductDescription("송호진이 직접 그린 자연 풍경화 작품입니다.")
-                .selectProductViewAmount(120L)
-                .selectProductUrl("https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-in-the-style-of-digital-art-image_2958544.jpg")
-                .selectProductPrice(12000)
-                .build();
-
-        SelectProduct artwork2 = SelectProduct.builder()
-                .selectProductName("채호의 무한 상상")
-                .selectProductDescription("김채호가 창의적으로 표현한 추상화 작품입니다.")
-                .selectProductViewAmount(90L)
-                .selectProductUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr2Jc3CFBXmxDUxGf1zU-TC4ybF_IGuKsKDw&s")
-                .selectProductPrice(9000)
-                .build();
-
-        SelectProduct artwork3 = SelectProduct.builder()
-                .selectProductName("보영의 한 줄 감성")
-                .selectProductDescription("정보영이 디자인한 멋진 캘리그래피 글귀입니다.")
-                .selectProductViewAmount(150L)
-                .selectProductUrl("https://cdn.crowdpic.net/detail-thumb/thumb_d_D8B59C16C47295C07D9D52C9CF821ADF.jpg")
-                .selectProductPrice(15000)
-                .build();
-
-        SelectProduct artwork4 = SelectProduct.builder()
-                .selectProductName("민정의 컬러풀 드림")
-                .selectProductDescription("박민정이 그린 일러스트 작품입니다.")
-                .selectProductViewAmount(200L)
-                .selectProductUrl("https://d2v80xjmx68n4w.cloudfront.net/gigs/lLq7J1682310661.jpg")
-                .selectProductPrice(8000)
-                .build();
-
-        SelectProduct artwork5 = SelectProduct.builder()
-                .selectProductName("유진의 손맛 도자기")
-                .selectProductDescription("박유진이 만든 도자기 작품으로, 정성스럽게 빚어 만든 예술 작품입니다.")
-                .selectProductViewAmount(180L)
-                .selectProductUrl("https://cdn.imweb.me/thumbnail/20210327/866828f717370.jpg")
-                .selectProductPrice(11000)
-                .build();
-
         SelectProduct teacherProduct = SelectProduct.builder()
-                .selectProductName("급식 빨리먹기 쿠폰")
-                .selectProductDescription("선생님이 주시는 특별한 급식 빨리먹기 쿠폰입니다.")
+                .selectProductName("청소 면제 쿠폰")
+                .selectProductDescription("선생님이 주시는 특별한 청소 면제 쿠폰입니다.")
                 .selectProductViewAmount(50L)
                 .selectProductUrl("https://example.com/teacher_product_image.jpg")
                 .selectProductPrice(3000)
                 .build();
 
-        selectProductRepository.save(artwork1);
-        selectProductRepository.save(artwork2);
-        selectProductRepository.save(artwork3);
-        selectProductRepository.save(artwork4);
-        selectProductRepository.save(artwork5);
         selectProductRepository.save(teacherProduct);
 
         log.info("SelectProduct 창작물 및 선생님 상품 스텁 데이터가 삽입되었습니다.");
