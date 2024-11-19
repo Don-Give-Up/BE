@@ -3,6 +3,7 @@ package com.virtukch.dongiveupbe.domain.bank_log.controller;
 import com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogRequestDto;
 import com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogResponseDto;
 import com.virtukch.dongiveupbe.domain.bank_log.service.BankLogService;
+import com.virtukch.dongiveupbe.domain.game_member.service.GameMemberService;
 import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -21,9 +22,11 @@ import java.util.List;
 @Tag(name = "저축 이용 내역 API", description = "저축 이용 내역과 관련된 API를 제공합니다.")
 public class BankLogController {
     private final BankLogService bankLogService;
+    private final GameMemberService gameMemberService;
 
-    public BankLogController(BankLogService bankLogService) {
+    public BankLogController(BankLogService bankLogService, GameMemberService gameMemberService) {
         this.bankLogService = bankLogService;
+        this.gameMemberService = gameMemberService;
     }
 
     @GetMapping
@@ -41,7 +44,7 @@ public class BankLogController {
         return ResponseEntity.ok(bankLogs);
     }
 
-    @GetMapping("/member/{memberId}")
+    @GetMapping("/game-member/{gameMemberId}")
     @Operation(
             summary = "특정 멤버의 저축 이용 내역 조회",
             description = "특정 게임 멤버의 저축 이용 내역을 조회합니다.",
@@ -69,7 +72,9 @@ public class BankLogController {
     public ResponseEntity<BankLogResponseDto> save(@Valid @RequestBody BankLogRequestDto requestDto,
                                                    HttpServletRequest request) {
         Long memberId = TokenUtils.getMemberIdFromRequest(request);
-        requestDto.setGameMemberId(memberId);
+        Long gameId = requestDto.getGameId();
+        Long gameMemberId = gameMemberService.findCurrentGameMemberByMemberId(memberId, gameId).getGameMemberId();
+        requestDto.setGameMemberId(gameMemberId);
         BankLogResponseDto responseDto = bankLogService.save(requestDto);
         return ResponseEntity.ok(responseDto);
     }

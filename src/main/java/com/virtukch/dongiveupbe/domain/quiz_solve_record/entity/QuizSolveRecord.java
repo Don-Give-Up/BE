@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -26,9 +27,7 @@ public class QuizSolveRecord {
 
     private Long quizId;
 
-    private Long roundId;
-
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 
     private Correct correct;
 

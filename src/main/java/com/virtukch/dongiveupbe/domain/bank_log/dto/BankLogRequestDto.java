@@ -16,6 +16,8 @@ public class BankLogRequestDto {
     @Setter
     private Long gameMemberId;
 
+    private Long gameId;
+
     @NotNull(message = "savingProductId는 필수입니다.")
     private Long savingProductId;
 
