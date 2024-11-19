@@ -1,5 +1,8 @@
 package com.virtukch.dongiveupbe.domain.stock_trade_record.controller;
 
+import com.virtukch.dongiveupbe.domain.essential_product.exception.EntityNotFoundException;
+import com.virtukch.dongiveupbe.domain.game_member.dto.GameMemberResponseDto;
+import com.virtukch.dongiveupbe.domain.game_member.service.GameMemberService;
 import com.virtukch.dongiveupbe.domain.stock_trade_record.dto.StockTradeRecordResponseDto;
 import com.virtukch.dongiveupbe.domain.stock_trade_record.service.StockTradeRecordService;
 import com.virtukch.dongiveupbe.domain.stock_trade_record.dto.StockTradeRecordRequestDto;
@@ -27,9 +30,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class StockTradeRecordController {
 
     private final StockTradeRecordService stockTradeRecordService;
+    private final GameMemberService gameMemberService;
 
-    public StockTradeRecordController(StockTradeRecordService stockTradeRecordService) {
+    public StockTradeRecordController(StockTradeRecordService stockTradeRecordService, GameMemberService gameMemberService) {
         this.stockTradeRecordService = stockTradeRecordService;
+        this.gameMemberService = gameMemberService;
     }
 
     @PostMapping
@@ -41,7 +46,11 @@ public class StockTradeRecordController {
         @RequestBody StockTradeRecordRequestDto requestDto,
         HttpServletRequest request) {
         Long memberId = TokenUtils.getMemberIdFromRequest(request);
-        requestDto.setGameMemberId(memberId);
+        GameMemberResponseDto gameMember = gameMemberService.findCurrentGameMemberByMemberId(memberId, requestDto.getGameId());
+        if (gameMember == null) {
+            throw new EntityNotFoundException("현재 게임에 참여 중인 멤버를 찾을 수 없습니다. memberId: " + memberId);
+        }
+        requestDto.setGameMemberId(gameMember.getGameMemberId());
         StockTradeRecordResponseDto responseDto = stockTradeRecordService.tradeStock(requestDto);
         return ResponseEntity.ok(responseDto);
     }
@@ -57,15 +66,15 @@ public class StockTradeRecordController {
     }
 
 
-    @GetMapping("/member/{memberId}")
+    @GetMapping("/game-member/{gameMemberId}")
     @Operation(summary = "특정 멤버의 거래 내역 조회", description = "특정 게임 멤버의 주식 거래 내역을 조회합니다.")
     @ApiResponse(responseCode = "200", description = "특정 게임 멤버의 거래 내역 조회 성공",
         content = @Content(mediaType = "application/json",
             schema = @Schema(implementation = StockTradeRecordResponseDto.class)))
     public ResponseEntity<List<StockTradeRecordResponseDto>> getTradeRecordsByMemberId(
-        @PathVariable Long memberId) {
+        @PathVariable Long gameMemberId) {
         List<StockTradeRecordResponseDto> tradeRecords = stockTradeRecordService.getTradeRecordsByGameMemberId(
-                memberId);
+                gameMemberId);
         return ResponseEntity.ok(tradeRecords);
     }
 }

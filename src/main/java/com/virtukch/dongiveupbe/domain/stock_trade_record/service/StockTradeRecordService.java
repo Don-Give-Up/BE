@@ -29,13 +29,22 @@ public class StockTradeRecordService {
 
     @Transactional
     public StockTradeRecordResponseDto tradeStock(StockTradeRecordRequestDto requestDto) {
+        // 게임 멤버 검증
+        GameMemberResponseDto gameMemberResponse = gameMemberService.findById(requestDto.getGameMemberId());
+        if (gameMemberResponse == null) {
+            throw new EntityNotFoundException("게임에 참가하지 않은 멤버입니다. gameMemberId: " + requestDto.getGameMemberId());
+        }
+
         // StockService를 통해 Stock을 가져옵니다.
-        Stock stock = stockService.findStockById(requestDto.getStockId()) // StockService에서 Stock을 조회
+        Stock stock = stockService.findStockById(requestDto.getStockId())
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID의 Stock을 찾을 수 없습니다: " + requestDto.getStockId()));
+
+        // 총 거래 금액 계산
         int totalPrice = stock.getStockPrice() * requestDto.getStockTradeRecordAmount().intValue();
+
         // 거래 기록 생성
         StockTradeRecord stockTradeRecord = StockTradeRecord.builder()
-                .stockId(stock.getStockId()) // Stock 엔티티의 ID를 사용
+                .stockId(stock.getStockId())
                 .gameMemberId(requestDto.getGameMemberId())
                 .stockTradeRecordAmount(requestDto.getStockTradeRecordAmount())
                 .tradeType(requestDto.getTradeType())
@@ -51,7 +60,7 @@ public class StockTradeRecordService {
                 savedRecord.getGameMemberId(),
                 savedRecord.getStockTradeRecordAmount(),
                 savedRecord.getTradeType(),
-                stock.getStockName(),  // Stock 엔티티에서 바로 stockName을 가져옴
+                stock.getStockName(),
                 savedRecord.getStockTotalPrice()
         );
     }

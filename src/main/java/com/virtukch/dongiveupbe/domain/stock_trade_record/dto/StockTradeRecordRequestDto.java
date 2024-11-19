@@ -12,15 +12,18 @@ import lombok.Setter;
 public class StockTradeRecordRequestDto {
 
     private Long stockId;
+    private Long gameId;
     @Hidden
     @Setter
     private Long gameMemberId;
     private Long stockTradeRecordAmount;
     private BuyOrSell tradeType;
 
+
     @Builder
-    public StockTradeRecordRequestDto(Long stockId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType) {
+    public StockTradeRecordRequestDto(Long stockId, Long gameId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType) {
         this.stockId = stockId;
+        this.gameId = gameId;
         this.gameMemberId = gameMemberId;
         this.stockTradeRecordAmount = stockTradeRecordAmount;
         this.tradeType = tradeType;
