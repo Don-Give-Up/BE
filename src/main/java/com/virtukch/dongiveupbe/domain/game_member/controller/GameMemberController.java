@@ -2,7 +2,9 @@ package com.virtukch.dongiveupbe.domain.game_member.controller;
 
 import com.virtukch.dongiveupbe.domain.game_member.dto.GameMemberRequestDto;
 import com.virtukch.dongiveupbe.domain.game_member.dto.GameMemberResponseDto;
+import com.virtukch.dongiveupbe.domain.game_member.exception.DuplicateGameMemberException;
 import com.virtukch.dongiveupbe.domain.game_member.service.GameMemberService;
+import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,6 +13,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
+
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +40,13 @@ public class GameMemberController {
     @PostMapping
     @Operation(summary = "게임에 멤버가 참여할 때 호출해 주세요", description = "멤버 아이디는 게임에 멤버가 참여할 때, 게임 아이디는 게임이 생성될 때 만들어집니다.")
     public ResponseEntity<GameMemberResponseDto> save(
-        @RequestBody GameMemberRequestDto gameMemberRequestDto) {
+            @RequestBody GameMemberRequestDto gameMemberRequestDto,
+            HttpServletRequest request) {
+        Long memberId = TokenUtils.getMemberIdFromRequest(request);
+        gameMemberRequestDto.setMemberId(memberId);
+        if (gameMemberService.isMemberAlreadyInGame(memberId, gameMemberRequestDto.getGameId())) {
+            throw new DuplicateGameMemberException("해당 멤버는 이미 이 게임에 참여 중입니다.");
+        }
         return ResponseEntity.ok(gameMemberService.save(gameMemberRequestDto));
     }
 
@@ -66,12 +76,11 @@ public class GameMemberController {
         @ApiResponse(responseCode = "404", description = "해당 회원의 게임 멤버를 찾을 수 없음",
             content = @Content)
     })
-    public ResponseEntity<List<GameMemberResponseDto>> findByMemberId(@PathVariable Long memberId) {
+    public ResponseEntity<GameMemberResponseDto> findByMemberId(@PathVariable Long memberId) {
         return ResponseEntity.ok(gameMemberService.findByMemberId(memberId));
     }
 
     // 4. 게임 아이디로 게임 내에 있는 게임 멤버 리스트 조회
-    @Hidden
     @GetMapping("game/{gameId}")
     @Operation(summary = "게임 아이디로 게임 멤버 조회", description = "게임 아이디를 통해 해당 게임의 멤버 리스트를 조회합니다.")
     @ApiResponses(value = {
@@ -81,7 +90,9 @@ public class GameMemberController {
         @ApiResponse(responseCode = "404", description = "해당 게임의 멤버를 찾을 수 없음",
             content = @Content)
     })
-    public ResponseEntity<List<GameMemberResponseDto>> findByGameId(@PathVariable Long gameId) {
-        return ResponseEntity.ok(gameMemberService.findByGameId(gameId));
+    public ResponseEntity<GameMemberResponseDto> findCurrentGameMember(HttpServletRequest request, @PathVariable Long gameId) {
+        Long memberId = TokenUtils.getMemberIdFromRequest(request); // JWT 토큰에서 memberId 추출
+        GameMemberResponseDto currentGameMember = gameMemberService.findCurrentGameMemberByMemberId(memberId, gameId);
+        return ResponseEntity.ok(currentGameMember);
     }
 }
