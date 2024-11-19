@@ -15,18 +15,22 @@ public class BankLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bankLogId;
 
+    private Long gameId;
+
     private Long gameMemberId;
 
     private Long savingProductId;
 
     private Integer bankTotalPrice;
 
-    public BankLog(Long gameMemberId, Long savingProductId) {
+    public BankLog(Long gameId, Long gameMemberId, Long savingProductId) {
+        this.gameId = gameId;
         this.gameMemberId = gameMemberId;
         this.savingProductId = savingProductId;
     }
 
-    public BankLog(Long gameMemberId, Long savingProductId, Integer bankTotalPrice) {
+    public BankLog(Long gameId, Long gameMemberId, Long savingProductId, Integer bankTotalPrice) {
+        this.gameId = gameId;
         this.gameMemberId = gameMemberId;
         this.savingProductId = savingProductId;
         this.bankTotalPrice = bankTotalPrice;

@@ -35,6 +35,7 @@ public class BankLogService {
         SavingProduct savingProduct = savingProductService.findById(requestDto.getSavingProductId());
 
         BankLog bankLog = new BankLog(
+                requestDto.getGameId(),
                 requestDto.getGameMemberId(),
                 savingProduct.getSavingProductId(),
                 requestDto.getBankTotalPrice());

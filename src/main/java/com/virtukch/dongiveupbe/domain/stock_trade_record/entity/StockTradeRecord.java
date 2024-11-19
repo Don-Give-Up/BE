@@ -17,6 +17,8 @@ public class StockTradeRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stockTradeRecordId;
 
+    private Long gameId;
+
     private Long stockId;
 
     private Long gameMemberId;
@@ -28,7 +30,8 @@ public class StockTradeRecord {
     private Integer stockTotalPrice;
 
     @Builder
-    public StockTradeRecord(Long stockId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, Integer stockTotalPrice) {
+    public StockTradeRecord(Long gameId, Long stockId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, Integer stockTotalPrice) {
+        this.gameId = gameId;
         this.stockId = stockId;
         this.gameMemberId = gameMemberId;
         this.stockTradeRecordAmount = stockTradeRecordAmount;

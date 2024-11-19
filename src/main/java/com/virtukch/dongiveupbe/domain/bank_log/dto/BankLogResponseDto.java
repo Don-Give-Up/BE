@@ -11,14 +11,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class BankLogResponseDto {
+    private Long gameId;
     private Long bankLogId;
     private Long gameMemberId;
     private String savingProductName;
     private Integer bankTotalPrice;
 
 
-    public BankLogResponseDto(Long bankLogId, Long gameMemberId, String savingProductName) {
+    public BankLogResponseDto(Long bankLogId, Long gameId, Long gameMemberId, String savingProductName) {
         this.bankLogId = bankLogId;
+        this.gameId = gameId;
         this.gameMemberId = gameMemberId;
         this.savingProductName = savingProductName;
     }
@@ -26,9 +28,11 @@ public class BankLogResponseDto {
     public static BankLogResponseDto fromEntity(BankLog bankLog, String savingProductName) {
         return BankLogResponseDto.builder()
                 .bankLogId(bankLog.getBankLogId())
+                .gameId(bankLog.getGameId())
                 .gameMemberId(bankLog.getGameMemberId())
                 .savingProductName(savingProductName)
                 .bankTotalPrice(bankLog.getBankTotalPrice())
                 .build();
     }
+
 }

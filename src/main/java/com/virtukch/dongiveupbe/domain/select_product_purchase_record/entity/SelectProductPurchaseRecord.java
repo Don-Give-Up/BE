@@ -16,14 +16,15 @@ public class SelectProductPurchaseRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long selectProductPurchaseRecordId;
-
+    private Long gameId;
     private Long selectProductId;
     private Long gameMemberId;
     private Long selectProductPurchaseAmount;
     private Integer productTotalPrice;
 
     @Builder
-    public SelectProductPurchaseRecord(Long selectProductId, Long gameMemberId, Long selectProductPurchaseAmount, Integer productTotalPrice) {
+    public SelectProductPurchaseRecord(Long gameId, Long selectProductId, Long gameMemberId, Long selectProductPurchaseAmount, Integer productTotalPrice) {
+        this.gameId = gameId;
         this.selectProductId = selectProductId;
         this.gameMemberId = gameMemberId;
         this.selectProductPurchaseAmount = selectProductPurchaseAmount;
