@@ -59,4 +59,12 @@ public class GameMemberService {
                 .anyMatch(gameMember -> gameMember.getGameId().equals(gameId));
     }
 
+    // 게임 아이디로 게임 내에 있는 모든 게임 멤버 리스트 조회
+    public List<GameMemberResponseDto> findGameMembersByGameId(Long gameId) {
+        return gameMemberRepository.findAllByGameId(gameId).stream()
+                .map(GameMemberResponseDto::fromEntity)
+                .toList(); // List<GameMemberResponseDto>로 반환
+    }
+
+
 }
