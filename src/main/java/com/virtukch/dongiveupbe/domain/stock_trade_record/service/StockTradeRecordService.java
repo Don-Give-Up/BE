@@ -56,6 +56,7 @@ public class StockTradeRecordService {
 
         // stockName을 포함한 DTO 반환
         return new StockTradeRecordResponseDto(
+                savedRecord.getGameId(),
                 savedRecord.getStockTradeRecordId(),
                 savedRecord.getGameMemberId(),
                 savedRecord.getStockTradeRecordAmount(),

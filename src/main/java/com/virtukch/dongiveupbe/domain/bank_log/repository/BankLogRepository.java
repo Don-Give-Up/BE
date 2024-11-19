@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface BankLogRepository extends JpaRepository<BankLog, Long> {
 
     @Query("SELECT new com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogResponseDto(" +
-            "b.bankLogId, b.gameMemberId, sp.savingProductName, b.bankTotalPrice) " +
+            "b.bankLogId, b.gameId, b.gameMemberId, sp.savingProductName, b.bankTotalPrice) " +
             "FROM BankLog b " +
             "JOIN com.virtukch.dongiveupbe.domain.saving_product.entity.SavingProduct sp " +
             "ON b.savingProductId = sp.savingProductId " +
@@ -20,14 +20,14 @@ public interface BankLogRepository extends JpaRepository<BankLog, Long> {
     List<BankLogResponseDto> findBankLogsWithProductNameByGameMemberId(@Param("gameMemberId") Long gameMemberId);
 
     @Query("SELECT new com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogResponseDto(" +
-            "b.bankLogId, b.gameMemberId, sp.savingProductName, b.bankTotalPrice) " +
+            "b.bankLogId, b.gameId, b.gameMemberId, sp.savingProductName, b.bankTotalPrice) " +
             "FROM BankLog b " +
             "JOIN com.virtukch.dongiveupbe.domain.saving_product.entity.SavingProduct sp " +
             "ON b.savingProductId = sp.savingProductId")
     List<BankLogResponseDto> findAllBankLogsWithProductName();
 
     @Query("SELECT new com.virtukch.dongiveupbe.domain.bank_log.dto.BankLogResponseDto(" +
-            "b.bankLogId, b.gameMemberId, sp.savingProductName, b.bankTotalPrice) " +
+            "b.bankLogId, b.gameId, b.gameMemberId, sp.savingProductName, b.bankTotalPrice) " +
             "FROM BankLog b " +
             "JOIN com.virtukch.dongiveupbe.domain.saving_product.entity.SavingProduct sp " +
             "ON b.savingProductId = sp.savingProductId " +

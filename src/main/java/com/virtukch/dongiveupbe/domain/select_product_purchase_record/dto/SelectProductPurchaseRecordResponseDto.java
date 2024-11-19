@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SelectProductPurchaseRecordResponseDto {
+    private Long gameId;
     private Long selectProductPurchaseRecordId;
     private String selectProductName;
     private Long gameMemberId;
@@ -16,8 +17,9 @@ public class SelectProductPurchaseRecordResponseDto {
     private Integer productTotalPrice;
 
 
-    public static SelectProductPurchaseRecordResponseDto fromEntity(SelectProductPurchaseRecord entity, String selectProductName) {
+    public static SelectProductPurchaseRecordResponseDto fromEntity(SelectProductPurchaseRecord entity, String selectProductName, Long gameId) {
         return new SelectProductPurchaseRecordResponseDto(
+                entity.getGameId(),
                 entity.getSelectProductPurchaseRecordId(),
                 selectProductName,
                 entity.getGameMemberId(),

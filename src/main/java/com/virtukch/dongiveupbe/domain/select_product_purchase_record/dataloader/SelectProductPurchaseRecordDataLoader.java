@@ -22,12 +22,14 @@ public class SelectProductPurchaseRecordDataLoader implements CommandLineRunner 
     public void run(String... args) throws Exception {
         // 선생님 쿠폰 구매 기록 생성 - selectProductStatusId와 gameMemberId가 6번으로 동일
         SelectProductPurchaseRecord purchaseRecord1 = SelectProductPurchaseRecord.builder()
+                .gameId(1L)
                 .selectProductId(1L)  // 선생님 쿠폰 ID
                 .gameMemberId(1L)           // 학생 ID 6번
                 .selectProductPurchaseAmount(1L)  // 구매 갯수
                 .productTotalPrice(8000)
                 .build();
         SelectProductPurchaseRecord purchaseRecord2 = SelectProductPurchaseRecord.builder()
+                .gameId(1L)
                 .selectProductId(1L)  // 선생님 쿠폰 ID
                 .gameMemberId(2L)           // 학생 ID 6번
                 .selectProductPurchaseAmount(1L)  // 구매 갯수

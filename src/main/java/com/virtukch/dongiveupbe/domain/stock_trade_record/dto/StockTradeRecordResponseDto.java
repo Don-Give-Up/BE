@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class StockTradeRecordResponseDto {
+    private Long gameId;
+
     @Schema(description = "주식 거래 기록 ID")
     private Long stockTradeRecordId;
 
@@ -30,7 +32,8 @@ public class StockTradeRecordResponseDto {
     private Integer StockTotalPrice;
 
 
-    public StockTradeRecordResponseDto(Long stockTradeRecordId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, String stockName, Integer StockTotalPrice) {
+    public StockTradeRecordResponseDto(Long gameId, Long stockTradeRecordId, Long gameMemberId, Long stockTradeRecordAmount, BuyOrSell tradeType, String stockName, Integer StockTotalPrice) {
+        this.gameId = gameId;
         this.stockTradeRecordId = stockTradeRecordId;
         this.gameMemberId = gameMemberId;
         this.stockTradeRecordAmount = stockTradeRecordAmount;

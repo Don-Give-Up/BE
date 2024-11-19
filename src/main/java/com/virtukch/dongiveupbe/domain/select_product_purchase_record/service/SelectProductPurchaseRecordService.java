@@ -47,6 +47,7 @@ public class SelectProductPurchaseRecordService {
 
         // DTO로 변환하여 반환
         return new SelectProductPurchaseRecordResponseDto(
+                savedRecord.getGameId(),
                 savedRecord.getSelectProductPurchaseRecordId(),
                 product.getSelectProductName(),
                 savedRecord.getGameMemberId(),
