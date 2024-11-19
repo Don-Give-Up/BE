@@ -6,10 +6,15 @@ import com.virtukch.dongiveupbe.domain.game_member.dto.GameMemberResponseDto;
 import com.virtukch.dongiveupbe.domain.game_member.service.GameMemberService;
 import com.virtukch.dongiveupbe.domain.quiz_solve_record.dto.QuizSolveRecordRequestDto;
 import com.virtukch.dongiveupbe.domain.quiz_solve_record.dto.QuizSolveRecordResponseDto;
+import com.virtukch.dongiveupbe.domain.quiz_solve_record.entity.Correct;
 import com.virtukch.dongiveupbe.domain.quiz_solve_record.entity.QuizSolveRecord;
+import com.virtukch.dongiveupbe.domain.quiz_solve_record.exception.DuplicateQuizSolveException;
 import com.virtukch.dongiveupbe.domain.quiz_solve_record.repository.QuizSolveRecordRepository;
 import com.virtukch.dongiveupbe.domain.round.entity.Round;
 import com.virtukch.dongiveupbe.domain.round.service.RoundService;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +24,13 @@ import org.springframework.stereotype.Service;
 public class QuizSolveRecordService {
 
     private final QuizSolveRecordRepository quizSolveRecordRepository;
-    private final RoundService roundService;
     private final GameMemberService gameMemberService;
 
+    private static final int SALARY_PER_QUIZ = 8590;
+
     @Autowired
-    public QuizSolveRecordService(QuizSolveRecordRepository quizSolveRecordRepository, RoundService roundService, GameMemberService gameMemberService) {
+    public QuizSolveRecordService(QuizSolveRecordRepository quizSolveRecordRepository, GameMemberService gameMemberService) {
         this.quizSolveRecordRepository = quizSolveRecordRepository;
-        this.roundService = roundService;
         this.gameMemberService = gameMemberService;
     }
 
@@ -49,43 +54,48 @@ public class QuizSolveRecordService {
     }
 
     public QuizSolveRecordResponseDto saveQuizSolveRecord(QuizSolveRecordRequestDto requestDto) {
-        // 게임 멤버 찾기
+        // 게임 멤버 검증 및 정보 가져오기
         GameMemberResponseDto gameMemberResponse = gameMemberService.findById(requestDto.getGameMemberId());
         if (gameMemberResponse == null) {
             throw new EntityNotFoundException("게임 멤버를 찾을 수 없습니다. ID: " + requestDto.getGameMemberId());
         }
 
-        // roundId로 해당 라운드 찾기
-        Round currentRound = roundService.findRoundById(requestDto.getRoundId());
+        // 중복 퀴즈 풀이 확인
+        boolean hasSolvedQuiz = quizSolveRecordRepository.existsByGameMemberIdAndQuizId(
+                requestDto.getGameMemberId(), requestDto.getQuizId()
+        );
+        if (hasSolvedQuiz) {
+            throw new DuplicateQuizSolveException("이미 푼 퀴즈입니다. quizId: " + requestDto.getQuizId());
+        }
 
-        // 라운드 급여를 25문제로 나눠서 퀴즈 하나당 지급할 금액 계산
-        int salaryPerQuiz = currentRound.getRoundSalary().intValue() / 25;
+        // 현재 돈 계산
+        int currentMoney = gameMemberResponse.getGameMemberMoney() != null ? gameMemberResponse.getGameMemberMoney() : 0;
 
-        // 문제 해결 기록 생성 (salaryPerQuiz 값을 quizCorrectMoney로 설정)
+        // 퀴즈 풀이 기록 생성 및 저장
         QuizSolveRecord quizSolveRecord = QuizSolveRecord.builder()
                 .gameMemberId(requestDto.getGameMemberId())
                 .quizId(requestDto.getQuizId())
-                .roundId(requestDto.getRoundId())
-                .createdAt(requestDto.getCreatedAt())
+                .createdAt(requestDto.getCreatedAt() != null ? requestDto.getCreatedAt() : LocalDateTime.now())
                 .correct(requestDto.getCorrect())
-                .quizCorrectMoney(salaryPerQuiz) // setter 사용 없이 빌더에서 직접 설정
+                .quizCorrectMoney(requestDto.getCorrect() == Correct.CORRECT ? SALARY_PER_QUIZ : 0)
                 .build();
         quizSolveRecord = quizSolveRecordRepository.save(quizSolveRecord);
 
-        // 게임 멤버의 돈 업데이트 (퀴즈 하나를 맞출 때마다 지급)
-        int updatedMoney = gameMemberResponse.getGameMemberMoney() + salaryPerQuiz;
-        GameMemberRequestDto gameMemberRequestDto = GameMemberRequestDto.builder()
-                .gameMemberId(gameMemberResponse.getGameMemberId())
-                .memberId(gameMemberResponse.getMemberId())
-                .gameId(gameMemberResponse.getGameId())
-                .gameMemberMoney(updatedMoney)
-                .build();
+        // 정답일 경우 돈 추가
+        if (requestDto.getCorrect() == Correct.CORRECT) {
+            int updatedMoney = currentMoney + SALARY_PER_QUIZ;
 
-        // 수정된 게임 멤버 저장
-        gameMemberService.save(gameMemberRequestDto);
+            GameMemberRequestDto updatedGameMember = GameMemberRequestDto.builder()
+                    .gameMemberId(gameMemberResponse.getGameMemberId())
+                    .memberId(gameMemberResponse.getMemberId())
+                    .gameId(gameMemberResponse.getGameId())
+                    .gameMemberMoney(updatedMoney)
+                    .build();
+
+            // 게임 멤버 돈 업데이트
+            gameMemberService.save(updatedGameMember);
+        }
 
         return QuizSolveRecordResponseDto.fromEntity(quizSolveRecord);
     }
-
-
 }

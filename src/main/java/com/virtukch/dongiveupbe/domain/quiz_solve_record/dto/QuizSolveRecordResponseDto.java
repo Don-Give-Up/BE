@@ -1,8 +1,11 @@
 package com.virtukch.dongiveupbe.domain.quiz_solve_record.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.virtukch.dongiveupbe.domain.quiz_solve_record.entity.Correct;
 import com.virtukch.dongiveupbe.domain.quiz_solve_record.entity.QuizSolveRecord;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,13 +23,10 @@ public class QuizSolveRecordResponseDto {
 
     private Long quizId;
 
-    private Long roundId;
-
-    private Timestamp createdAt;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createdAt;
 
     private Correct correct;
-
-    private Integer attemptCount;
 
     private Integer quizCorrectMoney;
 
@@ -35,7 +35,6 @@ public class QuizSolveRecordResponseDto {
                 .quizSolveRecordId(quizSolveRecord.getQuizSolveRecordId())
                 .gameMemberId(quizSolveRecord.getGameMemberId())
                 .quizId(quizSolveRecord.getQuizId())
-                .roundId(quizSolveRecord.getRoundId())
                 .createdAt(quizSolveRecord.getCreatedAt())
                 .correct(quizSolveRecord.getCorrect())
                 .quizCorrectMoney(quizSolveRecord.getQuizCorrectMoney())

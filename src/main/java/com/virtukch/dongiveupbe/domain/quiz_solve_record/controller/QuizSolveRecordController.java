@@ -1,8 +1,10 @@
 package com.virtukch.dongiveupbe.domain.quiz_solve_record.controller;
 
+import com.virtukch.dongiveupbe.domain.game_member.service.GameMemberService;
 import com.virtukch.dongiveupbe.domain.quiz_solve_record.dto.QuizSolveRecordRequestDto;
 import com.virtukch.dongiveupbe.domain.quiz_solve_record.dto.QuizSolveRecordResponseDto;
 import com.virtukch.dongiveupbe.domain.quiz_solve_record.service.QuizSolveRecordService;
+import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,6 +13,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
+
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,24 +31,34 @@ import org.springframework.web.bind.annotation.RestController;
 public class QuizSolveRecordController {
 
     private final QuizSolveRecordService quizSolveRecordService;
+    private final GameMemberService gameMemberService;
 
     @Autowired
-    public QuizSolveRecordController(QuizSolveRecordService quizSolveRecordService) {
+    public QuizSolveRecordController(QuizSolveRecordService quizSolveRecordService, GameMemberService gameMemberService) {
         this.quizSolveRecordService = quizSolveRecordService;
+        this.gameMemberService = gameMemberService;
     }
 
     // 퀴즈 풀이 기록 생성 및 저장
     @PostMapping
     @Operation(summary = "퀴즈를 풀이할 때마다 호출해 주세요.", description = "게임 멤버 아이디는 회원이 게임에 참가할 때 만들어지며, 퀴즈 아이디는 api/v1/quizs 에서 조회할 수 있습니다.")
     public ResponseEntity<QuizSolveRecordResponseDto> saveQuizSolveRecord(
-        @RequestBody QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
+            @RequestBody QuizSolveRecordRequestDto quizSolveRecordRequestDto,
+            HttpServletRequest request) {
+        Long memberId = TokenUtils.getMemberIdFromRequest(request);
+        Long gameId = quizSolveRecordRequestDto.getGameId();
+
+        Long gameMemberId = gameMemberService.findCurrentGameMemberByMemberId(memberId, gameId)
+                .getGameMemberId();
+        quizSolveRecordRequestDto.setGameMemberId(gameMemberId);
+
         QuizSolveRecordResponseDto responseDto = quizSolveRecordService.saveQuizSolveRecord(
             quizSolveRecordRequestDto);
         return ResponseEntity.status(201).body(responseDto);
     }
 
     // 특정 학생의 아이디를 통한 기록 조회
-    @Hidden
+
     @GetMapping("{gameMemberId}")
     @Operation(summary = "특정 학생의 퀴즈 풀이 기록 조회")
     @ApiResponse(responseCode = "200", description = "특정 학생의 퀴즈 풀이 기록 조회 성공",

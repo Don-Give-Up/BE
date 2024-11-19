@@ -12,10 +12,6 @@ public interface QuizSolveRecordRepository extends JpaRepository<QuizSolveRecord
 
     List<QuizSolveRecord> findByGameMemberId(Long gameMemberId);
 
-    // 새로운 메서드: 특정 기간 동안의 퀴즈 풀이 기록을 찾기 위해 정의
-    List<QuizSolveRecord> findByGameMemberIdAndRoundIdAndCreatedAtBetween(
-            Long gameMemberId, Long roundId, Timestamp start, Timestamp end);
+    boolean existsByGameMemberIdAndQuizId(Long gameMemberId, Long quizId);
 
-    // 특정 게임 멤버 ID와 라운드 ID에 대한 문제 풀이 기록을 찾기 위한 메서드
-    List<QuizSolveRecord> findByGameMemberIdAndRoundId(Long gameMemberId, Long roundId);
 }
