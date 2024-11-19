@@ -23,12 +23,19 @@ public class SelectProductPurchaseRecordDataLoader implements CommandLineRunner 
         // 선생님 쿠폰 구매 기록 생성 - selectProductStatusId와 gameMemberId가 6번으로 동일
         SelectProductPurchaseRecord purchaseRecord1 = SelectProductPurchaseRecord.builder()
                 .selectProductId(1L)  // 선생님 쿠폰 ID
-                .gameMemberId(6L)           // 학생 ID 6번
-                .selectProductPurchaseAmount(3L)  // 구매 갯수
-                .productTotalPrice(9000)
+                .gameMemberId(1L)           // 학생 ID 6번
+                .selectProductPurchaseAmount(1L)  // 구매 갯수
+                .productTotalPrice(8000)
+                .build();
+        SelectProductPurchaseRecord purchaseRecord2 = SelectProductPurchaseRecord.builder()
+                .selectProductId(1L)  // 선생님 쿠폰 ID
+                .gameMemberId(2L)           // 학생 ID 6번
+                .selectProductPurchaseAmount(1L)  // 구매 갯수
+                .productTotalPrice(8000)
                 .build();
 
         purchaseRecordRepository.save(purchaseRecord1);
+        purchaseRecordRepository.save(purchaseRecord2);
 
         log.info("selectProductStatusId 6번, gameMemberId 6번에 대한 선생님 쿠폰 구매 기록이 삽입되었습니다.");
     }
