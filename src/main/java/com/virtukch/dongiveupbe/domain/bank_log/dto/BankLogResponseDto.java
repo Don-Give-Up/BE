@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class BankLogResponseDto {
-    private Long gameId;
     private Long bankLogId;
+    private Long gameId;
     private Long gameMemberId;
     private String savingProductName;
     private Integer bankTotalPrice;
