@@ -6,6 +6,7 @@ import com.virtukch.dongiveupbe.domain.quiz.dto.QuizResponseDto;
 import com.virtukch.dongiveupbe.domain.quiz.service.QuizService;
 import com.virtukch.dongiveupbe.security.common.utils.TokenUtils;
 import io.jsonwebtoken.Claims;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -48,7 +49,7 @@ public class QuizController {
         // searchType과 searchKeyword를 서비스로 전달
         return ResponseEntity.ok(quizService.findAllQuiz(pageRequest, searchType, searchKeyword));
     }
-
+    @Hidden
     @GetMapping("quiz/{quizId}")
     public ResponseEntity<QuizBEResponseDto> findByQuizId(@PathVariable Long quizId) {  // QuizResponseDto -> QuizBEResponseDto로 변경
         return ResponseEntity.ok(quizService.findByQuizId(quizId));  // 작성자 닉네임을 포함하여 반환
