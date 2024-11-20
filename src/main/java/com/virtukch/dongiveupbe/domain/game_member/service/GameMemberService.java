@@ -24,6 +24,13 @@ public class GameMemberService {
     // 1. 게임에 입장하면 게임 멤버 아이디 주기
     public GameMemberResponseDto save(GameMemberRequestDto gameMemberRequestDto) {
 
+        Optional<GameMember> existingGameMember = gameMemberRepository
+                .findByMemberIdAndGameId(gameMemberRequestDto.getMemberId(), gameMemberRequestDto.getGameId());
+
+        if(existingGameMember.isPresent()) {
+            return GameMemberResponseDto.fromEntity(existingGameMember.get());
+        }
+
         GameMember gameMember = GameMemberRequestDto.toEntity(gameMemberRequestDto);
         gameMember = gameMemberRepository.save(gameMember);
         return GameMemberResponseDto.fromEntity(gameMember);
