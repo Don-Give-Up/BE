@@ -44,9 +44,6 @@ public class GameMemberController {
             HttpServletRequest request) {
         Long memberId = TokenUtils.getMemberIdFromRequest(request);
         gameMemberRequestDto.setMemberId(memberId);
-        if (gameMemberService.isMemberAlreadyInGame(memberId, gameMemberRequestDto.getGameId())) {
-            throw new DuplicateGameMemberException("해당 멤버는 이미 이 게임에 참여 중입니다.");
-        }
         return ResponseEntity.ok(gameMemberService.save(gameMemberRequestDto));
     }
 
