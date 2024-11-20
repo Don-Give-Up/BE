@@ -19,6 +19,8 @@ public class QuizSolveRecordResponseDto {
 
     private Long quizSolveRecordId;
 
+    private Long gameId;
+
     private Long gameMemberId;
 
     private Long quizId;
@@ -32,6 +34,7 @@ public class QuizSolveRecordResponseDto {
 
     public static QuizSolveRecordResponseDto fromEntity(QuizSolveRecord quizSolveRecord) {
         return QuizSolveRecordResponseDto.builder()
+                .gameId(quizSolveRecord.getGameId())
                 .quizSolveRecordId(quizSolveRecord.getQuizSolveRecordId())
                 .gameMemberId(quizSolveRecord.getGameMemberId())
                 .quizId(quizSolveRecord.getQuizId())

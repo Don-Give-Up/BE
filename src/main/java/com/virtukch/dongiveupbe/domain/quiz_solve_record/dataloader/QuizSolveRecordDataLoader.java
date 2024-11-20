@@ -21,50 +21,59 @@ public class QuizSolveRecordDataLoader implements CommandLineRunner {
         this.quizSolveRecordRepository = quizSolveRecordRepository;
     }
 
-    // localCreate, devCreate, prodCreate 프로파일에서만 실행
     @Override
     public void run(String... args) throws Exception {
-        QuizSolveRecord record1 = QuizSolveRecord.builder()
-                .gameMemberId(1L)
+        // memberId가 1L인 데이터 추가
+        addQuizSolveRecords(1L, 1L);
+
+        // memberId가 2L인 데이터 추가
+        addQuizSolveRecords(2L, 1L);
+    }
+
+    private void addQuizSolveRecords(Long gameMemberId, Long gameId) {
+        quizSolveRecordRepository.save(QuizSolveRecord.builder()
+                .gameMemberId(gameMemberId)
+                .gameId(gameId)
                 .quizId(146L)
                 .createdAt(LocalDateTime.now())
                 .correct(Correct.CORRECT)
                 .quizCorrectMoney(8590)
-                .build();
-        quizSolveRecordRepository.save(record1);
+                .build());
 
-        QuizSolveRecord record2 = QuizSolveRecord.builder()
-                .gameMemberId(2L)
+        quizSolveRecordRepository.save(QuizSolveRecord.builder()
+                .gameMemberId(gameMemberId)
+                .gameId(gameId)
                 .quizId(147L)
                 .createdAt(LocalDateTime.now())
                 .correct(Correct.INCORRECT)
                 .quizCorrectMoney(0)
-                .build();
-        quizSolveRecordRepository.save(record2);
+                .build());
 
-        QuizSolveRecord record3 = QuizSolveRecord.builder()
-                .gameMemberId(1L)
+        quizSolveRecordRepository.save(QuizSolveRecord.builder()
+                .gameMemberId(gameMemberId)
+                .gameId(gameId)
                 .quizId(148L)
                 .createdAt(LocalDateTime.now())
                 .correct(Correct.CORRECT)
                 .quizCorrectMoney(8590)
-                .build();
-        quizSolveRecordRepository.save(record3);
-        QuizSolveRecord record4 = QuizSolveRecord.builder()
-                .gameMemberId(1L)
+                .build());
+
+        quizSolveRecordRepository.save(QuizSolveRecord.builder()
+                .gameMemberId(gameMemberId)
+                .gameId(gameId)
                 .quizId(149L)
                 .createdAt(LocalDateTime.now())
                 .correct(Correct.INCORRECT)
                 .quizCorrectMoney(0)
-                .build();
-        quizSolveRecordRepository.save(record4);
-        QuizSolveRecord record5 = QuizSolveRecord.builder()
-                .gameMemberId(1L)
+                .build());
+
+        quizSolveRecordRepository.save(QuizSolveRecord.builder()
+                .gameMemberId(gameMemberId)
+                .gameId(gameId)
                 .quizId(150L)
                 .createdAt(LocalDateTime.now())
                 .correct(Correct.CORRECT)
                 .quizCorrectMoney(8590)
-                .build();
-        quizSolveRecordRepository.save(record5);
+                .build());
     }
 }

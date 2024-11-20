@@ -23,6 +23,8 @@ public class QuizSolveRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long quizSolveRecordId;
 
+    private Long gameId;
+
     private Long gameMemberId;
 
     private Long quizId;

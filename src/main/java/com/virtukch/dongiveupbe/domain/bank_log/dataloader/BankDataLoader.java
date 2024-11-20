@@ -25,16 +25,23 @@ public class BankDataLoader implements CommandLineRunner {
 
     private void loadBankLogs() {
         if (bankLogRepository.count() == 0) {
-
-            // 수정된 생성자를 통해 BankLog 생성
-            BankLog bankLog1 = new BankLog(1L, 1L, 1L,5000);
+            // 첫 번째 BankLog 데이터 생성
+            BankLog bankLog1 = BankLog.builder()
+                    .gameId(1L)
+                    .gameMemberId(1L)
+                    .bankTotalPrice(5000)
+                    .build();
             bankLogRepository.save(bankLog1);
 
-            // 두 번째 BankLog 생성
-            BankLog bankLog2 = new BankLog(1L, 2L, 2L,7000);
+            // 두 번째 BankLog 데이터 생성
+            BankLog bankLog2 = BankLog.builder()
+                    .gameId(1L)
+                    .gameMemberId(2L)
+                    .bankTotalPrice(7000)
+                    .build();
             bankLogRepository.save(bankLog2);
 
-            log.info("memberId 6에 대한 BankLog 스텁 데이터가 추가되었습니다. savingProductStatusId는 3, amount는 10000으로 설정되었습니다.");
+            log.info("BankLog 스텁 데이터가 성공적으로 추가되었습니다.");
         } else {
             log.info("이미 BankLog 데이터가 존재합니다. 데이터 로드를 생략합니다.");
         }
