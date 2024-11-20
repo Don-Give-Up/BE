@@ -13,6 +13,8 @@ public interface GameMemberRepository extends JpaRepository<GameMember, Long> {
 
     List<GameMember> findByMemberId(Long memberId);
 
+    Optional<GameMember> findByMemberIdAndGameId(Long memberId, Long gameId);
+
     boolean existsByMemberIdAndGameId(Long memberId, Long gameId);
 
     List<GameMember> findByGameId(Long gameId);
