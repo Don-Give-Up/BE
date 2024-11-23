@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/members")
 @Tag(name = "회원 API", description = "회원가입 / 로그인 등을 위한 멤버 관리용 API")
@@ -42,7 +45,7 @@ public class MemberController {
     // 2. 회원 로그인
     @PostMapping("/login")
     @Operation(summary = "로그인 하실 때 호출해 주세요", description = "응답으로 memberId 를 얻을 수 있습니다. 추후 토큰 방식으로 변경될 예정입니다.")
-    public String login(@RequestBody MemberLoginRequestDto memberLoginRequestDto) {
+    public Map<String, String> login(@RequestBody MemberLoginRequestDto memberLoginRequestDto) {
 
         MemberResponseDto memberResponseDto = memberService.login(memberLoginRequestDto);
         Member member = Member.builder()
@@ -58,7 +61,15 @@ public class MemberController {
             .build();
 
         // 2. 이런 정보를 돌려 주라
-        return AuthConstants.AUTH_HEADER_PREFIX + TokenUtils.generateJwtToken(member);
+        String token = AuthConstants.AUTH_HEADER_PREFIX + TokenUtils.generateJwtToken(member);
+
+        // 닉네임과 토큰 반환
+        Map<String, String> response = new HashMap<>();
+        response.put("token", token);
+        response.put("memberNickname", member.getMemberNickname());
+
+        return response;
+
     }
 
     // 3. 회원 아이디로 회원 찾기
