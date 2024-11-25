@@ -31,17 +31,17 @@ public class GameDataLoader implements CommandLineRunner {
                 .gamePassword("1234")
                 .build());
 
-        gameRepository.save(Game.builder()
-                .memberId(memberId)
-                .gameName("금융 상식 마스터 도전!")
-                .gamePassword("2345")
-                .build());
-
-        gameRepository.save(Game.builder()
-                .memberId(memberId)
-                .gameName("금리와 경제 퀴즈")
-                .gamePassword("3456")
-                .build());
+//        gameRepository.save(Game.builder()
+//                .memberId(memberId)
+//                .gameName("금융 상식 마스터 도전!")
+//                .gamePassword("2345")
+//                .build());
+//
+//        gameRepository.save(Game.builder()
+//                .memberId(memberId)
+//                .gameName("금리와 경제 퀴즈")
+//                .gamePassword("3456")
+//                .build());
 
         log.info("Game data has been loaded.");
     }

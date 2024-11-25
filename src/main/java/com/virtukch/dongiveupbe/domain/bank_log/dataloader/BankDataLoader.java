@@ -29,6 +29,7 @@ public class BankDataLoader implements CommandLineRunner {
             BankLog bankLog1 = BankLog.builder()
                     .gameId(1L)
                     .gameMemberId(1L)
+                    .savingProductId(1L)
                     .bankTotalPrice(5000)
                     .build();
             bankLogRepository.save(bankLog1);
@@ -37,6 +38,7 @@ public class BankDataLoader implements CommandLineRunner {
             BankLog bankLog2 = BankLog.builder()
                     .gameId(1L)
                     .gameMemberId(2L)
+                    .savingProductId(2L)
                     .bankTotalPrice(7000)
                     .build();
             bankLogRepository.save(bankLog2);

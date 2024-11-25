@@ -30,6 +30,7 @@ public class QuizSolveRecordRequestDto {
         QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
         return QuizSolveRecord.builder()
                 .gameMemberId(quizSolveRecordRequestDto.getGameMemberId())
+                .gameId(quizSolveRecordRequestDto.getGameId())
                 .quizId(quizSolveRecordRequestDto.getQuizId())
                 .createdAt(quizSolveRecordRequestDto.getCreatedAt() != null
                         ? LocalDateTime.now()
