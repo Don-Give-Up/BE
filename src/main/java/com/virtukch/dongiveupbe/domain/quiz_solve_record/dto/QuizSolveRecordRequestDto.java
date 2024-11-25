@@ -26,16 +26,13 @@ public class QuizSolveRecordRequestDto {
 
     private Correct correct;
 
-    public static QuizSolveRecord toEntity(
-        QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
+    public QuizSolveRecord toEntity() {
         return QuizSolveRecord.builder()
-                .gameMemberId(quizSolveRecordRequestDto.getGameMemberId())
-                .gameId(quizSolveRecordRequestDto.getGameId())
-                .quizId(quizSolveRecordRequestDto.getQuizId())
-                .createdAt(quizSolveRecordRequestDto.getCreatedAt() != null
-                        ? LocalDateTime.now()
-                        : quizSolveRecordRequestDto.getCreatedAt())
-                .correct(quizSolveRecordRequestDto.getCorrect())
+                .gameMemberId(this.gameMemberId)
+                .gameId(this.gameId)
+                .quizId(this.quizId)
+                .createdAt(this.createdAt != null ? this.createdAt : LocalDateTime.now())
+                .correct(this.correct)
                 .quizCorrectMoney(0)
                 .build();
     }

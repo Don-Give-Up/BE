@@ -36,8 +36,7 @@ public class QuizSolveRecordService {
 
     public ResponseEntity<QuizSolveRecordResponseDto> save(
         QuizSolveRecordRequestDto quizSolveRecordRequestDto) {
-        QuizSolveRecord quizSolveRecord = quizSolveRecordRequestDto.toEntity(
-            quizSolveRecordRequestDto);
+        QuizSolveRecord quizSolveRecord = quizSolveRecordRequestDto.toEntity();
         QuizSolveRecord saveddQuizSolveRecord = quizSolveRecordRepository.save(quizSolveRecord);
         return ResponseEntity.ok(QuizSolveRecordResponseDto.fromEntity(saveddQuizSolveRecord));
     }
@@ -73,6 +72,7 @@ public class QuizSolveRecordService {
 
         // 퀴즈 풀이 기록 생성 및 저장
         QuizSolveRecord quizSolveRecord = QuizSolveRecord.builder()
+                .gameId(requestDto.getGameId())
                 .gameMemberId(requestDto.getGameMemberId())
                 .quizId(requestDto.getQuizId())
                 .createdAt(requestDto.getCreatedAt() != null ? requestDto.getCreatedAt() : LocalDateTime.now())
@@ -88,7 +88,7 @@ public class QuizSolveRecordService {
             GameMemberRequestDto updatedGameMember = GameMemberRequestDto.builder()
                     .gameMemberId(gameMemberResponse.getGameMemberId())
                     .memberId(gameMemberResponse.getMemberId())
-                    .gameId(gameMemberResponse.getGameId())
+                    .gameId(requestDto.getGameId())
                     .gameMemberMoney(updatedMoney)
                     .build();
 
