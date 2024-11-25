@@ -36,6 +36,7 @@ public class SelectProductPurchaseRecordService {
 
         // 구매 기록 생성
         SelectProductPurchaseRecord purchaseRecord = SelectProductPurchaseRecord.builder()
+                .gameId(requestDto.getGameId())
                 .selectProductId(product.getSelectProductId())
                 .gameMemberId(requestDto.getGameMemberId())
                 .selectProductPurchaseAmount(requestDto.getSelectProductPurchaseAmount())
