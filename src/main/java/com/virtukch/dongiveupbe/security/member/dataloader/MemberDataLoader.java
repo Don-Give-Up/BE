@@ -118,5 +118,44 @@ public class MemberDataLoader implements CommandLineRunner {
             .memberClass(1)
             .build();
         memberRepository.save(teacher4);
+
+        Member test1 = Member.builder()
+                .memberEmail("test1@example.com")
+                .memberPassword(PasswordUtils.hashPassword("1234"))
+                .memberName("test1")
+                .memberSchool("테스트중")
+                .memberBirthday(LocalDate.of(1983, 7, 29))
+                .memberNickname("유디니")
+                .memberRole(MemberRole.TEACHER)
+                .memberGrade(1)
+                .memberClass(5)
+                .build();
+        memberRepository.save(test1);
+
+        Member test2 = Member.builder()
+                .memberEmail("test2@example.com")
+                .memberPassword(PasswordUtils.hashPassword("1234"))
+                .memberName("test2")
+                .memberSchool("테스트중")
+                .memberBirthday(LocalDate.of(1984, 7, 29))
+                .memberNickname("민쮸")
+                .memberRole(MemberRole.TEACHER)
+                .memberGrade(1)
+                .memberClass(6)
+                .build();
+        memberRepository.save(test2);
+
+        Member test3 = Member.builder()
+                .memberEmail("test3@example.com")
+                .memberPassword(PasswordUtils.hashPassword("1234"))
+                .memberName("test3")
+                .memberSchool("테스트중")
+                .memberBirthday(LocalDate.of(1985, 7, 29))
+                .memberNickname("여워니")
+                .memberRole(MemberRole.TEACHER)
+                .memberGrade(1)
+                .memberClass(7)
+                .build();
+        memberRepository.save(test3);
     }
 }
