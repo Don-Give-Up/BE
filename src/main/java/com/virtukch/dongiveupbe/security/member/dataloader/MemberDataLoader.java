@@ -125,8 +125,8 @@ public class MemberDataLoader implements CommandLineRunner {
                 .memberName("test1")
                 .memberSchool("테스트중")
                 .memberBirthday(LocalDate.of(1983, 7, 29))
-                .memberNickname("유디니")
-                .memberRole(MemberRole.TEACHER)
+                .memberNickname("박유진")
+                .memberRole(MemberRole.STUDENT)
                 .memberGrade(1)
                 .memberClass(5)
                 .build();
@@ -138,8 +138,8 @@ public class MemberDataLoader implements CommandLineRunner {
                 .memberName("test2")
                 .memberSchool("테스트중")
                 .memberBirthday(LocalDate.of(1984, 7, 29))
-                .memberNickname("민쮸")
-                .memberRole(MemberRole.TEACHER)
+                .memberNickname("박민주")
+                .memberRole(MemberRole.STUDENT)
                 .memberGrade(1)
                 .memberClass(6)
                 .build();
@@ -151,8 +151,8 @@ public class MemberDataLoader implements CommandLineRunner {
                 .memberName("test3")
                 .memberSchool("테스트중")
                 .memberBirthday(LocalDate.of(1985, 7, 29))
-                .memberNickname("여워니")
-                .memberRole(MemberRole.TEACHER)
+                .memberNickname("조여원")
+                .memberRole(MemberRole.STUDENT)
                 .memberGrade(1)
                 .memberClass(7)
                 .build();

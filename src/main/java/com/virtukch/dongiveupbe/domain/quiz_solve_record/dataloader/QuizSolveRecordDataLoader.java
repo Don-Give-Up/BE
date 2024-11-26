@@ -34,46 +34,46 @@ public class QuizSolveRecordDataLoader implements CommandLineRunner {
         quizSolveRecordRepository.save(QuizSolveRecord.builder()
                 .gameMemberId(gameMemberId)
                 .gameId(gameId)
-                .quizId(146L)
-                .createdAt(LocalDateTime.now())
-                .correct(Correct.CORRECT)
-                .quizCorrectMoney(8590)
-                .build());
-
-        quizSolveRecordRepository.save(QuizSolveRecord.builder()
-                .gameMemberId(gameMemberId)
-                .gameId(gameId)
-                .quizId(147L)
-                .createdAt(LocalDateTime.now())
-                .correct(Correct.INCORRECT)
-                .quizCorrectMoney(0)
-                .build());
-
-        quizSolveRecordRepository.save(QuizSolveRecord.builder()
-                .gameMemberId(gameMemberId)
-                .gameId(gameId)
-                .quizId(148L)
-                .createdAt(LocalDateTime.now())
-                .correct(Correct.CORRECT)
-                .quizCorrectMoney(8590)
-                .build());
-
-        quizSolveRecordRepository.save(QuizSolveRecord.builder()
-                .gameMemberId(gameMemberId)
-                .gameId(gameId)
-                .quizId(149L)
-                .createdAt(LocalDateTime.now())
-                .correct(Correct.INCORRECT)
-                .quizCorrectMoney(0)
-                .build());
-
-        quizSolveRecordRepository.save(QuizSolveRecord.builder()
-                .gameMemberId(gameMemberId)
-                .gameId(gameId)
                 .quizId(150L)
                 .createdAt(LocalDateTime.now())
+                .correct(Correct.INCORRECT)
+                .quizCorrectMoney(0)
+                .build());
+
+        quizSolveRecordRepository.save(QuizSolveRecord.builder()
+                .gameMemberId(gameMemberId)
+                .gameId(gameId)
+                .quizId(154L)
+                .createdAt(LocalDateTime.now())
                 .correct(Correct.CORRECT)
-                .quizCorrectMoney(8590)
+                .quizCorrectMoney(76960)
+                .build());
+
+        quizSolveRecordRepository.save(QuizSolveRecord.builder()
+                .gameMemberId(gameMemberId)
+                .gameId(gameId)
+                .quizId(153L)
+                .createdAt(LocalDateTime.now())
+                .correct(Correct.CORRECT)
+                .quizCorrectMoney(76960)
+                .build());
+
+        quizSolveRecordRepository.save(QuizSolveRecord.builder()
+                .gameMemberId(gameMemberId)
+                .gameId(gameId)
+                .quizId(152L)
+                .createdAt(LocalDateTime.now())
+                .correct(Correct.CORRECT)
+                .quizCorrectMoney(76960)
+                .build());
+
+        quizSolveRecordRepository.save(QuizSolveRecord.builder()
+                .gameMemberId(gameMemberId)
+                .gameId(gameId)
+                .quizId(151L)
+                .createdAt(LocalDateTime.now())
+                .correct(Correct.CORRECT)
+                .quizCorrectMoney(76960)
                 .build());
     }
 }

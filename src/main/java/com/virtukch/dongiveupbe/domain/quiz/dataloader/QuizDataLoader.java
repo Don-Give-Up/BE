@@ -157,18 +157,6 @@ public class QuizDataLoader implements CommandLineRunner {
     private void createLastAIQuizData() {
         QuizRequestDto quizRequestDto1 = QuizRequestDto.builder()
             .memberId(7L)
-            .quizCategory("금융 퀴즈")
-            .quizTitle("슈링크플레이션은 가격을 올리지 않고 상품의 용량을 줄여 가격 인상 효과를 노리는 방식이다.")
-            .quizType("AI QUIZ")
-            .quizAnswer("O")
-            .quizDescription(
-                "슈링크플레이션은 상품의 가격은 그대로 유지하면서 용량을 줄여, 이로써 실질적으로 가격을 올린 것과 같은 효과를 내는 방식을 말합니다. 이를 통해 소비자는 물건의 가격이 올랐는지 모르고 물건을 구매하게 됩니다.")
-            .quizLevel("normal")
-            .build();
-        quizRepository.save(QuizRequestDto.toEntity(quizRequestDto1));
-
-        QuizRequestDto quizRequestDto2 = QuizRequestDto.builder()
-            .memberId(7L)
             .quizCategory("경제 퀴즈")
             .quizTitle("세계보건기구(WHO)는 바이러스의 이름에 특정 지역, 동물, 개인이나 집단을 지칭하는 명칭을 쓰지 않는다.")
             .quizType("AI QUIZ")
@@ -177,6 +165,55 @@ public class QuizDataLoader implements CommandLineRunner {
                 "맞아요, WHO는 2015년부터 바이러스의 이름에 특정 지역, 동물, 개인이나 집단을 지칭하는 명칭을 쓰지 않는 원칙을 정했어요. 이는 특정 지역, 민족 등에 대한 혐오를 불러일으키지 않기 위한 조치입니다.")
             .quizLevel("normal")
             .build();
+        quizRepository.save(QuizRequestDto.toEntity(quizRequestDto1));
+
+        QuizRequestDto quizRequestDto2 = QuizRequestDto.builder()
+            .memberId(7L)
+            .quizCategory("금융 퀴즈")
+            .quizTitle("한 주 당 만 원인 주식이 월요일에 100% 상승하고, 화요일에 100% 하락했습니다. 수요일의 주식 가격은 만 원인가요?")
+            .quizType("AI QUIZ")
+            .quizAnswer("X")
+            .quizDescription(
+                "월요일에 주식 가격이 100% 상승하면 1만 원에서 2만 원이 됩니다. 그런데 화요일에 100% 하락은 2만 원의 전체 금액이 사라진다는 뜻이므로, 주식 가격은 0원이 됩니다.")
+            .quizLevel("normal")
+            .build();
         quizRepository.save(QuizRequestDto.toEntity(quizRequestDto2));
+
+
+        QuizRequestDto quizRequestDto3 = QuizRequestDto.builder()
+                .memberId(3L)
+                .quizCategory("금융 퀴즈")
+                .quizTitle("소비자물가지수가 상승했다는 것은 우리가 사는데 필요한 물건이나 서비스의 가격이 전반적으로 올랐다는 것을 의미합니다.")
+                .quizType("O/X")
+                .quizAnswer("O")
+                .quizDescription(
+                        "소비자물가지수는 우리가 일상생활에서 사는데 필요한 물건이나 서비스의 가격 변동을 보여주는 지표입니다. 이 지표가 올라갔다는 것은 일반적으로 가격이 전반적으로 올랐다는 것을 의미합니다. 이 기사에서는 한국의 소비자물가지수가 전년 동월 대비 5.2% 상승했다고 말하고 있습니다.")
+                .quizLevel("normal")
+                .build();
+        quizRepository.save(QuizRequestDto.toEntity(quizRequestDto3));
+
+        QuizRequestDto quizRequestDto4 = QuizRequestDto.builder()
+                .memberId(2L)
+                .quizCategory("금융 퀴즈")
+                .quizTitle("정부가 물가 안정을 우선으로 하면 경기 부양 계획에 문제가 생길 수 있습니다.")
+                .quizType("O/X")
+                .quizAnswer("O")
+                .quizDescription(
+                        " 물가 안정을 위해 정부가 예를 들어 공공요금을 동결하면, 이는 경제를 활성화시키는 데 필요한 투자나 지출을 제한할 수 있습니다. 그래서 정부가 물가 안정을 우선시하면 경기 부양 계획에 차질이 생길 수 있습니다.")
+                .quizLevel("normal")
+                .build();
+        quizRepository.save(QuizRequestDto.toEntity(quizRequestDto4));
+
+        QuizRequestDto quizRequestDto5 = QuizRequestDto.builder()
+                .memberId(4L)
+                .quizCategory("금융 퀴즈")
+                .quizTitle("인플레이션은 경제 활동이 활발해져서 상품의 수요가 공급을 초과할 때 발생합니다. 따라서 인플레이션은 늘 경제에 좋은 영향을 미칩니다.")
+                .quizType("O/X")
+                .quizAnswer("X")
+                .quizDescription(
+                        "인플레이션은 경제 활동이 활발해져 수요가 공급을 초과할 때 발생하는 것은 맞지만, 이것이 늘 경제에 좋은 영향을 미치는 것은 아닙니다. 인플레이션이 심해지면 소비자의 구매력이 하락하게 되며 경제에 부정적인 영향을 미칠 수 있습니다.")
+                .quizLevel("normal")
+                .build();
+        quizRepository.save(QuizRequestDto.toEntity(quizRequestDto5));
     }
 }

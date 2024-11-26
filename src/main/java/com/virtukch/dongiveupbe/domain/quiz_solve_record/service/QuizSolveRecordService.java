@@ -26,7 +26,7 @@ public class QuizSolveRecordService {
     private final QuizSolveRecordRepository quizSolveRecordRepository;
     private final GameMemberService gameMemberService;
 
-    private static final int SALARY_PER_QUIZ = 8590;
+    private static final int SALARY_PER_QUIZ = 76960;
 
     @Autowired
     public QuizSolveRecordService(QuizSolveRecordRepository quizSolveRecordRepository, GameMemberService gameMemberService) {
