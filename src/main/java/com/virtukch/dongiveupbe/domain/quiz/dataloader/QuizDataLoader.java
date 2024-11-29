@@ -207,7 +207,7 @@ public class QuizDataLoader implements CommandLineRunner {
         QuizRequestDto quizRequestDto5 = QuizRequestDto.builder()
                 .memberId(4L)
                 .quizCategory("금융 퀴즈")
-                .quizTitle("인플레이션은 경제 활동이 활발해져서 상품의 수요가 공급을 초과할 때 발생합니다. 따라서 인플레이션은 늘 경제에 좋은 영향을 미칩니다.")
+                .quizTitle("인플레이션은 경제 활동이 활발해져서 상품의 수요가 공급을 초과할 때 발생합니다. \n 따라서 인플레이션은 늘 경제에 좋은 영향을 미칩니다.")
                 .quizType("O/X")
                 .quizAnswer("X")
                 .quizDescription(
